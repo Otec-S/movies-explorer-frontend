@@ -1,16 +1,16 @@
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Main from "../Main";
-import Register from "../Register";
-import Login from "../Login";
-import Profile from "../Profile";
-import Movies from "../Movies";
-import SavedMovies from "../SavedMovies";
-import Page404 from "../Page404";
+import Main from "../Main/Main";
+import Register from "../Register/Register";
+import Login from "../Login/Login";
+import Profile from "../Profile/Profile";
+import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Page404 from "../Page404/Page404";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />

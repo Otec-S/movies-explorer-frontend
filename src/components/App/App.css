@@ -1,4 +1,22 @@
+@import "normalize.css";
+
 .App {
+  min-width: 320px;
+  max-width: 1280px;
+  /* padding: 45px 200px 60px;
+  margin: 0 auto; */
+  display: flex;
+  flex-direction: column;
+  /* background-color: black; */
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  border: 1px solid red;
+}
+
+/* .App {
   text-align: center;
 }
 
@@ -26,13 +44,13 @@
 
 .App-link {
   color: #61dafb;
-}
+} */
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
-}
+} */
