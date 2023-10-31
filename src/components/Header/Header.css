@@ -1,3 +1,5 @@
+@import url(../../vendor/fonts.css);
+
 .header {
   width: 100%;
   min-height: 74px;
@@ -7,7 +9,6 @@
 }
 
 .header__nav{
-  border: 1px solid red;
   width: 100%;
   margin: 0 70px;
   display: flex;
@@ -16,7 +17,6 @@
 }
 
 .header__nav-movies {
-  border: 1px solid white;
   display: flex;
   align-items: center;
 }
@@ -27,6 +27,45 @@
   object-fit: cover;
 }
 
+.header__films {
+  min-width: 211px;
+  margin-left: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header__link-movie {
+  font-family: 'Inter', 'Atial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 1.38;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 .header__nav-account {
-  border: 1px solid white;
+  min-width: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__logo-man {
+  height: 30px;
+  object-fit: cover;
+}
+
+.header__link-account {
+  font-family: 'Inter', 'Atial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
 }
