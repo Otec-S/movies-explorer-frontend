@@ -6,6 +6,7 @@
   background-color: #465DFF;
   display: flex;
   flex-direction: row;
+  border: 1px solid wheat;
 }
 
 .header__nav{
@@ -47,15 +48,16 @@
 }
 
 .header__nav-account {
-  min-width: 100px;
+  /* min-width: 100px; */
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 }
 
 .header__logo-man {
   height: 30px;
   object-fit: cover;
+  margin-left: 17px;
 }
 
 .header__link-account {
@@ -68,4 +70,20 @@
   border: none;
   text-decoration: none;
   cursor: pointer;
+}
+
+.header__entrance-button {
+  width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  background-color: #2BE080;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+
+  font-family: 'Inter', 'Atial', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
 }
