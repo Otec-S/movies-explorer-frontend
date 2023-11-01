@@ -1,11 +1,14 @@
 import React from 'react';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
+import Promo from './Promo/Promo';
 
 const Main = () => {
   return (
-    <div>
+    <main>
       <Header isRegistered={true} />
-    </div>
+      <Promo />
+
+    </main>
   );
 };
 

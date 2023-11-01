@@ -1,4 +1,4 @@
-@import url(../../vendor/fonts.css);
+/* @import url(../../vendor/fonts.css); */
 
 .header {
   width: 100%;
@@ -6,7 +6,6 @@
   background-color: #465DFF;
   display: flex;
   flex-direction: row;
-  border: 1px solid wheat;
 }
 
 .header__nav{
@@ -35,7 +34,7 @@
   justify-content: space-between;
 }
 
-.header__link-movie {
+.header__link {
   font-family: 'Inter', 'Atial', sans-serif;
   font-style: normal;
   font-weight: 400;

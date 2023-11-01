@@ -17,10 +17,10 @@ const Header = ({ isRegistered }) => {
                 alt="Логотип с улыбкой"
               />
               <nav className="header__films">
-                <Link className="header__link-movie" to="">
+                <Link className="header__link" to="">
                   Фильмы
                 </Link>
-                <Link className="header__link-movie" to="">
+                <Link className="header__link" to="">
                   Сохраненные фильмы
                 </Link>
               </nav>
@@ -47,7 +47,7 @@ const Header = ({ isRegistered }) => {
             </div>
 
             <div className="header__nav-account">
-              <Link className="header__link-movie" to="">
+              <Link className="header__link" to="">
                 Регистрация
               </Link>
               <button className="header__entrance-button">Войти</button>
