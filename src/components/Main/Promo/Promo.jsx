@@ -5,7 +5,7 @@ import promoLogo from "../../../images/promoLogo.png";
 const Promo = () => {
   return (
     <section className="promo">
-      <div className="promo__block">
+      <div>
         <div className="promo__title">Учебный проект студента факультета</div>
         <div className="promo__title"> Веб-разработки.</div>
         <div className="promo__subtitle">
