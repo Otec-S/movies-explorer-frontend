@@ -4,7 +4,8 @@
   background-color: #465DFF;
   padding: 75px 70px;
   box-sizing: border-box;
-  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
 }
 
 .promo__title {
@@ -17,7 +18,6 @@
   border: none;
   text-decoration: none;
   max-width: 640px;
-  border: 1px solid red;
 }
 
 .promo__subtitle {
@@ -30,7 +30,6 @@
   text-decoration: none;
   max-width: 310px;
   opacity: 0.5;
-  border: 1px solid red;
   margin-top: 36px;
 }
 
@@ -49,4 +48,10 @@
   border-color: rgba(255,255,255, 0.6);
   cursor: pointer;
   margin-top: 146px;
+}
+
+.promo__logo {
+  display: flex;
+  width: 310px;
+  height: 304px;
 }

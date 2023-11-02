@@ -1,5 +1,6 @@
 import React from "react";
 import "./Promo.css";
+import promoLogo from "../../../images/promoLogo.png";
 
 const Promo = () => {
   return (
@@ -7,10 +8,16 @@ const Promo = () => {
       <div className="promo__block">
         <div className="promo__title">Учебный проект студента факультета</div>
         <div className="promo__title"> Веб-разработки.</div>
-        <div className="promo__subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</div>
+        <div className="promo__subtitle">
+          Листайте ниже, чтобы узнать больше про этот проект и его создателя.
+        </div>
         <button className="promo__button">Узнать больше</button>
       </div>
-      <div className="promo__logo"></div>
+      <img
+        src={promoLogo}
+        className="promo__logo"
+        alt="Логотип с планетой"
+      />
     </section>
   );
 };
