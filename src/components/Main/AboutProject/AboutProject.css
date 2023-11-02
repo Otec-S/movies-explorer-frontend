@@ -4,7 +4,7 @@
   padding: 110px 70px;
 }
 
-.about-project___title {
+.about-project__title {
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -13,26 +13,26 @@
   margin-bottom: 23px;
 }
 
-.about-project___line {
+.about-project__line {
   width: 100%;
   height: 0;
   border: 1px solid #000;
   margin-bottom: 70px;
 }
 
-.about-project___description {
+.about-project__description {
   display: flex;
 }
 
-.about-project___description-block {
+.about-project__description-block {
   width: 50%;
 }
 
-.about-project___description-block-padding {
+.about-project__description-block-padding {
   padding-left: 42px;
 }
 
-.about-project___description-block-title {
+.about-project__description-block-title {
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -41,19 +41,19 @@
   margin-bottom: 27px;
 }
 
-.about-project___description-block-text {
+.about-project__description-block-text {
   line-height: 1.42;
   margin-bottom: 110px;
 }
 
-.about-project___timeline {
+.about-project__timeline {
   display: flex;
   width: 100%;
   height: 36px;
   margin-bottom: 25px;
 }
 
-.about-project___timeline-backend {
+.about-project__timeline-backend {
   width: 20%;
   background-color: #2be080;
   display: flex;
@@ -61,7 +61,7 @@
   align-items: center;
 }
 
-.about-project___timeline-frontend {
+.about-project__timeline-frontend {
   width: 80%;
   background-color: #f2f2f2;
   display: flex;
@@ -69,7 +69,7 @@
   align-items: center;
 }
 
-.about-project___timeline_explanation {
+.about-project__timeline_explanation {
   height: 0;
   margin: 0;
   color: #A0A0A0;
@@ -78,7 +78,7 @@
 
 
 /* общее */
-.about-project___text {
+.about-project__text {
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
   font-weight: 400;
