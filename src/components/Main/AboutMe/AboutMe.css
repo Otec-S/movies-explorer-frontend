@@ -3,9 +3,12 @@
   border: 1px solid red;
 }
 
-.about-me__header {
+.about-me__text {
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
+}
+
+.about-me__header {
   font-weight: 400;
   font-size: 22px;
   letter-spacing: -1px;
@@ -19,3 +22,32 @@
   margin-bottom: 90px;
 }
 
+.about-me__info {
+  display: flex;
+  border: 1px solid red;
+}
+
+.about-me__name {
+  font-weight: 400;
+  font-size: 50px;
+  letter-spacing: -1px;
+  margin-bottom: 18px;
+}
+
+.about-me__personal-info {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.11;
+  margin-bottom: 26px;
+}
+
+.about-me__biography {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.57;
+}
+
+.about-me__github-link {
+  font-weight: 500;
+  font-size: 14px;
+}
