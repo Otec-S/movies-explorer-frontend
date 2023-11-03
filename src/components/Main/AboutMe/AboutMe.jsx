@@ -1,6 +1,8 @@
 import React from "react";
 import "./AboutMe.css";
+import { Link } from "react-router-dom";
 import profilePhoto from "../../../images/profilePhoto.jpg";
+import aboutMeArrow from "../../../images/aboutMeArrow.svg";
 
 const AboutMe = () => {
   return (
@@ -22,16 +24,67 @@ const AboutMe = () => {
             volutpat vehicula. Vestibulum aliquet tortor quis vehicula
             ullamcorper.
           </div>
-
-          <button className="about-me__text about-me__github-link">
+          <Link
+            className="about-me__text about-me__github-link"
+            to="https://github.com/Otec-S"
+            target="_blank"
+          >
             GitHub
-          </button>
+          </Link>
         </div>
-        <img
-          src={profilePhoto}
-          className="about-me__photo"
-          alt="Фото Сергея"
-        />
+        <img src={profilePhoto} className="about-me__photo" alt="Фото Сергея" />
+      </div>
+
+      <div className="about-me__portfolio">
+        <div className="about-me__text about-me__portfolio-title">
+          Портфолио
+        </div>
+
+        <div className="about-me__portfolio-site">
+          <div className="about-me__text about-me__portfolio-site_name">
+            Статичный сайт
+          </div>
+
+          <Link to="https://otec-s.github.io/russian-travel" target="_blank">
+            <img
+              src={aboutMeArrow}
+              alt="Указатель на сайт"
+              className="about-me__portfolio-site_link"
+            />
+          </Link>
+        </div>
+
+        <div className="about-me__line about-me__line_lightgrey" />
+
+        <div className="about-me__portfolio-site">
+          <div className="about-me__text about-me__portfolio-site_name">
+            Адаптивный сайт
+          </div>
+
+          <Link to="https://www.adviser-spb.ru/" target="_blank">
+            <img
+              src={aboutMeArrow}
+              alt="Указатель на сайт"
+              className="about-me__portfolio-site_link"
+            />
+          </Link>
+        </div>
+
+        <div className="about-me__line about-me__line_lightgrey" />
+
+        <div className="about-me__portfolio-site">
+          <div className="about-me__text about-me__portfolio-site_name">
+            Одностраничное приложение
+          </div>
+
+          <Link to="https://otec-s.students.nomoredomainsrocks.ru" target="_blank">
+            <img
+              src={aboutMeArrow}
+              alt="Указатель на сайт"
+              className="about-me__portfolio-site_link"
+            />
+          </Link>
+        </div>
       </div>
     </section>
   );

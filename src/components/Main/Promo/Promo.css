@@ -55,3 +55,18 @@
   width: 310px;
   height: 304px;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .promo__logo {
+    animation: promo-logo-spin infinite 60s linear;
+  }
+}
+
+@keyframes promo-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
