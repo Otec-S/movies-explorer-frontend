@@ -1,6 +1,5 @@
 .about-me {
   padding: 110px 70px 125px;
-  border: 1px solid red;
 }
 
 .about-me__text {
@@ -24,7 +23,11 @@
 
 .about-me__info {
   display: flex;
-  border: 1px solid red;
+  justify-content: space-between;
+}
+
+.about-me__description {
+  max-width: 600px;
 }
 
 .about-me__name {
@@ -45,9 +48,19 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.57;
+  margin-bottom: 99px;
 }
 
 .about-me__github-link {
   font-weight: 500;
   font-size: 14px;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.about-me__photo {
+  width: 270px;
+  height: 327px;
+  object-fit: cover;
 }
