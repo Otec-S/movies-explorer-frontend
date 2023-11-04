@@ -7,10 +7,13 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
+import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 function App() {
   return (
     <div className="App">
+      <Header isRegistered={true} />
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
@@ -20,6 +23,7 @@ function App() {
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
+      <Footer/>
     </div>
   );
 }

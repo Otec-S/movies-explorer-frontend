@@ -1,0 +1,47 @@
+
+
+.footer {
+  min-height: 172px;
+  padding: 0 70px;
+  background-color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+
+.footer__text {
+  font-family: "Inter", "Atial", sans-serif;
+  font-style: normal;
+  letter-spacing: -1px;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.footer__text-yandex {
+  color: #a0a0a0;
+  margin: 79px auto 20px;
+}
+
+.footer__line {
+  width: 100%;
+  height: 0;
+  border: 1px solid #e8e8e8;
+  margin-bottom: 20px;
+}
+
+.footer__lowest-block {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer__lowest-block__about-yandex {
+  display: flex;
+}
+
+.footer__lowest-block__about-yandex-githublink {
+  text-decoration: none;
+  color: #000;
+  cursor: pointer;
+  margin-left: 20px;
+}
