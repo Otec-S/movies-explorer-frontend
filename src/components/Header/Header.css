@@ -1,7 +1,5 @@
-/* @import url(../../vendor/fonts.css); */
-
 .header {
-  width: 100%;
+  /* width: 100%; */
   min-height: 74px;
   background-color: #465DFF;
   display: flex;
@@ -35,9 +33,6 @@
 }
 
 .header__link {
-  font-family: 'Inter', 'Atial', sans-serif;
-  font-style: normal;
-  font-weight: 400;
   font-size: 13px;
   line-height: 1.38;
   color: white;
@@ -60,8 +55,6 @@
 }
 
 .header__link-account {
-  font-family: 'Inter', 'Atial', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
@@ -79,9 +72,6 @@
   border-radius: 3px;
   border: none;
   cursor: pointer;
-
-  font-family: 'Inter', 'Atial', sans-serif;
-  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;

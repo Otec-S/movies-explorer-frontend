@@ -1,19 +1,13 @@
-
-
 .footer {
   min-height: 172px;
   padding: 0 70px;
   background-color: #fafafa;
   display: flex;
   flex-direction: column;
-  border: 1px solid #000;
 }
 
 .footer__text {
-  font-family: "Inter", "Atial", sans-serif;
-  font-style: normal;
   letter-spacing: -1px;
-  font-weight: 400;
   font-size: 13px;
 }
 

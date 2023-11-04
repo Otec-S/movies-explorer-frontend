@@ -1,7 +1,7 @@
 @import "normalize.css";
 @import url(../../vendor/fonts.css);
 
-p {
+p,h1,h2,h3 {
   margin: 0;
   padding: 0;
 }
@@ -9,6 +9,11 @@ p {
 .App {
   min-width: 320px;
   max-width: 1280px;
+
+  font-family: 'Inter', 'Atial', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  
   /* padding: 45px 200px 60px;
   margin: 0 auto; */
   display: flex;

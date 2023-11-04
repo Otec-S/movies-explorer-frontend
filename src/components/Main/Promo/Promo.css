@@ -1,5 +1,5 @@
 .promo {
-  width: 100%;
+  /* width: 100%; */
   min-height: 574px;
   background-color: #465DFF;
   padding: 75px 70px;
@@ -9,8 +9,8 @@
 }
 
 .promo__title {
-  font-family: 'Inter', 'Atial', sans-serif;
-  font-style: normal;
+  /* font-family: 'Inter', 'Atial', sans-serif;
+  font-style: normal; */
   font-weight: 400;
   font-size: 50px;
   line-height: 1.16;
@@ -21,9 +21,9 @@
 }
 
 .promo__subtitle {
-  font-family: 'Inter', 'Atial', sans-serif;
+  /* font-family: 'Inter', 'Atial', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; */
   font-size: 13px;
   color: white;
   border: none;
@@ -37,9 +37,9 @@
   width: 129px;
   height: 36px;
   background-color: #465DFF;
-  font-family: 'Inter', 'Atial', sans-serif;
+  /* font-family: 'Inter', 'Atial', sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; */
   font-size: 12px;
   color: white;
   border-radius: 3px;

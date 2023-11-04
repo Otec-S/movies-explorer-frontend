@@ -6,11 +6,11 @@ const Promo = () => {
   return (
     <section className="promo">
       <div>
-        <div className="promo__title">Учебный проект студента факультета</div>
-        <div className="promo__title"> Веб-разработки.</div>
-        <div className="promo__subtitle">
+        <h1 className="promo__title">Учебный проект студента факультета</h1>
+        <h1 className="promo__title"> Веб-разработки.</h1>
+        <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
-        </div>
+        </p>
         <button className="promo__button">Узнать больше</button>
       </div>
       <img

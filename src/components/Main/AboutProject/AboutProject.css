@@ -4,7 +4,7 @@
   padding: 110px 70px;
 }
 
-.about-project__title {
+/* .about-project__title {
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -18,9 +18,10 @@
   height: 0;
   border: 1px solid #000;
   margin-bottom: 70px;
-}
+} */
 
 .about-project__description {
+  margin-top: 70px;
   display: flex;
 }
 
@@ -33,9 +34,9 @@
 }
 
 .about-project__description-block-title {
-  font-family: "Inter", "Atial", sans-serif;
+  /* font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; */
   font-size: 20px;
   letter-spacing: -1px;
   margin-bottom: 27px;
@@ -79,8 +80,8 @@
 
 /* общее */
 .about-project__text {
-  font-family: "Inter", "Atial", sans-serif;
+  /* font-family: "Inter", "Atial", sans-serif;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 400; */
   font-size: 14px;
 }
