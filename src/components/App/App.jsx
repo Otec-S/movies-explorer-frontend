@@ -13,7 +13,7 @@ import Footer from "../Footer/Footer";
 function App() {
   return (
     <div className="App">
-      <Header isRegistered={true} />
+      <Header isRegistered={false} />
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
@@ -23,7 +23,7 @@ function App() {
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer/>
+      {/* <Footer/> */}
     </div>
   );
 }

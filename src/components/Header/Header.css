@@ -1,12 +1,12 @@
 .header {
   /* width: 100%; */
   min-height: 74px;
-  background-color: #465DFF;
+  background-color: #465dff;
   display: flex;
   flex-direction: row;
 }
 
-.header__nav{
+.header__nav {
   width: 100%;
   margin: 0 70px;
   display: flex;
@@ -68,11 +68,34 @@
   width: 76px;
   height: 32px;
   margin-left: 30px;
-  background-color: #2BE080;
+  background-color: #2be080;
   border-radius: 3px;
   border: none;
   cursor: pointer;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
+}
+
+@media screen and (max-width: 768px) {
+  .header__nav {
+    margin: 0 30px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .header__nav {
+    margin: 0 14px;
+  }
+
+  .header__entrance-button {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+  }
+
+  .header__link {
+    font-size: 10px;
+    line-height: 1.6;
+  }
 }

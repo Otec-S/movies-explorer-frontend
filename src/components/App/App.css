@@ -1,13 +1,15 @@
 @import "normalize.css";
 @import url(../../vendor/fonts.css);
 
+/* *{border: 1px solid #000;} */
+
 p,h1,h2,h3 {
   margin: 0;
   padding: 0;
 }
 
 .App {
-  min-width: 320px;
+  /* min-width: 320px; */
   max-width: 1280px;
 
   font-family: 'Inter', 'Atial', sans-serif;
