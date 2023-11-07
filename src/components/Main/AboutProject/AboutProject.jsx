@@ -36,11 +36,11 @@ const AboutProject = () => {
         </div>
       </div>
 
-      <div className="about-project__timeline about-project__timeline_explanation">
-        <div className="about-project__timeline-backend  about-project__text">
+      <div className="about-project__timeline">
+        <div className="about-project__timeline-backend  about-project__timeline_explanation about-project__text">
           Back-end
         </div>
-        <div className="about-project__timeline-frontend  about-project__text">
+        <div className="about-project__timeline-frontend about-project__timeline_explanation about-project__text">
           Front-end
         </div>
       </div>

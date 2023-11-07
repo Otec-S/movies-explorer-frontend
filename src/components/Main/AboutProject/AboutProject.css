@@ -4,22 +4,6 @@
   padding: 110px 70px;
 }
 
-/* .about-project__title {
-  font-family: "Inter", "Atial", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  letter-spacing: -1px;
-  margin-bottom: 23px;
-}
-
-.about-project__line {
-  width: 100%;
-  height: 0;
-  border: 1px solid #000;
-  margin-bottom: 70px;
-} */
-
 .about-project__description {
   margin-top: 70px;
   display: flex;
@@ -34,9 +18,6 @@
 }
 
 .about-project__description-block-title {
-  /* font-family: "Inter", "Atial", sans-serif;
-  font-style: normal;
-  font-weight: 400; */
   font-size: 20px;
   letter-spacing: -1px;
   margin-bottom: 27px;
@@ -51,7 +32,7 @@
   display: flex;
   width: 100%;
   height: 36px;
-  margin-bottom: 25px;
+  margin-bottom: 14px;
 }
 
 .about-project__timeline-backend {
@@ -71,9 +52,10 @@
 }
 
 .about-project__timeline_explanation {
-  height: 0;
+  height: 14px;
+  background-color: white;
   margin: 0;
-  color: #A0A0A0;
+  color: #a0a0a0;
 }
 
 /* общее */
@@ -84,4 +66,67 @@
   font-size: 14px;
 }
 
+/* media 900*/
 
+@media screen and (max-width: 900px) {
+  .about-project {
+    padding: 110px 50px;
+  }
+
+  .about-project__description-block-title {
+    margin-bottom: 22px;
+  }
+
+  .about-project__description-block-text {
+    margin-bottom: 93px;
+  }
+}
+
+/* media 400*/
+
+@media screen and (max-width: 460px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__description {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-project__description-block {
+    width: 100%;
+  }
+
+  .about-project__description-block-padding {
+    padding-left: 0px;
+  }
+
+  .about-project__description-block-title {
+    margin-bottom: 16px;
+  }
+
+  .about-project__description-block-text {
+    margin-bottom: 56px;
+  }
+
+  .about-project__timeline {
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+  }
+
+  .about-project__timeline-backend {
+    width: 40%;
+  }
+
+  .about-project__timeline-frontend {
+    width: 60%;
+  }
+
+
+}

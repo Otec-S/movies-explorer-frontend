@@ -9,7 +9,7 @@ p,h1,h2,h3 {
 }
 
 .App {
-  /* min-width: 320px; */
+  width: 100%;
   max-width: 1280px;
 
   font-family: 'Inter', 'Atial', sans-serif;
@@ -27,7 +27,7 @@ p,h1,h2,h3 {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
 
 /* .App {
