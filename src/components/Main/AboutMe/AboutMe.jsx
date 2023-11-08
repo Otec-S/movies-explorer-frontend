@@ -17,12 +17,7 @@ const AboutMe = () => {
             Фронтенд-разработчик, 46 лет
           </p>
           <p className="about-me__biography">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin augue
-            leo, condimentum ut congue quis, consequat quis mi. Quisque pretium
-            vehicula quam quis scelerisque. Nunc condimentum condimentum
-            aliquet. Aliquam erat volutpat. Sed laoreet sapien nec magna
-            volutpat vehicula. Vestibulum aliquet tortor quis vehicula
-            ullamcorper.
+Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum vel itaque earum voluptatibus praesentium! Harum sapiente nemo officiis rerum in facere, veritatis alias eius sed minus quisquam provident mollitia explicabo reprehenderit adipisci maxime expedita optio quos ipsam porro nam at! Quia, fugit. Nostrum beatae, ex impedit quidem, dignissimos ab quos inventore cupiditate consectetur eius fugiat! Dicta maxime quasi sint magni nostrum animi laborum assumenda nihil incidunt. Error cupiditate facere, sed quia earum nemo unde eaque. At labore officiis fuga quasi? Corporis earum vel fugiat ducimus magni cum voluptatem! Assumenda quaerat veniam ab inventore. Reprehenderit pariatur est porro quia aspernatur labore.
           </p>
           <Link
             className="about-me__github-link"

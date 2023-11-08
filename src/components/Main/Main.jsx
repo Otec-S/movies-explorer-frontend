@@ -10,7 +10,7 @@ const Main = () => {
       <Promo />
       <AboutProject />
       <Techs />
-      {/* <AboutMe /> */}
+      <AboutMe />
     </main>
   );
 };
