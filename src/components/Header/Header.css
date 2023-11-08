@@ -1,5 +1,4 @@
 .header {
-  /* width: 100%; */
   min-height: 74px;
   background-color: #465dff;
   display: flex;
@@ -42,9 +41,7 @@
 }
 
 .header__nav-account {
-  /* min-width: 100px; */
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
 }
 

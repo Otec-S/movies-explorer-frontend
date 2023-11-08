@@ -12,11 +12,9 @@
 }
 
 /* media 400*/
-
 @media screen and (max-width: 400px) {
   .subtitle__text {
     font-size: 18px;
     margin-bottom: 28px;
-
   }
 }

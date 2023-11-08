@@ -1,6 +1,4 @@
 .about-project {
-  /* display: flex;
-  flex-direction: row; */
   padding: 110px 70px;
 }
 
@@ -60,17 +58,13 @@
 
 /* общее */
 .about-project__text {
-  /* font-family: "Inter", "Atial", sans-serif;
-  font-style: normal;
-  font-weight: 400; */
   font-size: 14px;
 }
 
 /* media 900*/
-
 @media screen and (max-width: 900px) {
   .about-project {
-    padding: 110px 50px;
+    padding: 90px 50px;
   }
 
   .about-project__description-block-title {
@@ -83,7 +77,6 @@
 }
 
 /* media 400*/
-
 @media screen and (max-width: 460px) {
   .about-project {
     padding: 70px 18px;
@@ -127,6 +120,4 @@
   .about-project__timeline-frontend {
     width: 60%;
   }
-
-
 }
