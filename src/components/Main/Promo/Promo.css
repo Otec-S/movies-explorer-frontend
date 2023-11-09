@@ -90,7 +90,8 @@
   }
 
   .promo__subtitle {
-    margin-top: 22px;
+    margin-top: 25px;
+    max-width: 260px;
   }
 
   .promo__button {

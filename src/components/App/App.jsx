@@ -23,7 +23,7 @@ function App() {
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }

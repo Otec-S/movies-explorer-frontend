@@ -7,7 +7,7 @@
 }
 
 .footer__text {
-  letter-spacing: -1px;
+  /* letter-spacing: -1px; */
   font-size: 13px;
 }
 
@@ -38,4 +38,51 @@
   color: #000;
   cursor: pointer;
   margin-left: 20px;
+}
+
+/* media 900*/
+@media screen and (max-width: 900px) {
+
+  .footer {
+    padding: 0 30px;
+  }
+}
+
+/* media 400*/
+@media screen and (max-width: 400px) {
+  .footer {
+    padding: 0 10px;
+  }
+
+  .footer__text {
+    /* letter-spacing: -1px; */
+    font-size: 12px;
+  }
+
+  .footer__lowest-block {
+    /* margin-bottom: 20px; */
+    /* display: flex; */
+    /* justify-content: space-between; */
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .footer__lowest-block__about-yandex {
+    /* display: flex; */
+    flex-direction: column;
+  }
+
+  .footer__lowest-block__about-yandex-githublink {
+    margin: 12px auto 32px;
+    font-size: 12px;
+  }
+
+  .footer__line {
+    margin-bottom: 32px;
+  }
+  
+  .footer__lowest-block__year {
+    letter-spacing: -1px;
+  }
+
 }

@@ -12,7 +12,7 @@
 }
 
 .about-project__description-block-padding {
-  padding-left: 42px;
+  padding-left: 39px;
 }
 
 .about-project__description-block-title {
@@ -74,6 +74,18 @@
   .about-project__description-block-text {
     margin-bottom: 93px;
   }
+
+  .about-project__description-block-padding {
+    padding-left: 33px;
+  }
+
+  .about-project__timeline-backend {
+    width: 21%;
+  }
+
+  .about-project__timeline-frontend {
+    width: 79%;
+  }
 }
 
 /* media 400*/
@@ -98,6 +110,7 @@
 
   .about-project__description-block-title {
     margin-bottom: 16px;
+    letter-spacing: -2px;
   }
 
   .about-project__description-block-text {
@@ -114,10 +127,10 @@
   }
 
   .about-project__timeline-backend {
-    width: 40%;
+    width: 35%;
   }
 
   .about-project__timeline-frontend {
-    width: 60%;
+    width: 65%;
   }
 }

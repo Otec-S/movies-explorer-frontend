@@ -4,7 +4,8 @@
 
 .about-me__line_lightgrey {
   border: 1px solid #e8e8e8;
-  margin-bottom: 20px;
+  margin-bottom: 27px;
+  margin-top: 23px;
 }
 
 .about-me__info {
@@ -20,7 +21,7 @@
 .about-me__name {
   font-weight: 400;
   font-size: 50px;
-  letter-spacing: -1px;
+  letter-spacing: -2px;
   margin-bottom: 18px;
 }
 
@@ -35,7 +36,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 1.57;
-  margin-bottom: 99px;
+  margin-bottom: 30px;
   max-height: 155px;
   text-overflow: ellipsis;
   /* white-space: nowrap; */
@@ -45,6 +46,7 @@
 .about-me__github-link {
   font-weight: 500;
   font-size: 14px;
+  /* letter-spacing: -0.99px; */
   text-decoration: none;
   color: #000;
   cursor: pointer;
@@ -55,14 +57,15 @@
   height: 327px;
   object-fit: cover;
   border-radius: 10px;
+  margin-left: 50px;
 }
 
 .about-me__portfolio-title {
   font-weight: 400;
   font-size: 18px;
-  line-height: 1.11;
+  /* line-height: 1.11; */
   color: #a0a0a0;
-  margin-bottom: 50px;
+  margin-bottom: 58px;
 }
 
 .about-me__portfolio-site {
@@ -74,9 +77,14 @@
 .about-me__portfolio-site_name {
   font-weight: 400;
   font-size: 30px;
-  line-height: 1.66;
-  letter-spacing: -3px;
-  margin-bottom: 19px;
+  /* line-height: 1.66; */
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+
+.about-me__portfolio-site_link {
+  width: 18px;
+  margin-right: 6px;
 }
 
 /* media 900*/
@@ -86,13 +94,12 @@
   }
 
   .about-me__info {
-    margin-bottom: 91px;
+    margin-bottom: 89px;
   }
 
   .about-me__name {
     font-weight: 400;
     font-size: 40px;
-    letter-spacing: -1px;
     margin-bottom: 10px;
   }
 
@@ -111,9 +118,8 @@
   .about-me__photo {
     width: 255px;
     height: 307px;
+    /* margin-left: 50px; */
   }
-
-
 
   /* .about-me__photo {
     width: 292px;
@@ -128,8 +134,8 @@
   } */
 }
 
-/* media 400*/
-/* @media screen and (max-width: 400px) {
+/* media 510*/
+@media screen and (max-width: 510px) {
   .about-me {
     padding: 70px 14px;
   }
@@ -138,13 +144,63 @@
     width: 292px;
     height: 352px;
     object-fit: cover;
+    margin-bottom: 40px;
+    margin-left: 0;
   }
 
   .about-me__info {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-
+    margin-top: 60px;
+    margin-bottom: 70px;
   }
 
-} */
+  .about-me__name {
+    font-weight: 400;
+    font-size: 30px;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+  }
+
+  .about-me__personal-info {
+    letter-spacing: -0.5px;
+  }
+
+  .about-me__biography {
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.45;
+    max-height: 108px;
+    /* margin-bottom: 30px;
+    max-height: 155px;
+    text-overflow: ellipsis;
+    overflow: hidden; */
+  }
+
+  .about-me__portfolio-title {
+    font-weight: 400;
+    font-size: 14px;
+    /* line-height: 1.11; */
+    /* color: #a0a0a0; */
+    margin-bottom: 48px;
+  }
+
+  .about-me__portfolio-site_name {
+    font-weight: 400;
+    font-size: 18px;
+    /* line-height: 1.66; */
+    letter-spacing: -1px;
+    margin-bottom: 4px;
+  }
+
+  .about-me__portfolio-site_link {
+    width: 13px;
+    margin-right: 3px;
+  }
+
+  .about-me__line_lightgrey {
+    margin-bottom: 23px;
+    margin-top: 19px;
+  }
+}

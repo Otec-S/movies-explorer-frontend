@@ -12,7 +12,7 @@ const AboutMe = () => {
 
       <div className="about-me__info">
         <div className="about-me__description">
-          <h3 className="about-me__name">Сергей</h3>
+          <h3 className="about-me__name">Виталий</h3>
           <p className="about-me__text about-me__personal-info">
             Фронтенд-разработчик, 46 лет
           </p>
