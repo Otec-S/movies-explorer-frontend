@@ -39,6 +39,7 @@ const Header = ({ isRegistered }) => {
                 alt="Логотип с человеком"
               />
             </div> */}
+            
             <div className="header__nav-movies">
               <img
                 src={logoSmile}
@@ -56,7 +57,7 @@ const Header = ({ isRegistered }) => {
               </nav>
             </div>
 
-            <div className="header__nav-account">
+            <div className="header__nav-account header__nav-account_is-registered">
               <Link className="header__link-account" to="">
                 Аккаунт
               </Link>

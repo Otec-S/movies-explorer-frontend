@@ -84,7 +84,7 @@
     display: none;
   }
 
-  .header__nav-account {
+  .header__nav-account_is-registered {
     display: none;
   }
 }
