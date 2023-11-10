@@ -3,6 +3,7 @@
   background-color: #465dff;
   display: flex;
   flex-direction: row;
+  /* position: fixed; */
 }
 
 .header__nav {
@@ -77,6 +78,14 @@
 @media screen and (max-width: 900px) {
   .header__nav {
     margin: 0 30px;
+  }
+
+  .header__films {
+    display: none;
+  }
+
+  .header__nav-account {
+    display: none;
   }
 }
 
