@@ -1,4 +1,4 @@
-.burger__button {
+.burger-button {
   display: none;
   width: 22px;
   height: 20px;
@@ -8,7 +8,7 @@
   margin-right: 14px;
 }
 
-.burger__button:before {
+.burger-button::before {
   content: "";
   position: absolute;
   top: 0;
@@ -17,7 +17,7 @@
   background-color: #000;
 }
 
-.burger__button span {
+.burger-button span {
   content: "";
   position: absolute;
   top: 10px;
@@ -26,7 +26,7 @@
   background-color: #000;
 }
 
-.burger__button:after {
+.burger-button::after {
   content: "";
   position: absolute;
   bottom: -3px;
@@ -35,8 +35,64 @@
   background-color: #000;
 }
 
+/* !!!!!!!!!!!!!!!!!!!!!!! */
+.burger-button_active {
+  display: none;
+  width: 22px;
+  height: 22px;
+  position: relative;
+  z-index: 50;
+  cursor: pointer;
+  margin-right: -3px;
+  /* overflow: hidden; */
+}
+
+.burger-button_active::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  width: 22px;
+  height: 3px;
+  background-color: #000;
+  transform: rotate(45deg);
+  /* transition: all 0.5s; */
+
+}
+
+.burger-button_active span {
+  /* content: "";
+  position: absolute;
+  top: 10px;
+  width: 28px;
+  height: 3px;
+  background-color: #000; */
+  display: none;
+}
+
+.burger-button_active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  width: 3px;
+  height: 22px;
+  background-color: #000;
+  transform: rotate(45deg);
+  /* transition: all 0.5s; */
+
+}
+
+/* !!!!!!!!!!!!!!!!!!!!!!! */
+
 @media screen and (max-width: 900px) {
-  .burger__button {
+  .burger-button {
     display: block;
   }
+
+  .burger-button_active {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 400px) {
+
 }

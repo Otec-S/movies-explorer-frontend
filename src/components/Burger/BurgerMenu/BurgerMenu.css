@@ -1,9 +1,12 @@
 .burger-menu {
   position: fixed;
   width: 68vw;
-  height: 772px;
+  /* height: 772px; */
+  /* min-height: 100%; */
+  /* height: auto; */
   top: 0;
   right: 0;
+  bottom: 0;
   padding: 169px 0 92px;
   background-color: #fff;
   display: flex;
@@ -74,3 +77,19 @@
   backdrop-filter: blur(2px);
   position: absolute;
 } */
+
+/* 400 */
+@media screen and (max-width: 400px) {
+  .burger-menu {
+    width: 100vw;
+    padding: 164px 0 48px;
+  }
+
+  .burger-menu__content {
+    margin-left: 13px;
+  }
+
+  .burger-menu__list-item {
+    margin-bottom: 25px;
+  }
+}

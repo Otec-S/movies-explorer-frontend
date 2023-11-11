@@ -3,7 +3,7 @@
   background-color: #465dff;
   display: flex;
   flex-direction: row;
-  /* position: fixed; */
+  /* position: relative; */
 }
 
 .header__nav {
