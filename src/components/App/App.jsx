@@ -1,3 +1,5 @@
+import React, { useState } from "react";
+
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 import Main from "../Main/Main";
@@ -11,19 +13,25 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
 function App() {
+  const [isMenuActive, setIsMenuActive] = useState(false);
+
   return (
     <div className="App">
-      <Header isRegistered={true} />
+      <Header
+        isRegistered={true}
+        menuActive={isMenuActive}
+        setActive={setIsMenuActive}
+      />
       <Routes>
         <Route path="/signup" element={<Register />} />
         <Route path="/signin" element={<Login />} />
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Main menuActive={isMenuActive} />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/saved-movies" element={<SavedMovies />} />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

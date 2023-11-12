@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 import BurgerButton from "../Burger/BurgerButton/BurgerButton";
 import BurgerMenu from "../Burger/BurgerMenu/BurgerMenu";
 
-const Header = ({ isRegistered }) => {
-  const [isMenuActive, setIsMenuActive] = useState(false);
+const Header = ({ isRegistered, menuActive, setActive }) => {
+  // const [isMenuActive, setIsMenuActive] = useState(false);
 
   return (
     <header className="header">
@@ -39,14 +39,14 @@ const Header = ({ isRegistered }) => {
                 alt="Логотип с человеком"
               />
             </div> */}
-            
+
             <div className="header__nav-movies">
               <img
                 src={logoSmile}
                 className="header__logoSmile"
                 alt="Логотип с улыбкой"
               />
-             
+
               <nav className="header__films">
                 <Link className="header__link" to="">
                   Фильмы
@@ -67,10 +67,7 @@ const Header = ({ isRegistered }) => {
                 alt="Логотип с человеком"
               />
             </div>
-            <BurgerButton
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-              />
+            <BurgerButton menuActive={menuActive} setActive={setActive} />
           </>
         ) : (
           <>
@@ -91,7 +88,7 @@ const Header = ({ isRegistered }) => {
           </>
         )}
       </div>
-      <BurgerMenu menuActive={isMenuActive} setActive={setIsMenuActive} />
+      <BurgerMenu menuActive={menuActive} setActive={setActive} />
     </header>
   );
 };
