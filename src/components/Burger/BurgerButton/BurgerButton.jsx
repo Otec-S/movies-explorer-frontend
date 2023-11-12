@@ -16,4 +16,3 @@ const BurgerButton = ({ menuActive, setActive }) => {
 
 export default BurgerButton;
 
-// className={menuActive ? "burger-button burger-button_active" : "burger-button"}
