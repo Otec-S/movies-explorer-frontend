@@ -8,7 +8,6 @@ const BurgerMenu = ({ menuActive, setActive }) => {
     <nav
       className={menuActive ? "burger-menu burger-menu_active" : "burger-menu"}
     >
-      {/* <div className="blur" /> */}
       <div className="burger-menu__content">
         <ul className="burger-menu__list">
           <li className="burger-menu__list-item">
