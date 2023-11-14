@@ -1,22 +1,20 @@
 .header {
   min-height: 74px;
-  background-color: #465dff;
+  background-color: #465dff; /*тоже пропсом менять?*/
   display: flex;
-  flex-direction: row;
+  padding-left: 70px;
+  align-items: center;
+
+  /* flex-direction: row; */
   /* position: relative; */
 }
 
-.header__nav {
+.header__nav-container {
   width: 100%;
-  margin: 0 70px 0 70px;
-  display: flex;
+  margin-right: 70px;
+  /* display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.header__nav-movies {
-  display: flex;
-  align-items: center;
+  align-items: center; */
 }
 
 .header__logoSmile {
@@ -24,6 +22,14 @@
   height: 38px;
   object-fit: cover;
 }
+
+/* 
+.header__nav-movies {
+  display: flex;
+  align-items: center;
+}
+
+
 
 .header__films {
   min-width: 211px;
@@ -73,7 +79,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-}
+} */
 
 @media screen and (max-width: 900px) {
   .header__nav {
