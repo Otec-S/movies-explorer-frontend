@@ -2,6 +2,8 @@ import React from "react";
 import "./BurgerMenu.css";
 import { Link } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
+// import Movies from "../Movies/Movies";
+
 
 const BurgerMenu = ({ menuActive }) => {
   return (
@@ -11,12 +13,12 @@ const BurgerMenu = ({ menuActive }) => {
       <div className="burger-menu__content">
         <ul className="burger-menu__list">
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="">
+            <Link className="burger-menu__list-item-link" to="/">
               Главная
             </Link>
           </li>
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="">
+            <Link className="burger-menu__list-item-link" to="/movies">
               Фильмы
             </Link>
           </li>

@@ -1,10 +1,20 @@
-import React from 'react';
+import React from "react";
+import "./Movies.css";
+import SearchForm from "./SearchForm/SearchForm";
+import Header from "../Header/Header";
 
-const Movies = () => {
+
+const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
   return (
-    <div>
-      
-    </div>
+    <main>
+      <Header
+        isRegistered={isRegistered}
+        menuActive={menuActive}
+        setActive={setActive}
+        isPromo={isPromo}
+      />
+      {/* <SearchForm /> */}
+    </main>
   );
 };
 

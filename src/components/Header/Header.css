@@ -1,6 +1,14 @@
+.header-promo {
+  min-height: 74px;
+  background-color: #465dff;
+  display: flex;
+  padding-left: 70px;
+  align-items: center;
+}
+
 .header {
   min-height: 74px;
-  background-color: #465dff; /*тоже пропсом менять?*/
+  background-color: white;
   display: flex;
   padding-left: 70px;
   align-items: center;
