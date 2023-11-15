@@ -3,7 +3,7 @@ import "./BurgerMenu.css";
 import { Link } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
 
-const BurgerMenu = ({ menuActive, setActive }) => {
+const BurgerMenu = ({ menuActive }) => {
   return (
     <nav
       className={menuActive ? "burger-menu burger-menu_active" : "burger-menu"}

@@ -4,17 +4,11 @@
   display: flex;
   padding-left: 70px;
   align-items: center;
-
-  /* flex-direction: row; */
-  /* position: relative; */
 }
 
 .header__nav-container {
   width: 100%;
   margin-right: 70px;
-  /* display: flex;
-  justify-content: space-between;
-  align-items: center; */
 }
 
 .header__logoSmile {
@@ -23,106 +17,23 @@
   object-fit: cover;
 }
 
-/* 
-.header__nav-movies {
-  display: flex;
-  align-items: center;
-}
-
-
-
-.header__films {
-  min-width: 211px;
-  margin-left: 45px;
-  display: flex;
-  justify-content: space-between;
-}
-
-.header__link {
-  font-size: 13px;
-  line-height: 1.38;
-  color: white;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.header__nav-account {
-  display: flex;
-  align-items: center;
-}
-
-.header__logo-man {
-  height: 30px;
-  object-fit: cover;
-  margin-left: 17px;
-}
-
-.header__link-account {
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 1.14;
-  color: white;
-  border: none;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.header__entrance-button {
-  width: 76px;
-  height: 32px;
-  margin-left: 30px;
-  background-color: #2be080;
-  border-radius: 3px;
-  border: none;
-  cursor: pointer;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.33;
-} */
-
 @media screen and (max-width: 900px) {
+  .header {
+    padding-left: 30px;
+  }
   .header__nav-container {
     margin-right: 30px;
     display: flex;
     justify-content: flex-end;
-    /* align-items: center; */
   }
-  
-  .header {
-    padding-left: 30px;
-  }
-
-  /* .header__films {
-    display: none;
-  }
-
-  .header__nav-account_is-registered {
-    display: none;
-  } */
 }
 
 @media screen and (max-width: 400px) {
-  .header__nav-container {
-    margin-right: 14px;
-  }
-  
   .header {
     padding-left: 14px;
   }
-  
-  .header__nav {
-    margin: 0 14px;
-  }
 
-  .header__entrance-button {
-    width: 54px;
-    height: 26px;
-    margin-left: 14px;
-  }
-
-  .header__link {
-    font-size: 10px;
-    line-height: 1.6;
+  .header__nav-container {
+    margin-right: 14px;
   }
 }

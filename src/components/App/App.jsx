@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Header
-        isRegistered={false}
+        isRegistered={true}
         menuActive={isMenuActive}
         setActive={setIsMenuActive}
       />

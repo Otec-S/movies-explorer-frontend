@@ -20,7 +20,7 @@ const Header = ({ isRegistered, menuActive, setActive }) => {
         <Navigation isRegistered={isRegistered} />
         <BurgerButton isRegistered={isRegistered} menuActive={menuActive} setActive={setActive} />
       </div>
-      <BurgerMenu menuActive={menuActive} setActive={setActive} />
+      <BurgerMenu menuActive={menuActive} />
     </header>
   );
 };
