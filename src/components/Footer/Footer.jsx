@@ -8,7 +8,9 @@ const Footer = () => {
       <p className="footer__text footer__text-yandex">
         Учебный проект Яндекс.Практикум х BeatFilm.
       </p>
+
       <div className="footer__line" />
+      
       <div className="footer__lowest-block">
         <p className="footer__text footer__lowest-block__year">© 2023</p>
         <div className="footer__lowest-block__about-yandex">

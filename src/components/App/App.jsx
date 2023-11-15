@@ -35,7 +35,7 @@ function App() {
               menuActive={isMenuActive}
               setActive={setIsMenuActive}
               isRegistered={isRegistered}
-              isPromo={isPromo}
+              isPromo={true}
             />
           }
         />
@@ -47,7 +47,7 @@ function App() {
               menuActive={isMenuActive}
               setActive={setIsMenuActive}
               isRegistered={isRegistered}
-              isPromo={isPromo}
+              isPromo={false}
             />
           }
         />

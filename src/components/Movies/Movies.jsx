@@ -13,7 +13,7 @@ const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
         setActive={setActive}
         isPromo={isPromo}
       />
-      {/* <SearchForm /> */}
+      <SearchForm />
     </main>
   );
 };

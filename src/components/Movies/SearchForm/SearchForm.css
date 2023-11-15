@@ -1,0 +1,46 @@
+.search-form {
+  display: flex;
+  flex-direction: column;
+  padding: 70px 70px 49px;
+  border: 1px solid red;
+}
+.input {
+  display: flex;
+  border: 1px solid red;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.input__loupe-icon {
+  width: 34px;
+  height: 34px;
+}
+
+.input__entry-field {
+  width: 100%;
+  font-size: 28px;
+  font-weight: 500;
+  border: none;
+  text-align: center;
+}
+
+.input__find-button {
+  width: 34px;
+  height: 34px;
+  background-image: url(../../../images/find-icon.svg);
+  border: none;
+  background-color: white;
+}
+
+.short-films {
+  display: flex;
+  margin-top: 30px;
+  justify-content: center;
+  border: 1px solid #000;
+}
+
+.short-films__text {
+  font-size: 14px;
+  font-weight: 400;
+  margin-left: 12px;
+}

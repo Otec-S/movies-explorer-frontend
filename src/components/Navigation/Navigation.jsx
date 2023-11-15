@@ -14,7 +14,7 @@ const Navigation = ({ isRegistered, isPromo }) => {
               className={
                 isPromo ? "navigation__link-promo" : "navigation__link"
               }
-              to=""
+              to="/movies"
             >
               Фильмы
             </Link>
