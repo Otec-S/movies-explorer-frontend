@@ -2,6 +2,7 @@ import React from "react";
 import "./Movies.css";
 import SearchForm from "./SearchForm/SearchForm";
 import Header from "../Header/Header";
+import MoviesCard from "./MoviesCard/MoviesCard";
 
 
 const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
@@ -14,6 +15,7 @@ const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
         isPromo={isPromo}
       />
       <SearchForm />
+      <MoviesCard/>
     </main>
   );
 };

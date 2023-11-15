@@ -11,7 +11,7 @@ const SearchForm = () => {
     <div className="search-form">
       <div className="input">
         <img className="input__loupe-icon" src={loupeIcon} alt="Иконка с лупой" />
-        <input className="input__entry-field" type="text" placeholder="Фильм"/>
+        <input className="input__entry-field" type="search" placeholder="Фильм" required autofocus/>
         <button className="input__find-button"></button>
       </div>
       <LineGrey/>
