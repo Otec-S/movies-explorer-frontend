@@ -52,8 +52,6 @@
   cursor: pointer;
 }
 
-
-
 .navigation__account__entrance-button {
   width: 76px;
   height: 32px;
@@ -68,6 +66,15 @@
 }
 
 @media screen and (max-width: 900px) {
+  .navigation_registered {
+    display: none;
+  }
+
+  .navigation__account__link {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+
   .header__nav {
     margin: 0 30px;
   }
@@ -86,10 +93,15 @@
     margin: 0 14px;
   }
 
-  .header__entrance-button {
+  .navigation__account__entrance-button {
     width: 54px;
     height: 26px;
     margin-left: 14px;
+    font-size: 10px;
+  }
+
+  .navigation__account__link {
+    font-size: 10px;
   }
 
   .header__link {

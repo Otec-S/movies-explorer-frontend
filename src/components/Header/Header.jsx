@@ -8,11 +8,8 @@ import BurgerMenu from "../Burger/BurgerMenu/BurgerMenu";
 import Navigation from "../Navigation/Navigation";
 
 const Header = ({ isRegistered, menuActive, setActive }) => {
-  // const [isMenuActive, setIsMenuActive] = useState(false);
-
   return (
     <header className="header">
-      {/* лого с улыбкой */}
       <img
         src={logoSmile}
         className="header__logoSmile"
@@ -20,11 +17,9 @@ const Header = ({ isRegistered, menuActive, setActive }) => {
       />
 
       <div className="header__nav-container">
-
-       <Navigation isRegistered={true}/>
-
+        <Navigation isRegistered={isRegistered} />
+        <BurgerButton isRegistered={isRegistered} menuActive={menuActive} setActive={setActive} />
       </div>
-      <BurgerButton menuActive={menuActive} setActive={setActive} />
       <BurgerMenu menuActive={menuActive} setActive={setActive} />
     </header>
   );

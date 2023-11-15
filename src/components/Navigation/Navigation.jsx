@@ -18,7 +18,7 @@ const Navigation = ({ isRegistered }) => {
             </Link>
           </nav>
 
-          <div className="navigation__account">
+          <nav className="navigation__account">
             <Link className="navigation__account__link" to="">
               Аккаунт
             </Link>
@@ -27,18 +27,18 @@ const Navigation = ({ isRegistered }) => {
               className="navigation__account__logo-man"
               alt="Логотип с человеком"
             />
-          </div>
+          </nav>
         </div>
       ) : (
         <div className="navigation_unregistered">
-          <div className="navigation__account ">
+          <nav className="navigation__account ">
             <Link className="navigation__account__link" to="">
               Регистрация
             </Link>
             <button className="navigation__account__entrance-button">
               Войти
             </button>
-          </div>
+          </nav>
         </div>
       )}
     </>
