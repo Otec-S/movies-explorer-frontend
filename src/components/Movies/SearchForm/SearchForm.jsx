@@ -8,7 +8,7 @@ import Slider from "../../Slider/Slider";
 
 const SearchForm = () => {
   return (
-    <div className="search-form">
+    <section className="search-form">
       <div className="input">
         <img className="input__loupe-icon" src={loupeIcon} alt="Иконка с лупой" />
         <input className="input__entry-field" type="search" placeholder="Фильм" required autofocus/>
@@ -19,7 +19,7 @@ const SearchForm = () => {
         <Slider />
         <span className="short-films__text">Короткометражки</span>
       </div>
-    </div>
+    </section>
   );
 };
 
