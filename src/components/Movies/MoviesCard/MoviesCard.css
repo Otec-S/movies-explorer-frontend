@@ -9,7 +9,7 @@
 .movies-card__description {
   height: 37px;
   display: flex;
-  padding: 13px 13px 14px;
+  padding: 13px 13px 17px;
   justify-content: space-between;
 }
 .movies-card__description__text {
