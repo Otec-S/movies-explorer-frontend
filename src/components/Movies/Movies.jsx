@@ -3,6 +3,7 @@ import "./Movies.css";
 import SearchForm from "./SearchForm/SearchForm";
 import Header from "../Header/Header";
 import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import MoreButton from "./MoreButton/MoreButton";
 
 
 const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
@@ -16,6 +17,7 @@ const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
       />
       <SearchForm />
       <MoviesCardList/>
+      <MoreButton/>
     </main>
   );
 };
