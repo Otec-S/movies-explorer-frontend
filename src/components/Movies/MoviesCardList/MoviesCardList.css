@@ -25,3 +25,24 @@
     overflow: hidden;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .movies-card-list {
+    max-height: 1075px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .movies-card-section {
+    margin-top: 40px;
+  }
+
+  .movies-card-list {
+    /* padding: 70px 30px 30px; */
+    row-gap: 16px;
+    /* column-gap: 30px; */
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    max-height: 1243px;
+  }
+}

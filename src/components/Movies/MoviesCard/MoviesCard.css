@@ -45,3 +45,16 @@
     height: 258px;
   }
 }
+
+@media screen and (max-width: 730px) {
+  .movies-card {
+    width: 300px;
+    height: 236px;
+  }
+
+  .movies-card__description {
+    height: 21%;
+    padding: 13px;
+    /* justify-content: space-between; */
+  }
+}
