@@ -18,8 +18,12 @@
   justify-content: space-between;
 }
 .movies-card__description__title {
+  max-width: 200px;
+  max-height: 18px;
   font-size: 15px;
   font-weight: 500;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .movies-card__description__movie-duration {
   color: #a0a0a0;
@@ -27,9 +31,6 @@
   font-weight: 400;
 }
 .movies-card__description__icon {
-  width: 30px;
-  height: 30px;
-  background-image: url(../../../images/save-icon.svg);
   align-self: center;
 }
 .movies-card__picture {
