@@ -83,3 +83,9 @@
     display: block;
   }
 }
+@media screen and (max-width: 400px) {
+  .burger-button {
+    width: 23px;
+    height: 21px;
+  }
+}
