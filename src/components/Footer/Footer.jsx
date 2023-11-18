@@ -10,7 +10,7 @@ const Footer = () => {
       </p>
 
       <div className="footer__line" />
-      
+
       <div className="footer__lowest-block">
         <p className="footer__text footer__lowest-block__year">© 2023</p>
         <div className="footer__lowest-block__about-yandex">

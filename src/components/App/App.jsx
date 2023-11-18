@@ -51,7 +51,17 @@ function App() {
             />
           }
         />
-        <Route path="/saved-movies" element={<SavedMovies />} />
+        <Route
+          path="/saved-movies"
+          element={
+            <SavedMovies
+              menuActive={isMenuActive}
+              setActive={setIsMenuActive}
+              isRegistered={isRegistered}
+              isPromo={false}
+            />
+          }
+        />
         <Route path="*" element={<Page404 />} />
       </Routes>
       <Footer />

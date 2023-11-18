@@ -30,7 +30,7 @@
 .input__find-button {
   width: 34px;
   height: 34px;
-  background-image: url(../../../images/find-icon.svg);
+  background-image: url(../../images/find-icon.svg);
   border: none;
   background-color: white;
   background-size: contain;

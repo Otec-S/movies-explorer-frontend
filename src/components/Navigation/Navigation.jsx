@@ -22,7 +22,7 @@ const Navigation = ({ isRegistered, isPromo }) => {
               className={
                 isPromo ? "navigation__link-promo" : "navigation__link"
               }
-              to=""
+              to="/saved-movies"
             >
               Сохраненные фильмы
             </Link>
@@ -35,7 +35,7 @@ const Navigation = ({ isRegistered, isPromo }) => {
                   ? "navigation__account__link-promo"
                   : "navigation__account__link"
               }
-              to=""
+              to="/profile"
             >
               Аккаунт
             </Link>

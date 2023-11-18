@@ -23,14 +23,14 @@ const BurgerMenu = ({ menuActive }) => {
             </Link>
           </li>
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="">
+            <Link className="burger-menu__list-item-link" to="/saved-movies">
               Сохраненные фильмы
             </Link>
           </li>
         </ul>
       </div>
       <div className="burger-menu__account">
-        <Link className="burger-menu__account-link" to="">
+        <Link className="burger-menu__account-link" to="/profile">
           Аккаунт
         </Link>
         <img

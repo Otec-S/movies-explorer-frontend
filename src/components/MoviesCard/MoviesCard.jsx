@@ -1,6 +1,6 @@
 import React from "react";
 import "./MoviesCard.css";
-import SaveCheckbox from "../../SaveCheckbox/SaveCheckbox";
+import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 
 const MoviesCard = () => {
   return (

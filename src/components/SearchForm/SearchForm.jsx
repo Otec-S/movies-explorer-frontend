@@ -1,9 +1,9 @@
 import React from "react";
 import "./SearchForm.css";
-import loupeIcon from '../../../images/loupe-icon.svg'
-import findIcon from '../../../images/find-icon.png'
-import LineGrey from "../../LineGrey/LineGrey";
-import Slider from "../../Slider/Slider";
+import loupeIcon from '../../images/loupe-icon.svg'
+import findIcon from '../../images/find-icon.png'
+import LineGrey from "../LineGrey/LineGrey";
+import Slider from "../Slider/Slider";
 
 
 const SearchForm = () => {

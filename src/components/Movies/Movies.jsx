@@ -1,8 +1,8 @@
 import React from "react";
 import "./Movies.css";
-import SearchForm from "./SearchForm/SearchForm";
+import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
-import MoviesCardList from "./MoviesCardList/MoviesCardList";
+import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoreButton from "./MoreButton/MoreButton";
 
 
