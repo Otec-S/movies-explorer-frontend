@@ -18,7 +18,7 @@ function App() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   //стейт для зарегистрированного пользователя
-  const [isRegistered, setIsRegistered] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/signup" element={<Register />} />
+        <Route path="/signup" element={<Register isRegistered={false}/>} />
         <Route path="/signin" element={<Login />} />
         <Route
           path="/"
@@ -39,7 +39,7 @@ function App() {
             />
           }
         />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<Profile isRegistered={isRegistered}/>} />
         <Route
           path="/movies"
           element={

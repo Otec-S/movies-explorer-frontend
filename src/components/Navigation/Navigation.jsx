@@ -58,7 +58,7 @@ const Navigation = ({ isRegistered, isPromo }) => {
       ) : (
         <div className="navigation_unregistered">
           <nav className="navigation__account ">
-            <Link className="navigation__account__link" to="">
+            <Link className="navigation__account__link" to="/signup">
               Регистрация
             </Link>
             <button className="navigation__account__entrance-button">
