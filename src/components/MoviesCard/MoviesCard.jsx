@@ -2,7 +2,7 @@ import React from "react";
 import "./MoviesCard.css";
 import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 
-const MoviesCard = () => {
+const MoviesCard = ({ isSaved }) => {
   return (
     <div className="movies-card">
       <div className="movies-card__description">
@@ -12,9 +12,14 @@ const MoviesCard = () => {
           </h1>
           <p className="movies-card__description__movie-duration">1ч 47м</p>
         </div>
-        <div className="movies-card__description__icon">
-          <SaveCheckbox />
-        </div>
+
+        {isSaved ? (
+          <button className="movies-card__description__icon_saved" />
+        ) : (
+          <div className="movies-card__description__icon">
+            <SaveCheckbox />
+          </div>
+        )}
       </div>
       <div className="movies-card__picture"></div>
     </div>
