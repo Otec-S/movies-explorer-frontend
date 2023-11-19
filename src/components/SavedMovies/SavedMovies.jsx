@@ -3,20 +3,23 @@ import "./SavedMovies.css";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
-
+import Footer from "../Footer/Footer";
 
 const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
   return (
-    <main>
+    <>
       <Header
         isRegistered={isRegistered}
         menuActive={menuActive}
         setActive={setActive}
         isPromo={isPromo}
       />
-      <SearchForm />
-      <MoviesCardList isSaved={true}/>
-    </main>
+      <main>
+        <SearchForm />
+        <MoviesCardList isSaved={true} />
+      </main>
+      <Footer />
+    </>
   );
 };
 

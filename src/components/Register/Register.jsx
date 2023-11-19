@@ -7,21 +7,43 @@ import MainLink from "../MainLink/MainLink";
 const Register = () => {
   return (
     <main className="register">
-      <MainLink />
+      <div className="register__main-link">
+        <MainLink />
+      </div>
       <h1 className="register__greetings">Добро пожаловать!</h1>
       <form action="" className="register__form">
         <label for="name" className="register__form__label">
           Имя
-          <input type="text" id="name" className="register__form__input" name="name" required/>
+          <input
+            type="text"
+            id="name"
+            className="register__form__input"
+            name="name"
+            required
+          />
         </label>
         <label for="email" className="register__form__label">
           E-mail
-          <input type="email" id="email" name="email" className="register__form__input" required/>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            className="register__form__input"
+            required
+          />
         </label>
         <label for="password" className="register__form__label">
           Пароль
-          <input type="password" id="password" name="password" className="register__form__input" required/>
-          <span className="register__form__input__error-msg">Что-то пошло не так...</span>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            className="register__form__input"
+            required
+          />
+          <span className="register__form__input__error-msg">
+            Что-то пошло не так...
+          </span>
         </label>
       </form>
       <button type="submit" className="register__button">

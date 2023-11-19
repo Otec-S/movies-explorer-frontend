@@ -66,3 +66,37 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+@media screen and (max-width: 440px) {
+  .register {
+    width: 260px;
+    margin: 56px auto 30px;
+  }
+
+  .register__main-link {
+    text-align: center;
+  }
+
+  .register__greetings {
+    text-align: center;
+  }
+
+  .register__greetings {
+    margin-top: 46px;
+    margin-bottom: 83px;
+  }
+
+  .register__button {
+    margin-top: 135px;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .register__question {
+    font-size: 12px;
+  }
+
+  .register__link {
+    font-size: 12px;
+  }
+}

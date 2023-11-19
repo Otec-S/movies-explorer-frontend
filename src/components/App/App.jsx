@@ -10,8 +10,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import Header from "../Header/Header";
-import Footer from "../Footer/Footer";
-// import BurgerMenu from "../Burger/BurgerMenu";
+
 
 function App() {
   //стейт для активации BurgerMenu
@@ -64,7 +63,6 @@ function App() {
         />
         <Route path="*" element={<Page404 />} />
       </Routes>
-      <Footer />
     </div>
   );
 }
