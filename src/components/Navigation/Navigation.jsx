@@ -61,9 +61,12 @@ const Navigation = ({ isRegistered, isPromo }) => {
             <Link className="navigation__account__link" to="/signup">
               Регистрация
             </Link>
-            <button className="navigation__account__entrance-button">
-              Войти
-            </button>
+
+            <Link to="/signin">
+              <button className="navigation__account__entrance-button">
+                Войти
+              </button>
+            </Link>
           </nav>
         </div>
       )}

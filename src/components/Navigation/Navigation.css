@@ -74,6 +74,8 @@
   border-radius: 3px;
   border: none;
   cursor: pointer;
+  font-family: "Inter", "Atial", sans-serif;
+  font-style: normal;
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;

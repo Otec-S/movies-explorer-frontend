@@ -1,10 +1,17 @@
-import React from 'react';
+import React from "react";
+import "./Login.css";
+import WelcomeForm from "../WelcomeForm/WelcomeForm";
 
 const Login = () => {
   return (
-    <div>
-      
-    </div>
+    <WelcomeForm
+      greetings="Рады видеть!"
+      isNewUser={false}
+      buttonText="Войти"
+      welcomeQuestion="Ещё не зарегистрированы?"
+      welcomeLinkName="Регистрация"
+      welcomeLink="/signup"
+    />
   );
 };
 

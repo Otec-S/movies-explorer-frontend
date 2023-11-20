@@ -2,8 +2,6 @@ import React from "react";
 import "./BurgerMenu.css";
 import { Link } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
-// import Movies from "../Movies/Movies";
-
 
 const BurgerMenu = ({ menuActive }) => {
   return (

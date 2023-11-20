@@ -1,0 +1,103 @@
+.welcome-form {
+  width: 396px;
+  margin: 70px auto;
+}
+.welcome-form__greetings {
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.welcome-form__form {
+  display: flex;
+  flex-direction: column;
+  min-height: 288px;
+}
+.welcome-form__form__label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 22px;
+  font-size: 10px;
+  color: rgba(160, 160, 160, 1);
+}
+.welcome-form__form__input {
+  border: none;
+  margin-top: 10px;
+  background-color: rgba(249, 249, 249, 1);
+  border-radius: 8px;
+  font-size: 13px;
+  padding: 15px;
+  outline: none;
+}
+
+.welcome-form__form__input__error-msg {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 10px;
+  color: rgba(238, 52, 101, 1);
+}
+
+.welcome-form__button {
+  margin-top: 46px;
+  margin-bottom: 16px;
+  width: 100%;
+  height: 45px;
+  border-radius: 3px;
+  border: none;
+  background-color: rgba(255, 104, 56, 1);
+  font-family: "Inter", "Atial", sans-serif;
+  font-style: normal;
+
+  font-weight: 500;
+  font-size: 14px;
+  color: white;
+  cursor: pointer;
+}
+.welcome-form__question {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(160, 160, 160, 1);
+  text-align: center;
+}
+.welcome-form__link {
+  font-weight: 400;
+  font-size: 14px;
+  color: rgba(255, 104, 56, 1);
+  margin-left: 3px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 440px) {
+  .welcome-form {
+    width: 260px;
+    margin: 56px auto 30px;
+  }
+
+  .welcome-form__main-link {
+    text-align: center;
+  }
+
+  .welcome-form__greetings {
+    text-align: center;
+  }
+
+  .welcome-form__greetings {
+    margin-top: 46px;
+    margin-bottom: 83px;
+  }
+
+  .welcome-form__button {
+    margin-top: 135px;
+    margin-bottom: 14px;
+    font-size: 12px;
+  }
+
+  .welcome-form__question {
+    font-size: 12px;
+  }
+
+  .welcome-form__link {
+    font-size: 12px;
+  }
+}

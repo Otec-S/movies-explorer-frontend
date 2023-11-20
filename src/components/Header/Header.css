@@ -29,6 +29,11 @@
   .header {
     padding-left: 30px;
   }
+
+  .header-promo {
+    padding-left: 30px;
+  }
+
   .header__nav-container {
     margin-right: 30px;
     display: flex;
@@ -38,6 +43,9 @@
 
 @media screen and (max-width: 400px) {
   .header {
+    padding-left: 14px;
+  }
+  .header-promo {
     padding-left: 14px;
   }
 
