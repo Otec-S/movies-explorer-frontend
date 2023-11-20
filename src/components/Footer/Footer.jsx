@@ -20,7 +20,7 @@ const Footer = () => {
 
           <Link
             className="footer__text footer__lowest-block__about-yandex-githublink"
-            to=""
+            to="https://github.com/Otec-S"
             target="_blank"
           >
             GitHub

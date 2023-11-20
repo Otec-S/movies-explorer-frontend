@@ -10,7 +10,12 @@ import "./Main.css";
 const Main = ({ menuActive, setActive, isRegistered, isPromo }) => {
   return (
     <>
-      <Header menuActive={menuActive} setActive={setActive} isPromo={isPromo} />
+      <Header
+        menuActive={menuActive}
+        setActive={setActive}
+        isRegistered={isRegistered}
+        isPromo={isPromo}
+      />
       <main className={menuActive ? "main-dark" : ""}>
         <Promo />
         <AboutProject />

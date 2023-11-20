@@ -17,7 +17,7 @@ function App() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   //стейт для зарегистрированного пользователя
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isRegistered, setIsRegistered] = useState(true);
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
