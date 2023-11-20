@@ -28,7 +28,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
           </div>
 
           <label for="" className="profile__form__label">
-            E-mail
+            E&shy;mail
             <input
               type="text"
               className="profile__form__input"

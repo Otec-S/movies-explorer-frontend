@@ -23,10 +23,9 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: end;
-
 }
 .profile__form__input {
-  width: 100%;
+  /* width: 100%; */
   height: 10px;
   font-size: 11px;
   font-weight: 400;
@@ -36,7 +35,7 @@
   margin-right: -3px;
 }
 
-.profile__form__linegrey{
+.profile__form__linegrey {
   margin: 16px 0 17px;
 }
 
@@ -59,4 +58,43 @@
   background-color: #fff;
   cursor: pointer;
   color: rgba(238, 52, 101, 1);
+}
+
+@media screen and (max-width: 900px) {
+  .profile {
+    margin-top: 234px;
+  }
+
+  .profile__greetings {
+    margin-bottom: 96px;
+  }
+
+  .profile__form {
+    margin-bottom: 210px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile {
+    width: 260px;
+  }
+
+  .profile {
+    margin-top: 70px;
+  }
+  .profile__greetings {
+    margin-bottom: 80px;
+  }
+
+  .profile__form {
+    margin-bottom: 379px;
+  }
+
+  .profile__update-btn {
+    font-size: 12px;
+  }
+
+  .profile__logout-btn {
+    font-size: 12px;
+  }
 }

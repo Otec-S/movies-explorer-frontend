@@ -9,8 +9,6 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
-import Header from "../Header/Header";
-
 
 function App() {
   //стейт для активации BurgerMenu
@@ -25,7 +23,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/signup" element={<Register isRegistered={false}/>} />
+        <Route path="/signup" element={<Register isRegistered={false} />} />
         <Route path="/signin" element={<Login />} />
         <Route
           path="/"
@@ -38,7 +36,16 @@ function App() {
             />
           }
         />
-        <Route path="/profile" element={<Profile isRegistered={isRegistered}/>} />
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              isRegistered={isRegistered}
+              menuActive={isMenuActive}
+              setActive={setIsMenuActive}
+            />
+          }
+        />
         <Route
           path="/movies"
           element={
