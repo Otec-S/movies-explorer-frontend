@@ -1,0 +1,51 @@
+.page404 {
+  display: flex;
+  flex-direction: column;
+  margin: 246px auto 60px;
+  text-align: center;
+}
+.page404__number {
+  font-size: 140px;
+  font-weight: 400;
+  margin-bottom: 8px;
+}
+.page404__not-found {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 184px;
+}
+.page404__return-button {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: "Inter", "Atial", sans-serif;
+  font-style: normal;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  color: rgba(255, 104, 56, 1);
+}
+
+@media screen and (max-width: 900px) {
+  .page404 {
+    margin: 408px auto 222px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .page404 {
+    margin: 329px auto 30px;
+  }
+
+  .page404__number {
+    font-size: 80px;
+    margin-bottom: 10px;
+  }
+
+  .page404__not-found {
+    font-size: 12px;
+    margin-bottom: 284px;
+  }
+  .page404__return-button {
+    font-size: 12px;
+  }
+}
