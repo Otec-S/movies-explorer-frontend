@@ -1,27 +1,54 @@
 .burger-menu {
   position: fixed;
-  width: 68vw;
-  top: 0;
+  /* width: 68vw; */
+  width: 100vw;
+  height: 100vh;
   right: 0;
-  bottom: 0;
-  padding: 169px 0 92px;
+  top: 0;
+  /* right: 0;
+  bottom: 0; */
+  transform: translateX(100%);
+  transition: all 0.5s;
+  z-index: 40;
+  /* padding: 169px 0 92px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   transform: translateX(100%);
-  transition: all 0.5s;
-  z-index: 40;
+   */
+  display: flex;
+  justify-content: flex-end;
 }
 
 .burger-menu_active {
   transform: translateX(0);
 }
 
+.burger-menu__blackout {
+  /* content: ""; */
+  /* display: flex; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 32vw;
+  height: 100vh;
+  /* right: 30%; */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 .burger-menu__content {
+  width: 68vw;
   display: flex;
   flex-direction: column;
   text-align: center;
+  padding: 169px 0 92px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.5s;
+  /* z-index: 40; */
 }
 
 .burger-menu__list {
