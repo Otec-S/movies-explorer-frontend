@@ -1,10 +1,6 @@
 @import "normalize.css";
 @import url(../../fonts/fonts.css);
 
-/* *{
-  border: 1px solid #000;
-} */
-
 p,
 h1,
 h2,
@@ -18,8 +14,6 @@ li {
 .App {
   width: 100%;
   max-width: 1280px;
-
-  /* position: relative; */
 
   font-family: "Inter", "Atial", sans-serif;
   font-style: normal;

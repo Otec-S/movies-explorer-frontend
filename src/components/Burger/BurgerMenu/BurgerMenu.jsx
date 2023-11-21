@@ -1,6 +1,6 @@
 import React from "react";
 import "./BurgerMenu.css";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
 
 const BurgerMenu = ({ menuActive }) => {
@@ -25,15 +25,6 @@ const BurgerMenu = ({ menuActive }) => {
             </NavLink>
           </li>
 
-          {/* className={({ isActive }) =>
-                isPromo
-                  ? `navigation__account__link-promo ${
-                      isActive ? "navigation__link_active" : ""
-                    }`
-                  : `navigation__account__link ${
-                      isActive ? "navigation__link_active" : ""
-                    }`
-              } */}
           <li className="burger-menu__list-item">
             <NavLink
               className={({ isActive }) =>

@@ -11,12 +11,10 @@
   row-gap: 30px;
   column-gap: 24px;
   list-style-type: none;
-  /* border: 1px solid red; */
 }
 
 @media screen and (max-width: 1200px) {
   .movies-card-list {
-    /* padding: 70px 30px 30px; */
     row-gap: 36px;
     column-gap: 30px;
     grid-template-columns: repeat(2, 1fr);
@@ -38,9 +36,7 @@
   }
 
   .movies-card-list {
-    /* padding: 70px 30px 30px; */
     row-gap: 16px;
-    /* column-gap: 30px; */
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: repeat(5, 1fr);
     max-height: 1243px;

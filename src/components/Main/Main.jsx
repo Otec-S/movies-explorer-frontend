@@ -5,7 +5,6 @@ import Techs from "./Techs/Techs";
 import AboutMe from "./AboutMe/AboutMe";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import "./Main.css";
 
 const Main = ({ menuActive, setActive, isRegistered, isPromo }) => {
   return (
@@ -16,9 +15,7 @@ const Main = ({ menuActive, setActive, isRegistered, isPromo }) => {
         isRegistered={isRegistered}
         isPromo={isPromo}
       />
-      <main 
-      // className={menuActive ? "main-blackout" : ""}
-      >
+      <main>
         <Promo />
         <AboutProject />
         <Techs />

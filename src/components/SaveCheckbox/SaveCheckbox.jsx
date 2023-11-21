@@ -3,9 +3,9 @@ import "./SaveCheckbox.css";
 
 const SaveCheckbox = () => {
   return (
-    <label class="save-checkbox-container">
+    <label className="save-checkbox-container">
       <input type="checkbox" />
-      <span class="save-checkbox-checkmark" />
+      <span className="save-checkbox-checkmark" />
     </label>
   );
 };

@@ -42,12 +42,6 @@ const Navigation = ({ isRegistered, isPromo }) => {
 
           <nav className="navigation__account">
             <NavLink
-              // className={
-              //   isPromo
-              //     ? "navigation__account__link-promo"
-              //     : "navigation__account__link"
-              // }
-
               className={({ isActive }) =>
                 isPromo
                   ? `navigation__account__link-promo ${

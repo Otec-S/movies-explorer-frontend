@@ -10,7 +10,7 @@ const Header = ({ isRegistered, menuActive, setActive, isPromo }) => {
     <header className={isPromo ? "header-promo" : "header"}>
       <MainLink />
       <div className="header__nav-container">
-        <Navigation isRegistered={isRegistered} isPromo={isPromo}/>
+        <Navigation isRegistered={isRegistered} isPromo={isPromo} />
         <BurgerButton
           isRegistered={isRegistered}
           menuActive={menuActive}

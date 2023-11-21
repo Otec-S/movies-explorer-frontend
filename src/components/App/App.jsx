@@ -9,7 +9,6 @@ import Profile from "../Profile/Profile";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
-import AboutMe from "../Main/AboutMe/AboutMe";
 
 function App() {
   //стейт для активации BurgerMenu
