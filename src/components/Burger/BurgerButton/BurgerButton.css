@@ -88,4 +88,9 @@
     width: 23px;
     height: 21px;
   }
+
+  .burger-button_active::after {
+    bottom: 8px;
+  }
+
 }
