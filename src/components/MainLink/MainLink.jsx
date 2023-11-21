@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 const MainLink = () => {
   return (
-    <Link to="/">
+    <Link className="main-link"
+    to="/">
       <img
         src={logoSmile}
         className="header__logoSmile"

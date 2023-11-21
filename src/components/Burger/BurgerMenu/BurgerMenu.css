@@ -69,7 +69,8 @@
 }
 
 .burger-menu__list-item-link:hover {
-  border-bottom: 3px solid #000;
+  opacity: 0.7;
+
 }
 
 .burger-menu__account {
@@ -92,6 +93,14 @@
   cursor: pointer;
   align-items: center;
   display: flex;
+}
+
+.burger-menu__account-link:hover {
+  opacity: 0.7;
+}
+
+.burger-menu__link_active {
+  border-bottom: 2px solid #000;
 }
 
 /* 400 */

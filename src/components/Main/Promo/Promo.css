@@ -99,6 +99,10 @@
   }
 }
 
+.promo__button:hover {
+  opacity: 0.8;
+}
+
 /* media 400*/
 @media screen and (max-width: 460px) {
   .promo {

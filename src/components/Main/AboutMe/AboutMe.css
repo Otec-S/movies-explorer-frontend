@@ -52,6 +52,11 @@
   cursor: pointer;
 }
 
+.about-me__github-link:hover {
+  opacity: 0.7;
+}
+
+
 .about-me__photo {
   width: 270px;
   height: 327px;
@@ -85,6 +90,13 @@
 .about-me__portfolio-site_link {
   width: 18px;
   margin-right: 6px;
+  transition: all 0.5s;
+}
+
+.about-me__portfolio-site_link:hover {
+  opacity: 0.7;
+  transform: rotate(45deg);
+  transition: all 0.2s;
 }
 
 /* media 900*/

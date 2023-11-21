@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./Navigation.css";
 import logoMan from "../../images/logMan.jpg";
 import logoManWhite from "../../images/logManWhite.jpg";
@@ -10,35 +10,57 @@ const Navigation = ({ isRegistered, isPromo }) => {
       {isRegistered ? (
         <div className="navigation_registered">
           <nav className="navigation__films">
-            <Link
-              className={
-                isPromo ? "navigation__link-promo" : "navigation__link"
+            <NavLink
+              className={({ isActive }) =>
+                isPromo
+                  ? `navigation__link-promo ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
+                  : `navigation__link ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
               }
               to="/movies"
             >
               Фильмы
-            </Link>
-            <Link
-              className={
-                isPromo ? "navigation__link-promo" : "navigation__link"
+            </NavLink>
+            <NavLink
+              className={({ isActive }) =>
+                isPromo
+                  ? `navigation__link-promo ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
+                  : `navigation__link ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
               }
               to="/saved-movies"
             >
               Сохраненные фильмы
-            </Link>
+            </NavLink>
           </nav>
 
           <nav className="navigation__account">
-            <Link
-              className={
+            <NavLink
+              // className={
+              //   isPromo
+              //     ? "navigation__account__link-promo"
+              //     : "navigation__account__link"
+              // }
+
+              className={({ isActive }) =>
                 isPromo
-                  ? "navigation__account__link-promo"
-                  : "navigation__account__link"
+                  ? `navigation__account__link-promo ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
+                  : `navigation__account__link ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
               }
               to="/profile"
             >
               Аккаунт
-            </Link>
+            </NavLink>
 
             {isPromo ? (
               <img

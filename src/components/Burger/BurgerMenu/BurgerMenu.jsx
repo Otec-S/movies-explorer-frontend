@@ -1,6 +1,6 @@
 import React from "react";
 import "./BurgerMenu.css";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
 
 const BurgerMenu = ({ menuActive }) => {
@@ -13,26 +13,64 @@ const BurgerMenu = ({ menuActive }) => {
       <div className="burger-menu__content">
         <ul className="burger-menu__list">
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="/">
+            <NavLink
+              className={({ isActive }) =>
+                `burger-menu__list-item-link ${
+                  isActive ? "burger-menu__link_active" : ""
+                }`
+              }
+              to="/"
+            >
               Главная
-            </Link>
+            </NavLink>
           </li>
+
+          {/* className={({ isActive }) =>
+                isPromo
+                  ? `navigation__account__link-promo ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
+                  : `navigation__account__link ${
+                      isActive ? "navigation__link_active" : ""
+                    }`
+              } */}
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="/movies">
+            <NavLink
+              className={({ isActive }) =>
+                `burger-menu__list-item-link ${
+                  isActive ? "burger-menu__link_active" : ""
+                }`
+              }
+              to="/movies"
+            >
               Фильмы
-            </Link>
+            </NavLink>
           </li>
           <li className="burger-menu__list-item">
-            <Link className="burger-menu__list-item-link" to="/saved-movies">
+            <NavLink
+              className={({ isActive }) =>
+                `burger-menu__list-item-link ${
+                  isActive ? "burger-menu__link_active" : ""
+                }`
+              }
+              to="/saved-movies"
+            >
               Сохраненные фильмы
-            </Link>
+            </NavLink>
           </li>
         </ul>
 
         <div className="burger-menu__account">
-          <Link className="burger-menu__account-link" to="/profile">
+          <NavLink
+            className={({ isActive }) =>
+              `burger-menu__account-link ${
+                isActive ? "burger-menu__link_active" : ""
+              }`
+            }
+            to="/profile"
+          >
             Аккаунт
-          </Link>
+          </NavLink>
           <img
             src={logoMan}
             className="burger-menu__account-logo-man"
@@ -40,7 +78,6 @@ const BurgerMenu = ({ menuActive }) => {
           />
         </div>
       </div>
-      
     </nav>
   );
 };

@@ -53,6 +53,11 @@
   color: white;
   cursor: pointer;
 }
+
+.welcome-form__button:hover {
+  opacity: 0.8;
+}
+
 .welcome-form__question {
   font-weight: 400;
   font-size: 14px;
@@ -66,6 +71,10 @@
   margin-left: 3px;
   text-decoration: none;
   cursor: pointer;
+}
+
+.welcome-form__link:hover {
+  opacity: 0.7;
 }
 
 @media screen and (max-width: 440px) {

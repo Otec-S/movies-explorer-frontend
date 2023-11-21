@@ -52,6 +52,9 @@
   color: white;
   cursor: pointer;
 }
+
+
+
 .register__question {
   font-weight: 400;
   font-size: 14px;
@@ -65,6 +68,10 @@
   margin-left: 3px;
   text-decoration: none;
   cursor: pointer;
+}
+
+.register__button:hover {
+  opacity: 0.8;
 }
 
 @media screen and (max-width: 440px) {
