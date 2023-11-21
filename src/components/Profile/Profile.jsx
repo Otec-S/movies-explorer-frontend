@@ -21,6 +21,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
               type="text"
               className="profile__form__input"
               value="Виталий"
+              required
             />
           </label>
           <div className="profile__form__linegrey">
@@ -33,6 +34,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
               type="text"
               className="profile__form__input"
               value="pochta@yandex.ru"
+              required
             />
           </label>
         </form>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Promo.css";
 import promoLogo from "../../../images/promoLogo.png";
+import { Link } from "react-router-dom";
 
 const Promo = () => {
   return (
@@ -14,7 +15,9 @@ const Promo = () => {
         <p className="promo__subtitle">
           Листайте ниже, чтобы узнать больше про этот проект и его создателя.
         </p>
-        <button className="promo__button">Узнать больше</button>
+        <Link to="https://github.com/Otec-S" target="_blank">
+          <button className="promo__button">Узнать больше</button>
+        </Link>
       </div>
       <img src={promoLogo} className="promo__logo" alt="Логотип с планетой" />
     </section>

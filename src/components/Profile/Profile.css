@@ -35,6 +35,10 @@
   margin-right: -3px;
 }
 
+/* .profile__form__input:focus {
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+} */
+
 .profile__form__linegrey {
   margin: 16px 0 17px;
 }
