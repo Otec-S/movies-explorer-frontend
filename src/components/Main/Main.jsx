@@ -16,7 +16,7 @@ const Main = ({ menuActive, setActive, isRegistered, isPromo }) => {
         isRegistered={isRegistered}
         isPromo={isPromo}
       />
-      <main className={menuActive ? "main-dark" : ""}>
+      <main className={menuActive ? "main-blackout" : ""}>
         <Promo />
         <AboutProject />
         <Techs />

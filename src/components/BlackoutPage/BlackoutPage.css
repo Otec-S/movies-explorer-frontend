@@ -1,4 +1,4 @@
-.main-blackout::before {
+.blackout::before {
   content: "";
   display: flex;
   position: fixed;
