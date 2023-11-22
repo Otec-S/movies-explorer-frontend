@@ -7,7 +7,7 @@ import Slider from "../Slider/Slider";
 const SearchForm = () => {
   return (
     <section className="search-form">
-      <div className="input">
+      <form className="input">
         <img
           className="input__loupe-icon"
           src={loupeIcon}
@@ -21,7 +21,7 @@ const SearchForm = () => {
           autofocus
         />
         <button className="input__find-button"></button>
-      </div>
+      </form>
       <LineGrey />
       <div className="short-films">
         <Slider />
