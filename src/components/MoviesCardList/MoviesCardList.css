@@ -22,11 +22,6 @@
   }
 }
 
-@media screen and (max-width: 730px) {
-  .movies-card-list {
-  }
-}
-
 @media screen and (max-width: 660px) {
   .movies-card-section {
     margin-top: 40px;

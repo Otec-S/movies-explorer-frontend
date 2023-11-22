@@ -75,20 +75,29 @@
   align-items: center;
 }
 
-.about-me__portfolio-site_name {
+.about-me__portfolio-site-link {
+  color: #000;
+  text-decoration: none;
+}
+
+.about-me__portfolio-site-link:hover {
+  opacity: 0.7;
+}
+
+.about-me__portfolio-site-name {
   font-weight: 400;
   font-size: 30px;
   letter-spacing: -1px;
   margin-bottom: 4px;
 }
 
-.about-me__portfolio-site_link {
+.about-me__portfolio-site-arrow {
   width: 18px;
   margin-right: 6px;
   transition: all 0.5s;
 }
 
-.about-me__portfolio-site_link:hover {
+.about-me__portfolio-site-arrow:hover {
   opacity: 0.7;
   transform: rotate(45deg);
   transition: all 0.2s;
