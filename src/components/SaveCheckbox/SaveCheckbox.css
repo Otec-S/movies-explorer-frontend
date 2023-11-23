@@ -1,0 +1,33 @@
+.save-checkbox-container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+}
+
+/* Hide the browser's default checkbox */
+.save-checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.save-checkbox-checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 30px;
+  width: 30px;
+  background-image: url(../../images/save-icon.svg);
+}
+
+/* When the checkbox is checked, add a blue background */
+.save-checkbox-container input:checked ~ .save-checkbox-checkmark {
+  background-image: url(../../images/save-icon-green.svg);
+}
+
+/* Style the checkmark/indicator */
+.save-checkbox-container .save-checkbox-checkmark:after {
+}

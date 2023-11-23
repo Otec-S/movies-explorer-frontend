@@ -1,0 +1,130 @@
+.navigation_registered {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navigation_unregistered {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.navigation__films {
+  min-width: 211px;
+  margin-left: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigation__link {
+  font-size: 13px;
+  line-height: 1.38;
+  color: black;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__link-promo {
+  font-size: 13px;
+  line-height: 1.38;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__link-promo:hover {
+  opacity: 0.7;
+}
+
+.navigation__account {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__account__logo-man {
+  height: 30px;
+  object-fit: cover;
+  margin-left: 17px;
+}
+
+.navigation__account__link {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: black;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__account__link:hover {
+  opacity: 0.7;
+}
+
+.navigation__account__link-promo {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.14;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navigation__account__link-promo:hover {
+  opacity: 0.7;
+}
+
+.navigation__account__entrance-button {
+  width: 76px;
+  height: 32px;
+  margin-left: 30px;
+  background-color: #2be080;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
+  font-family: "Inter", "Atial", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
+}
+
+.navigation__account__entrance-button:hover {
+  opacity: 0.8;
+}
+
+.navigation__link_active {
+  font-weight: 500;
+}
+
+@media screen and (max-width: 900px) {
+  .navigation_registered {
+    display: none;
+  }
+
+  .navigation__account__link {
+    font-size: 12px;
+    line-height: 1.33;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .navigation__account__entrance-button {
+    width: 54px;
+    height: 26px;
+    margin-left: 14px;
+    font-size: 10px;
+  }
+
+  .navigation__account__link {
+    font-size: 10px;
+  }
+}

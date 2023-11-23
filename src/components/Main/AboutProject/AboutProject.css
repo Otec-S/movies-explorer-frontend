@@ -1,0 +1,136 @@
+.about-project {
+  padding: 110px 70px;
+}
+
+.about-project__description {
+  margin-top: 70px;
+  display: flex;
+}
+
+.about-project__description-block {
+  width: 50%;
+}
+
+.about-project__description-block-padding {
+  padding-left: 39px;
+}
+
+.about-project__description-block-title {
+  font-size: 20px;
+  letter-spacing: -1px;
+  margin-bottom: 27px;
+}
+
+.about-project__description-block-text {
+  line-height: 1.42;
+  margin-bottom: 110px;
+}
+
+.about-project__timeline {
+  display: flex;
+  width: 100%;
+  height: 36px;
+  margin-bottom: 14px;
+}
+
+.about-project__timeline-backend {
+  width: 20%;
+  background-color: #2be080;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-project__timeline-frontend {
+  width: 80%;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about-project__timeline_explanation {
+  height: 14px;
+  background-color: white;
+  margin: 0;
+  color: #a0a0a0;
+}
+
+/* общее */
+.about-project__text {
+  font-size: 14px;
+}
+
+/* media 900*/
+@media screen and (max-width: 900px) {
+  .about-project {
+    padding: 90px 50px;
+  }
+
+  .about-project__description-block-title {
+    margin-bottom: 22px;
+  }
+
+  .about-project__description-block-text {
+    margin-bottom: 93px;
+  }
+
+  .about-project__description-block-padding {
+    padding-left: 33px;
+  }
+
+  .about-project__timeline-backend {
+    width: 21%;
+  }
+
+  .about-project__timeline-frontend {
+    width: 79%;
+  }
+}
+
+/* media 400*/
+@media screen and (max-width: 460px) {
+  .about-project {
+    padding: 70px 18px;
+  }
+
+  .about-project__description {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .about-project__description-block {
+    width: 100%;
+  }
+
+  .about-project__description-block-padding {
+    padding-left: 0px;
+  }
+
+  .about-project__description-block-title {
+    margin-bottom: 16px;
+    letter-spacing: -2px;
+  }
+
+  .about-project__description-block-text {
+    margin-bottom: 56px;
+  }
+
+  .about-project__timeline {
+    margin-bottom: 10px;
+    margin-top: 4px;
+  }
+
+  .about-project__text {
+    font-size: 11px;
+  }
+
+  .about-project__timeline-backend {
+    width: 35%;
+  }
+
+  .about-project__timeline-frontend {
+    width: 65%;
+  }
+}
