@@ -5,6 +5,9 @@ import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
 const SearchForm = () => {
+
+
+
   return (
     <section className="search-form">
       <form className="input">
@@ -18,9 +21,14 @@ const SearchForm = () => {
           type="search"
           placeholder="Фильм"
           required
-          autofocus
+          autoFocus
         />
-        <button className="input__find-button"></button>
+        <button
+          type="submit"
+          // onSubmit={handleSubmit}
+          // onClick={onRegister}
+          className="input__find-button"
+        ></button>
       </form>
       <LineGrey />
       <div className="short-films">

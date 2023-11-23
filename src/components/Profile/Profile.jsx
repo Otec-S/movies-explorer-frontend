@@ -15,7 +15,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
       <main className="profile">
         <h1 className="profile__greetings">Привет, Виталий!</h1>
         <form action="" className="profile__form">
-          <label for="" className="profile__form__label">
+          <label htmlFor="" className="profile__form__label">
             Имя
             <input
               type="text"
@@ -28,7 +28,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
             <LineGrey />
           </div>
 
-          <label for="" className="profile__form__label">
+          <label htmlFor="" className="profile__form__label">
             E&shy;mail
             <input
               type="text"

@@ -19,7 +19,7 @@ const WelcomeForm = ({
       <h1 className="welcome-form__greetings">{greetings}</h1>
       <form action="" className="welcome-form__form">
         {isNewUser ? (
-          <label for="name" className="welcome-form__form__label">
+          <label htmlFor="name" className="welcome-form__form__label">
             Имя
             <input
               type="text"
@@ -33,7 +33,7 @@ const WelcomeForm = ({
           <div />
         )}
 
-        <label for="email" className="welcome-form__form__label">
+        <label htmlFor="email" className="welcome-form__form__label">
           E-mail
           <input
             type="email"
@@ -43,7 +43,7 @@ const WelcomeForm = ({
             required
           />
         </label>
-        <label for="password" className="welcome-form__form__label">
+        <label htmlFor="password" className="welcome-form__form__label">
           Пароль
           <input
             type="password"
