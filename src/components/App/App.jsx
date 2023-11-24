@@ -49,9 +49,12 @@ function App() {
     console.log("работает");
     setisLoading(true);
     getAllMovies()
-      .then((allMoviesData) => setAllMovies(allMoviesData))
+      .then((allMoviesData) => setAllMovies(allMoviesData)) //записали все карточки в стейт
       .then(console.log("allMovies1", allMovies)) //убери потом это
       .catch((err) => console.log(err))
+
+      // Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
+
       .finally(() => {
         setisLoading(false);
       });
