@@ -10,12 +10,13 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
+import Preloader from "../Movies/Preloader/Preloader";
 
 function App() {
   //СТЕЙТЫ
 
   //стейт для массива всех фильмов
-  const [allMovies, setAllMovies] = useState(null);
+  const [allMovies, setAllMovies] = useState([]);
 
   //стейт для активации BurgerMenu
   const [isMenuActive, setIsMenuActive] = useState(false);
@@ -25,15 +26,38 @@ function App() {
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
+ 
+  //стейт для загрузки прелоадера
+  const [isLoading, setisLoading] = useState(false);
+
+
 
   //ФУНКЦИИ
-  
+  // const showPreloader = (isLoading) => {
+  //   if (isLoading) {
+      // spinner.classList.add('spinner_visible');
+      // content.classList.add('content_hidden');
+  //     <Preloader />;
+  //   }
+  // };
   //запрос базы всех фильмов и запись ее в стейт allMovies
-  useEffect(() => {
-    getAllMovies().then((allMoviesData) => setAllMovies(allMoviesData));
-  }, []);
+  // useEffect(() => {
+  //   getAllMovies().then((allMoviesData) => setAllMovies(allMoviesData));
+  // }, []);
 
-  // console.log("allMovies", allMovies);
+  const handleSearch = () => {
+    console.log("работает");
+    setisLoading(true);
+    getAllMovies()
+      .then((allMoviesData) => setAllMovies(allMoviesData))
+      .then(console.log("allMovies1", allMovies)) //убери потом это
+      .catch((err) => console.log(err))
+      .finally(() => {
+        setisLoading(false);
+      });
+  };
+
+  console.log("allMovies2", allMovies);
 
   return (
     <div className="App">
@@ -69,6 +93,8 @@ function App() {
               setActive={setIsMenuActive}
               isRegistered={isRegistered}
               isPromo={false}
+              handleSearch={handleSearch}
+              isLoading={isLoading}
             />
           }
         />

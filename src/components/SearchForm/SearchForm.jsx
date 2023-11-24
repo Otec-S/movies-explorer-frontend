@@ -4,9 +4,7 @@ import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
-const SearchForm = () => {
-
-
+const SearchForm = ({handleSearch}) => {
 
   return (
     <section className="search-form">
@@ -24,9 +22,9 @@ const SearchForm = () => {
           autoFocus
         />
         <button
-          type="submit"
+          // type="submit"
           // onSubmit={handleSubmit}
-          // onClick={onRegister}
+          onClick={handleSearch}
           className="input__find-button"
         ></button>
       </form>

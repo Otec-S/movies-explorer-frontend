@@ -16,7 +16,7 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/"
@@ -29,7 +29,7 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/movies"
@@ -41,7 +41,7 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/saved-movies"
@@ -55,7 +55,7 @@ const BurgerMenu = ({ menuActive }) => {
           <NavLink
             className={({ isActive }) =>
               `burger-menu__account-link ${
-                isActive ? "burger-menu__link_active" : ""
+                isActive && "burger-menu__link_active"
               }`
             }
             to="/profile"

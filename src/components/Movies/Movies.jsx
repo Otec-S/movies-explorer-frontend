@@ -4,8 +4,16 @@ import Header from "../Header/Header";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoreButton from "./MoreButton/MoreButton";
 import Footer from "../Footer/Footer";
+import Preloader from "./Preloader/Preloader";
 
-const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
+const Movies = ({
+  menuActive,
+  setActive,
+  isRegistered,
+  isPromo,
+  handleSearch,
+  isLoading,
+}) => {
   return (
     <>
       <Header
@@ -15,7 +23,11 @@ const Movies = ({ menuActive, setActive, isRegistered, isPromo }) => {
         isPromo={isPromo}
       />
       <main>
-        <SearchForm />
+        <SearchForm handleSearch={handleSearch} />
+        
+        {/* Прелоадер */}
+        {isLoading && <Preloader />}
+
         <MoviesCardList />
         <MoreButton />
       </main>
