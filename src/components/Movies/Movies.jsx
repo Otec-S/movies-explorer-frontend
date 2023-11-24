@@ -13,6 +13,7 @@ const Movies = ({
   isPromo,
   handleSearch,
   isLoading,
+  allMovies,
 }) => {
   return (
     <>
@@ -24,11 +25,11 @@ const Movies = ({
       />
       <main>
         <SearchForm handleSearch={handleSearch} />
-        
+
         {/* Прелоадер */}
         {isLoading && <Preloader />}
 
-        <MoviesCardList />
+        <MoviesCardList allMovies={allMovies} />
         <MoreButton />
       </main>
       <Footer />

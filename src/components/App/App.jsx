@@ -98,6 +98,8 @@ function App() {
               isPromo={false}
               handleSearch={handleSearch}
               isLoading={isLoading}
+              allMovies={allMovies}
+
             />
           }
         />

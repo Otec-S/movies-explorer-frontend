@@ -2,17 +2,17 @@ import React from "react";
 import "./MoviesCard.css";
 import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 
-const MoviesCard = ({ isSaved }) => {
+const MoviesCard = ({ isSaved, name, duration, image }) => {
   return (
     <div className="movies-card">
       <div className="movies-card__description">
         <div className="movies-card__description__text">
-          <h1 className="movies-card__description__title">
-            33 слова о дизайне
-          </h1>
-          <p className="movies-card__description__movie-duration">1ч 47м</p>
+          {/* Наименование карточки */}
+          <h1 className="movies-card__description__title">{name}</h1>
+          {/* Продолжительность фильма */}
+          <p className="movies-card__description__movie-duration">{duration}</p>
         </div>
-
+        {/* Иконка справа */}
         {isSaved ? (
           <button className="movies-card__description__icon_saved" />
         ) : (
@@ -21,7 +21,15 @@ const MoviesCard = ({ isSaved }) => {
           </div>
         )}
       </div>
-      <div className="movies-card__picture"></div>
+      {/* Фото карточки фильма */}
+      <div
+        className="movies-card__picture"
+        style={{
+          backgroundImage: `url(
+            "https://api.nomoreparties.co${image}"
+          )`,
+        }}
+      ></div>
     </div>
   );
 };

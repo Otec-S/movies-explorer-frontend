@@ -40,7 +40,7 @@
   border: none;
   background-color: white;
   align-self: center;
-  background-image: url(../../images/unsave-cross.svg);
+  /* background-image: url(../../images/unsave-cross.svg); */
   background-repeat: no-repeat;
   background-size: cover;
   cursor: pointer;
