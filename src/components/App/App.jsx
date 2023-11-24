@@ -33,17 +33,7 @@ function App() {
 
 
   //ФУНКЦИИ
-  // const showPreloader = (isLoading) => {
-  //   if (isLoading) {
-      // spinner.classList.add('spinner_visible');
-      // content.classList.add('content_hidden');
-  //     <Preloader />;
-  //   }
-  // };
-  //запрос базы всех фильмов и запись ее в стейт allMovies
-  // useEffect(() => {
-  //   getAllMovies().then((allMoviesData) => setAllMovies(allMoviesData));
-  // }, []);
+
 
   const handleSearch = () => {
     console.log("работает");
@@ -53,7 +43,7 @@ function App() {
       .then(console.log("allMovies1", allMovies)) //убери потом это
       .catch((err) => console.log(err))
 
-      // Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
+      //TODO: Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
 
       .finally(() => {
         setisLoading(false);

@@ -13,46 +13,10 @@ const MoviesCardList = ({ isSaved, allMovies }) => {
               name={item.nameRU}
               duration={item.duration}
               image={item.image.url}
+              key={item.id}
             />
           );
         })}
-
-        {/* <li>
-          <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li>
-        <li>
-        <MoviesCard isSaved={isSaved}/>
-        </li> */}
       </ul>
     </section>
   );
