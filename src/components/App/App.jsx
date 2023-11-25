@@ -15,7 +15,7 @@ import Preloader from "../Movies/Preloader/Preloader";
 function App() {
   //СТЕЙТЫ
 
-  //стейт для массива всех фильмов
+  //стейт для массива Всех фильмов
   const [allMovies, setAllMovies] = useState([]);
 
   //стейт для активации BurgerMenu
@@ -26,25 +26,32 @@ function App() {
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
- 
+
   //стейт для загрузки прелоадера
   const [isLoading, setisLoading] = useState(false);
+
+  //стейт для введенного в поле запроса значения
+  const [movieQuery, setMovieQuery] = useState(""); //он нужен??
+
 
 
 
   //ФУНКЦИИ
 
-
+  //функция первоначального поиска и записи фильмов в стейт
   const handleSearch = () => {
     console.log("работает");
+    //запускаем Прелоадер
     setisLoading(true);
+    //получили все карточки из базы и записали их в стейт
     getAllMovies()
-      .then((allMoviesData) => setAllMovies(allMoviesData)) //записали все карточки в стейт
+      .then((allMoviesData) => setAllMovies(allMoviesData))
       .then(console.log("allMovies1", allMovies)) //убери потом это
       .catch((err) => console.log(err))
 
       //TODO: Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
 
+      //выключили Прелоадер
       .finally(() => {
         setisLoading(false);
       });
@@ -89,7 +96,6 @@ function App() {
               handleSearch={handleSearch}
               isLoading={isLoading}
               allMovies={allMovies}
-
             />
           }
         />

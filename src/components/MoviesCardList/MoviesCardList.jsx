@@ -6,6 +6,7 @@ const MoviesCardList = ({ isSaved, allMovies }) => {
   return (
     <section className="movies-card-section">
       <ul className="movies-card-list">
+        {/* Отрисовка карточек */}
         {allMovies.map((item) => {
           return (
             <MoviesCard
