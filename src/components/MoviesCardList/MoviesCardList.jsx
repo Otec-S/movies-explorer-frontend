@@ -2,12 +2,12 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
-const MoviesCardList = ({ isSaved, allMovies }) => {
+const MoviesCardList = ({ isSaved, filteredMoviesArray }) => {
   return (
     <section className="movies-card-section">
       <ul className="movies-card-list">
         {/* Отрисовка карточек */}
-        {allMovies.map((item) => {
+        {filteredMoviesArray.map((item) => {
           return (
             <MoviesCard
               isSaved={isSaved}

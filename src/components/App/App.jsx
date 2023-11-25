@@ -30,16 +30,16 @@ function App() {
   //стейт для загрузки прелоадера
   const [isLoading, setisLoading] = useState(false);
 
-  //стейт для введенного в поле запроса значения
-  const [movieQuery, setMovieQuery] = useState(""); //он нужен??
+  //стейт для отфильтрованного поиском массива фильмов
+  const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
 
-
-
+  //стейт для отслеживания состояния строки запроса в форме ввода
+  const [movieSearchQuery, setmovieSearchQuery] = useState("");
 
   //ФУНКЦИИ
 
-  //функция первоначального поиска и записи фильмов в стейт
-  const handleSearch = () => {
+  //функция первоначального получения всех фильмов и записи их в стейт
+  const initialSetAllMovies = () => {
     console.log("работает");
     //запускаем Прелоадер
     setisLoading(true);
@@ -57,7 +57,24 @@ function App() {
       });
   };
 
+  const searchMovies = (event) => {
+    const inputValue = event.target.value;
+    setmovieSearchQuery(inputValue);
+
+    const filtered = allMovies.filter((item) =>
+      item.nameRU.toLowerCase().includes(inputValue.toLowerCase())
+    );
+
+    setFilteredMoviesArray(filtered);
+  };
+
+  // const handleClick = () => {
+  //   initialSetAllMovies();
+  //   searchMovies();
+  // };
+
   console.log("allMovies2", allMovies);
+  console.log("filteredMoviesArray", filteredMoviesArray);
 
   return (
     <div className="App">
@@ -93,9 +110,13 @@ function App() {
               setActive={setIsMenuActive}
               isRegistered={isRegistered}
               isPromo={false}
-              handleSearch={handleSearch}
+              // handleSearch={handleSearch}
               isLoading={isLoading}
-              allMovies={allMovies}
+              filteredMoviesArray={filteredMoviesArray}
+              initialSetAllMovies={initialSetAllMovies}
+              movieSearchQuery={movieSearchQuery}
+              searchMovies={searchMovies}
+              setmovieSearchQuery={setmovieSearchQuery}
             />
           }
         />

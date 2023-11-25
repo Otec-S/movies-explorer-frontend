@@ -11,9 +11,13 @@ const Movies = ({
   setActive,
   isRegistered,
   isPromo,
-  handleSearch,
+  searchMovies,
   isLoading,
-  allMovies,
+  filteredMoviesArray,
+  initialSetAllMovies,
+  movieSearchQuery,
+  setmovieSearchQuery,
+  handleClick
 }) => {
   return (
     <>
@@ -24,12 +28,19 @@ const Movies = ({
         isPromo={isPromo}
       />
       <main>
-        <SearchForm handleSearch={handleSearch} />
+        <SearchForm 
+        // handleSearch={handleSearch}
+        initialSetAllMovies={initialSetAllMovies}
+        movieSearchQuery={movieSearchQuery}
+        searchMovies={searchMovies}
+        setmovieSearchQuery={setmovieSearchQuery}
+        
+         />
 
         {/* Прелоадер */}
         {isLoading && <Preloader />}
 
-        <MoviesCardList allMovies={allMovies} />
+        <MoviesCardList filteredMoviesArray={filteredMoviesArray} />
         <MoreButton />
       </main>
       <Footer />
