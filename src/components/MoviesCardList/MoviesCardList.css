@@ -3,6 +3,11 @@
   margin: 68px auto 30px;
 }
 
+.nothing-found-image {
+  display: flex;
+  justify-content: center;
+}
+
 .movies-card-list {
   display: grid;
   margin: auto;
@@ -11,6 +16,12 @@
   row-gap: 30px;
   column-gap: 24px;
   list-style-type: none;
+}
+
+.search-error-message {
+  text-align: center;
+  color: rgba(238, 52, 101, 1);;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 1200px) {

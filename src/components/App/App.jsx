@@ -35,11 +35,13 @@ function App() {
   //стейт для отслеживания состояния строки запроса в форме ввода
   const [movieSearchQuery, setMovieSearchQuery] = useState("");
 
+  //стейт для вывода на страницу ошибки при поиске фиьма
+  const [isSearchErrored, setIsSearchErrored] = useState(false);
+
   //ФУНКЦИИ
 
   //функция первоначального получения всех фильмов и записи их в стейт
   const initialSetAllMovies = () => {
-    console.log("запустился initialSetAllMovies");
     //запускаем Прелоадер
     setisLoading(true);
     //получили все карточки из базы и записали их в стейт
@@ -52,18 +54,15 @@ function App() {
         //первичный параллельный приск по фильмам из api для отображения на странице
         searchMovies(allMoviesData);
       })
-      .catch((err) => console.log(err))
-
-      //TODO: Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
+      .catch((err) => {
+        //если ошибка соединения с базой Яндекса - устанавливается этот стейт и выводится сообщение через тернарный оператор в MoviesCardList
+        setIsSearchErrored(true);
+      })
 
       //выключили Прелоадер
       .finally(() => {
         setisLoading(false);
       });
-  };
-
-  const handleClick = () => {
-    initialSetAllMovies();
   };
 
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
@@ -72,6 +71,11 @@ function App() {
       item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
     setFilteredMoviesArray(filtered);
+  };
+
+  //функция срабатывает по клику на кнопку поиска
+  const handleClick = () => {
+    initialSetAllMovies();
   };
 
   return (
@@ -116,6 +120,7 @@ function App() {
               searchMovies={searchMovies}
               setMovieSearchQuery={setMovieSearchQuery}
               handleClick={handleClick}
+              isSearchErrored={isSearchErrored}
             />
           }
         />
