@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -10,7 +10,6 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
-import Preloader from "../Movies/Preloader/Preloader";
 
 function App() {
   //СТЕЙТЫ
@@ -34,19 +33,25 @@ function App() {
   const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
 
   //стейт для отслеживания состояния строки запроса в форме ввода
-  const [movieSearchQuery, setmovieSearchQuery] = useState("");
+  const [movieSearchQuery, setMovieSearchQuery] = useState("");
 
   //ФУНКЦИИ
 
   //функция первоначального получения всех фильмов и записи их в стейт
   const initialSetAllMovies = () => {
-    console.log("работает");
+    console.log("запустился initialSetAllMovies");
     //запускаем Прелоадер
     setisLoading(true);
     //получили все карточки из базы и записали их в стейт
     getAllMovies()
-      .then((allMoviesData) => setAllMovies(allMoviesData))
-      .then(console.log("allMovies1", allMovies)) //убери потом это
+      .then((allMoviesData) => {
+        console.log("allMoviesData", allMoviesData);
+        //записываем результаты поиска из api в стейт с фильмами
+        setAllMovies(allMoviesData);
+
+        //первичный параллельный приск по фильмам из api для отображения на странице
+        searchMovies(allMoviesData);
+      })
       .catch((err) => console.log(err))
 
       //TODO: Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз
@@ -57,24 +62,17 @@ function App() {
       });
   };
 
-  const searchMovies = (event) => {
-    const inputValue = event.target.value;
-    setmovieSearchQuery(inputValue);
-
-    const filtered = allMovies.filter((item) =>
-      item.nameRU.toLowerCase().includes(inputValue.toLowerCase())
-    );
-
-    setFilteredMoviesArray(filtered);
+  const handleClick = () => {
+    initialSetAllMovies();
   };
 
-  // const handleClick = () => {
-  //   initialSetAllMovies();
-  //   searchMovies();
-  // };
-
-  console.log("allMovies2", allMovies);
-  console.log("filteredMoviesArray", filteredMoviesArray);
+  //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
+  const searchMovies = (array) => {
+    const filtered = array.filter((item) =>
+      item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase())
+    );
+    setFilteredMoviesArray(filtered);
+  };
 
   return (
     <div className="App">
@@ -116,7 +114,8 @@ function App() {
               initialSetAllMovies={initialSetAllMovies}
               movieSearchQuery={movieSearchQuery}
               searchMovies={searchMovies}
-              setmovieSearchQuery={setmovieSearchQuery}
+              setMovieSearchQuery={setMovieSearchQuery}
+              handleClick={handleClick}
             />
           }
         />

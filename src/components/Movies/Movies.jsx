@@ -16,7 +16,7 @@ const Movies = ({
   filteredMoviesArray,
   initialSetAllMovies,
   movieSearchQuery,
-  setmovieSearchQuery,
+  setMovieSearchQuery,
   handleClick
 }) => {
   return (
@@ -33,8 +33,8 @@ const Movies = ({
         initialSetAllMovies={initialSetAllMovies}
         movieSearchQuery={movieSearchQuery}
         searchMovies={searchMovies}
-        setmovieSearchQuery={setmovieSearchQuery}
-        
+        setMovieSearchQuery={setMovieSearchQuery}
+        handleClick={handleClick}
          />
 
         {/* Прелоадер */}

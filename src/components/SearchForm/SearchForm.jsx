@@ -5,13 +5,19 @@ import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
 const SearchForm = ({
-  initialSetAllMovies,
   movieSearchQuery,
-  searchMovies,
+  setMovieSearchQuery,
+  handleClick,
 }) => {
+  //установление значения стейта movieSearchQuery из значения поля поискового ввода
+  function handleChangeMovieSearchQuery(e) {
+    e.preventDefault();
+    setMovieSearchQuery(e.target.value);
+  }
+
   return (
     <section className="search-form">
-      <form className="input" >
+      <form className="input">
         <img
           className="input__loupe-icon"
           src={loupeIcon}
@@ -25,12 +31,11 @@ const SearchForm = ({
           required
           autoFocus
           value={movieSearchQuery}
-          onChange={searchMovies}
+          onChange={handleChangeMovieSearchQuery}
         />
         <button
-          // type="submit"
-          // onSubmit={handleSubmit}
-          onClick={initialSetAllMovies}
+          type="button"
+          onClick={handleClick}
           className="input__find-button"
         ></button>
       </form>
