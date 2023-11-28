@@ -17,7 +17,7 @@ const Movies = ({
   initialSetAllMovies,
   movieSearchQuery,
   setMovieSearchQuery,
-  handleClick,
+  handleSearchFormSubmit,
   isSearchErrored,
 }) => {
   return (
@@ -35,7 +35,7 @@ const Movies = ({
           movieSearchQuery={movieSearchQuery}
           searchMovies={searchMovies}
           setMovieSearchQuery={setMovieSearchQuery}
-          handleClick={handleClick}
+          handleSearchFormSubmit={handleSearchFormSubmit}
         />
 
         {/* Прелоадер */}

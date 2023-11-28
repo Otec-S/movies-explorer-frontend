@@ -38,6 +38,8 @@ function App() {
   //стейт для вывода на страницу ошибки при поиске фиьма
   const [isSearchErrored, setIsSearchErrored] = useState(false);
 
+
+
   //ФУНКЦИИ
 
   //функция первоначального получения всех фильмов и записи их в стейт
@@ -67,14 +69,16 @@ function App() {
 
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchMovies = (array) => {
+
     const filtered = array.filter((item) =>
       item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
     setFilteredMoviesArray(filtered);
   };
 
-  //функция срабатывает по клику на кнопку поиска
-  const handleClick = () => {
+  //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
+  const handleSearchFormSubmit = (e) => {
+    e.preventDefault();
     initialSetAllMovies();
   };
 
@@ -119,7 +123,7 @@ function App() {
               movieSearchQuery={movieSearchQuery}
               searchMovies={searchMovies}
               setMovieSearchQuery={setMovieSearchQuery}
-              handleClick={handleClick}
+              handleSearchFormSubmit={handleSearchFormSubmit}
               isSearchErrored={isSearchErrored}
             />
           }

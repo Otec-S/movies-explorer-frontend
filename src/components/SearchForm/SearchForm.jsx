@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SearchForm.css";
 import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
@@ -7,7 +7,7 @@ import Slider from "../Slider/Slider";
 const SearchForm = ({
   movieSearchQuery,
   setMovieSearchQuery,
-  handleClick,
+  handleSearchFormSubmit,
 }) => {
   //установление значения стейта movieSearchQuery из значения поля поискового ввода
   function handleChangeMovieSearchQuery(e) {
@@ -17,7 +17,7 @@ const SearchForm = ({
 
   return (
     <section className="search-form">
-      <form className="input">
+      <form className="input" onSubmit={handleSearchFormSubmit} noValidate>
         <img
           className="input__loupe-icon"
           src={loupeIcon}
@@ -25,6 +25,7 @@ const SearchForm = ({
         />
         <input
           name="movies-search-field"
+          id="movies-search-field"
           className="input__entry-field"
           type="search"
           placeholder="Фильм"
@@ -34,11 +35,18 @@ const SearchForm = ({
           onChange={handleChangeMovieSearchQuery}
         />
         <button
-          type="button"
-          onClick={handleClick}
+          type="submit"
           className="input__find-button"
+          disabled={!movieSearchQuery}
         ></button>
       </form>
+
+      {!movieSearchQuery && (
+        <span className="input__error-message">
+          Нужно ввести ключевое слово
+        </span>
+      )}
+
       <LineGrey />
       <div className="short-films">
         <Slider />

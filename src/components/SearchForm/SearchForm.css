@@ -44,6 +44,11 @@
   opacity: 0.8;
 }
 
+.input__find-button:disabled {
+  opacity: 0.3;
+  cursor: auto;
+}
+
 .short-films {
   display: flex;
   margin-top: 30px;
@@ -55,6 +60,11 @@
   font-size: 14px;
   font-weight: 400;
   margin-left: 19px;
+}
+
+.input__error-message {
+  color: rgba(238, 52, 101, 1);
+  text-align: center;
 }
 
 @media screen and (max-width: 900px) {
