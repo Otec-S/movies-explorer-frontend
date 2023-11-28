@@ -131,6 +131,7 @@ function App() {
               setMovieSearchQuery={setMovieSearchQuery}
               handleSearchFormSubmit={handleSearchFormSubmit}
               isSearchErrored={isSearchErrored}
+              allMovies={allMovies}
             />
           }
         />

@@ -19,6 +19,7 @@ const Movies = ({
   setMovieSearchQuery,
   handleSearchFormSubmit,
   isSearchErrored,
+  allMovies
 }) => {
   return (
     <>
@@ -45,6 +46,7 @@ const Movies = ({
         <MoviesCardList
           filteredMoviesArray={filteredMoviesArray}
           isSearchErrored={isSearchErrored}
+          allMovies={allMovies}
         />
         <MoreButton />
       </main>
