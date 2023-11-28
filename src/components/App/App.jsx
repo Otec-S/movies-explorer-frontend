@@ -71,7 +71,7 @@ function App() {
   const searchMovies = (array) => {
 
     const filtered = array.filter((item) =>
-      item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase())
+      item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) || item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
     setFilteredMoviesArray(filtered);
   };

@@ -51,7 +51,7 @@
 
 .short-films {
   display: flex;
-  margin-top: 30px;
+  margin-top: 10px;
   justify-content: center;
   align-items: center;
 }
@@ -62,9 +62,13 @@
   margin-left: 19px;
 }
 
+.input__place-for-error-message {
+  height: 20px;
+  text-align: center;
+}
+
 .input__error-message {
   color: rgba(238, 52, 101, 1);
-  text-align: center;
 }
 
 @media screen and (max-width: 900px) {

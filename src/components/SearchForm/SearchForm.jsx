@@ -8,6 +8,7 @@ const SearchForm = ({
   movieSearchQuery,
   setMovieSearchQuery,
   handleSearchFormSubmit,
+  isLoading,
 }) => {
   //установление значения стейта movieSearchQuery из значения поля поискового ввода
   function handleChangeMovieSearchQuery(e) {
@@ -33,6 +34,7 @@ const SearchForm = ({
           autoFocus
           value={movieSearchQuery}
           onChange={handleChangeMovieSearchQuery}
+          disabled={isLoading}
         />
         <button
           type="submit"
@@ -41,13 +43,15 @@ const SearchForm = ({
         ></button>
       </form>
 
-      {!movieSearchQuery && (
-        <span className="input__error-message">
-          Нужно ввести ключевое слово
-        </span>
-      )}
-
       <LineGrey />
+
+      <div className="input__place-for-error-message">
+        {!movieSearchQuery && (
+          <span className="input__error-message">
+            Нужно ввести ключевое слово
+          </span>
+        )}
+      </div>
       <div className="short-films">
         <Slider />
         <span className="short-films__text">Короткометражки</span>

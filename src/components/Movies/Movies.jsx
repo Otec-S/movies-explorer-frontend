@@ -36,6 +36,7 @@ const Movies = ({
           searchMovies={searchMovies}
           setMovieSearchQuery={setMovieSearchQuery}
           handleSearchFormSubmit={handleSearchFormSubmit}
+          isLoading={isLoading}
         />
 
         {/* Прелоадер */}
