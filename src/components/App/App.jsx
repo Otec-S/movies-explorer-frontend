@@ -55,7 +55,6 @@ function App() {
     //получили все карточки из базы и записали их в стейт
     getAllMovies()
       .then((allMoviesData) => {
-        console.log("allMoviesData", allMoviesData);
         //записываем результаты поиска из api в стейт с фильмами
         setAllMovies(allMoviesData);
         //первичный параллельный приск по фильмам из api для отображения на странице + прогон через проверку на включенный чекбокс
@@ -114,7 +113,6 @@ function App() {
   }, [isShortMovieChecked]);
 
   console.log("allMovies", allMovies);
-  console.log("movieSearchQuery", movieSearchQuery);
 
   return (
     <div className="App">
