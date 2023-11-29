@@ -58,7 +58,7 @@ function App() {
         console.log("allMoviesData", allMoviesData);
         //записываем результаты поиска из api в стейт с фильмами
         setAllMovies(allMoviesData);
-        //первичный параллельный приск по фильмам из api для отображения на странице
+        //первичный параллельный приск по фильмам из api для отображения на странице + прогон через проверку на включенный чекбокс
         searchMovies(allMoviesData);
       })
       .catch((err) => {
@@ -78,7 +78,7 @@ function App() {
         item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
         item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
-    setFilteredMoviesArray(filtered);
+    setFilteredMoviesArray(filterMoviesByDuration(filtered));
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
