@@ -19,7 +19,8 @@ const Movies = ({
   setMovieSearchQuery,
   handleSearchFormSubmit,
   isSearchErrored,
-  allMovies
+  allMovies,
+  handleCheckboxChange
 }) => {
   return (
     <>
@@ -38,6 +39,7 @@ const Movies = ({
           setMovieSearchQuery={setMovieSearchQuery}
           handleSearchFormSubmit={handleSearchFormSubmit}
           isLoading={isLoading}
+          handleCheckboxChange={handleCheckboxChange}
         />
 
         {/* Прелоадер */}

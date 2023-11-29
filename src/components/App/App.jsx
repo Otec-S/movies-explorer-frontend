@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -38,7 +38,15 @@ function App() {
   //стейт для вывода на страницу ошибки при поиске фиьма
   const [isSearchErrored, setIsSearchErrored] = useState(false);
 
+  //стейт для отслеживания состояния чекбокса, включен или нет
+  const [isShortMovieChecked, setIsShortMovieChecked] = useState(false);
+
   //ФУНКЦИИ
+
+  //функция изменяет состояние стейта чекбокса на противоположное
+  const handleCheckboxChange = () => {
+    setIsShortMovieChecked(!isShortMovieChecked);
+  };
 
   //функция первоначального получения всех фильмов и записи их в стейт
   const initialSetAllMovies = () => {
@@ -50,7 +58,6 @@ function App() {
         console.log("allMoviesData", allMoviesData);
         //записываем результаты поиска из api в стейт с фильмами
         setAllMovies(allMoviesData);
-
         //первичный параллельный приск по фильмам из api для отображения на странице
         searchMovies(allMoviesData);
       })
@@ -58,7 +65,6 @@ function App() {
         //если ошибка соединения с базой Яндекса - устанавливается этот стейт и выводится сообщение через тернарный оператор в MoviesCardList
         setIsSearchErrored(true);
       })
-
       //выключили Прелоадер
       .finally(() => {
         setisLoading(false);
@@ -81,12 +87,34 @@ function App() {
     //отправка запроса в первый раз
     if (allMovies.length === 0) {
       initialSetAllMovies();
-    } 
+    }
     //отправка запроса во второй раз и далее
     else {
       searchMovies(allMovies);
     }
   };
+
+  //хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
+  //если слайдер включен, то перерисовывает полученный на вход массив (уже отфильтрованных?) фильмов и переделывает его в массив отфильтрованных (filteredMoviesArray?) и учетом продолжительности
+  //если слайдер отключен, перерисовывает обратно?
+
+  const filterMoviesByDuration = (array) => {
+    if (isShortMovieChecked) {
+      return array.filter((array) => array.duration < 40);
+    }
+    return array;
+  };
+
+  useEffect(() => {
+    if (isShortMovieChecked) {
+      setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
+    } else {
+      searchMovies(allMovies);
+    }
+  }, [isShortMovieChecked]);
+
+  console.log("allMovies", allMovies);
+  console.log("movieSearchQuery", movieSearchQuery);
 
   return (
     <div className="App">
@@ -122,7 +150,6 @@ function App() {
               setActive={setIsMenuActive}
               isRegistered={isRegistered}
               isPromo={false}
-              // handleSearch={handleSearch}
               isLoading={isLoading}
               filteredMoviesArray={filteredMoviesArray}
               initialSetAllMovies={initialSetAllMovies}
@@ -132,6 +159,7 @@ function App() {
               handleSearchFormSubmit={handleSearchFormSubmit}
               isSearchErrored={isSearchErrored}
               allMovies={allMovies}
+              handleCheckboxChange={handleCheckboxChange}
             />
           }
         />

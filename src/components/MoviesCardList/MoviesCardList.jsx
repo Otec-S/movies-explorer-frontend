@@ -11,7 +11,7 @@ const MoviesCardList = ({
   allMovies,
 }) => {
   console.log("filteredMoviesArray", filteredMoviesArray);
-  console.log("isSearchErrored", isSearchErrored);
+  // console.log("isSearchErrored", isSearchErrored);
 
   return (
     <>
