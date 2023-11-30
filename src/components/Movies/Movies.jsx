@@ -50,7 +50,7 @@ const Movies = ({
           isSearchErrored={isSearchErrored}
           allMovies={allMovies}
         />
-        <MoreButton />
+        {/* <MoreButton /> */}
       </main>
       <Footer />
     </>

@@ -2,10 +2,10 @@ import React from "react";
 import "./MoreButton.css";
 
 
-const MoreButton = () => {
+const MoreButton = ({addCardRows}) => {
   return (
     <div className="more-button-area">
-      <button className="more-button">Ещё</button>
+      <button className="more-button" onClick={addCardRows}>Ещё</button>
     </div>
   );
 };
