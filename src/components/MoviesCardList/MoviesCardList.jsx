@@ -18,26 +18,9 @@ const MoviesCardList = ({
   //стейт количества колонок карточек на странице
   const [columnsOnPage, setColumnsOnPage] = useState();
   //стейт общего количества карточек на странице
-  const [totalCardsOnPage, setTotalCardsOnPage] = useState();
+  const [totalCardsOnPage, setTotalCardsOnPage] = useState(12);
   //стейт отображения кнопки Ещё
   const [showMoreButton, setShowMoreButton] = useState(true);
-
-  //функция управления стейтами количества карточек на странице
-
-  const handleCardsOnPage = () => {
-    if (pageWidth > 1200) {
-      setColumnsOnPage(3);
-      setRowsOnPage(4);
-    } else if (pageWidth >= 768 && pageWidth <= 1200) {
-      setColumnsOnPage(2);
-      setRowsOnPage(4);
-    } else if (pageWidth < 768) {
-      setColumnsOnPage(1);
-      setRowsOnPage(5);
-    };
-
-    setTotalCardsOnPage(() =>rowsOnPage * columnsOnPage);
-  };
 
   //добавление новых рядов карточек
   const addCardRows = () => {
@@ -50,23 +33,32 @@ const MoviesCardList = ({
   };
 
   useEffect(() => {
-
+    //функция управления стейтами количества карточек на странице
+    const handleCardsOnPage = () => {
+      if (pageWidth > 1200) {
+        setTotalCardsOnPage(12);
+      } else if (pageWidth >= 660 && pageWidth <= 1200) {
+        setTotalCardsOnPage(8);
+      } else if (pageWidth < 660) {
+        setTotalCardsOnPage(5);
+      }
+    };
     // Проверяем ширину экрана при монтировании компонента
     handleCardsOnPage();
     // setTotalCardsOnPage(() => rowsOnPage * columnsOnPage);
     console.log("totalCardsOnPage", totalCardsOnPage);
+    console.log("pageWidth", pageWidth);
 
     // Добавляем слушатель события изменения размера окна
     window.addEventListener("resize", () => {
       // Устанавливаем setTimeout, чтобы не вызывать слишком часто
-      setTimeout(handleCardsOnPage, 1500);
+      setTimeout(handleCardsOnPage, 200);
     });
-
     // Отписываемся от события при размонтировании компонента
     return () => {
       window.removeEventListener("resize", handleCardsOnPage);
     };
-  }, [pageWidth, rowsOnPage, columnsOnPage]);
+  }, [totalCardsOnPage, pageWidth]);
 
   return (
     <>
