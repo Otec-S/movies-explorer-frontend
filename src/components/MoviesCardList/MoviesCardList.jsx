@@ -13,7 +13,7 @@ const MoviesCardList = ({
   // setTotalCardsOnPage,
   restoreInitialTotalCardsOnPage,
   baseNumberOfCards,
-  setBaseNumberOfCards
+  setBaseNumberOfCards,
 }) => {
   //СТЕЙТЫ
   //стейт для определения ширины видимой части страницы
@@ -137,6 +137,7 @@ const MoviesCardList = ({
                               duration={item.duration}
                               image={item.image.url}
                               key={item.id}
+                              trailer={item.trailerLink}
                             />
                           );
                         })}

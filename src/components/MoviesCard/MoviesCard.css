@@ -6,6 +6,12 @@
   background: #fdfdfd;
   box-shadow: 0 0 15px 0 #e8e8e8;
 }
+
+.movies-card:hover {
+  box-shadow: 0 0 15px 0 grey;
+  cursor: pointer;
+}
+
 .movies-card__description {
   height: 16%;
   display: flex;

@@ -1,11 +1,17 @@
 import React from "react";
+
 import "./MoviesCard.css";
 import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 import MinutesToHoursAndMinutes from "./MinutesToHoursAndMinutes/MinutesToHoursAndMinutes";
 
-const MoviesCard = ({ isSaved, name, duration, image }) => {
+const MoviesCard = ({ isSaved, name, duration, image, trailer }) => {
+  const showTrailer = () => {
+    console.log("show");
+    window.open(trailer, "_blank");
+  };
+
   return (
-    <li className="movies-card">
+    <li className="movies-card" onClick={showTrailer}>
       <div className="movies-card__description">
         <div className="movies-card__description__text">
           {/* Наименование карточки */}

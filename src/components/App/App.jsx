@@ -120,7 +120,7 @@ function App() {
     }
   }, [isShortMovieChecked]);
 
-
+console.log(allMovies);
   
   return (
     <div className="App">
