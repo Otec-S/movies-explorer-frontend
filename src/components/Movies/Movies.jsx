@@ -22,6 +22,7 @@ const Movies = ({
   isSearchErrored,
   allMovies,
   handleCheckboxChange,
+  isSearchFormEmpty
   // setTotalCardsOnPage,
 }) => {
   //стейт базового количества карточек на странице
@@ -51,6 +52,7 @@ const Movies = ({
           isLoading={isLoading}
           handleCheckboxChange={handleCheckboxChange}
           handleClick={handleClick}
+          isSearchFormEmpty={isSearchFormEmpty}
         />
 
         {/* Прелоадер */}

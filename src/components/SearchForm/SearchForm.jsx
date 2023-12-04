@@ -10,7 +10,8 @@ const SearchForm = ({
   handleSearchFormSubmit,
   isLoading,
   handleCheckboxChange,
-  handleClick
+  handleClick,
+  isSearchFormEmpty
   
 }) => {
   //установление значения стейта movieSearchQuery из значения поля поискового ввода
@@ -44,14 +45,14 @@ const SearchForm = ({
           type="submit"
           onClick={handleClick}
           className="input__find-button"
-          disabled={!movieSearchQuery}
+          // disabled={!movieSearchQuery}
         ></button>
       </form>
 
       <LineGrey />
 
       <div className="input__place-for-error-message">
-        {!movieSearchQuery && (
+        {isSearchFormEmpty && (
           <span className="input__error-message">
             Нужно ввести ключевое слово
           </span>

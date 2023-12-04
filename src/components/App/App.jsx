@@ -41,9 +41,10 @@ function App() {
   //стейт для отслеживания состояния чекбокса, включен или нет
   const [isShortMovieChecked, setIsShortMovieChecked] = useState(false);
 
+  //стейт для отслеживания наличия поискового запроса в форме поиска
+  const [isSearchFormEmpty, setIsSearchFormEmpty] = useState(false);
+
   //ФУНКЦИИ
-
-
 
   //функция изменяет состояние стейта чекбокса на противоположное
   const handleCheckboxChange = () => {
@@ -85,8 +86,11 @@ function App() {
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
   const handleSearchFormSubmit = (e) => {
     e.preventDefault();
-    //возвращаем количество отражаемых на странице фильмов на базовое 12
-    //????????
+    if (movieSearchQuery) {
+      setIsSearchFormEmpty(false);
+    } else {
+      return setIsSearchFormEmpty(true);
+    }
     //отправка запроса в первый раз
     if (allMovies.length === 0) {
       initialSetAllMovies();
@@ -115,11 +119,6 @@ function App() {
       searchMovies(allMovies);
     }
   }, [isShortMovieChecked]);
-
-  // console.log("allMovies", allMovies);
-
-//?????
-// const restoreInitialTotalCardsOnPage = () => {setTotalCardsOnPage(12)};
 
   return (
     <div className="App">
@@ -165,6 +164,7 @@ function App() {
               isSearchErrored={isSearchErrored}
               allMovies={allMovies}
               handleCheckboxChange={handleCheckboxChange}
+              isSearchFormEmpty={isSearchFormEmpty}
             />
           }
         />

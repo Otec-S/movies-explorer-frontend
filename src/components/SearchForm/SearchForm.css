@@ -44,10 +44,10 @@
   opacity: 0.8;
 }
 
-.input__find-button:disabled {
+/* .input__find-button:disabled {
   opacity: 0.3;
   cursor: auto;
-}
+} */
 
 .short-films {
   display: flex;
@@ -94,6 +94,10 @@
     font-size: 18px;
     font-weight: 500;
     letter-spacing: 1px;
+    text-align: start;
+  }
+
+  .input__place-for-error-message {
     text-align: start;
   }
 
