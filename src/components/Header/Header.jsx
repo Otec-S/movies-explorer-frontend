@@ -17,7 +17,7 @@ const Header = ({ isRegistered, menuActive, setActive, isPromo }) => {
           setActive={setActive}
         />
       </div>
-      <BurgerMenu menuActive={menuActive} />
+      <BurgerMenu menuActive={menuActive} setActive={setActive}/>
     </header>
   );
 };
