@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../Movies/MoreButton/MoreButton";
@@ -10,45 +10,62 @@ const MoviesCardList = ({
   isSaved,
   filteredMoviesArray,
   allMovies,
+  // setTotalCardsOnPage,
+  restoreInitialTotalCardsOnPage,
+  baseNumberOfCards,
+  setBaseNumberOfCards
 }) => {
-  //определяем ширину видимой части страницы
-  const pageWidth = document.documentElement.clientWidth;
-  //стейт количества рядов/строк карточек на странице
-  const [rowsOnPage, setRowsOnPage] = useState();
-  //стейт количества колонок карточек на странице
-  const [columnsOnPage, setColumnsOnPage] = useState();
-  //стейт общего количества карточек на странице
-  const [totalCardsOnPage, setTotalCardsOnPage] = useState(12);
-  //стейт отображения кнопки Ещё
-  const [showMoreButton, setShowMoreButton] = useState(true);
+  //СТЕЙТЫ
+  //стейт для определения ширины видимой части страницы
+  const [pageWidth, setPageWidth] = useState();
 
-  //добавление новых рядов карточек
+  //стейт видимого количества карточек на странице
+  const [totalCardsOnPage, setTotalCardsOnPage] = useState();
+
+  //стейт отображения кнопки Ещё
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
+
+  // //стейт базового количества карточек на странице
+  // //поднять этот стейт!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  // const [baseNumberOfCards, setBaseNumberOfCards] = useState(12);
+
+  // console.log("baseNumberOfCards", baseNumberOfCards);
+
+  //ФУНКЦИИ
+
+  //функция для добавления новых рядов карточек
   const addCardRows = () => {
-    // Увеличиваем количество рядов на 1 или 2 в зависимости от ширины экрана
-    //<<<<<<<проверь ниже числовые значения>>>>>>
-    setRowsOnPage(
-      (prevRowCount) =>
-        prevRowCount + (pageWidth >= 320 && window.innerWidth <= 768 ? 2 : 1)
-    );
+    setBaseNumberOfCards(baseNumberOfCards + (pageWidth > 1200 ? 3 : 2));
   };
 
-  useEffect(() => {
-    //функция управления стейтами количества карточек на странице
-    const handleCardsOnPage = () => {
-      if (pageWidth > 1200) {
-        setTotalCardsOnPage(12);
-      } else if (pageWidth >= 660 && pageWidth <= 1200) {
-        setTotalCardsOnPage(8);
-      } else if (pageWidth < 660) {
-        setTotalCardsOnPage(5);
-      }
-    };
-    // Проверяем ширину экрана при монтировании компонента
-    handleCardsOnPage();
-    // setTotalCardsOnPage(() => rowsOnPage * columnsOnPage);
-    console.log("totalCardsOnPage", totalCardsOnPage);
-    console.log("pageWidth", pageWidth);
+  const showMoreButton = useCallback(() => {
+    filteredMoviesArray.length > totalCardsOnPage + 1
+      ? setIsMoreButtonVisible(true)
+      : setIsMoreButtonVisible(false);
+  }, [filteredMoviesArray, totalCardsOnPage]);
 
+  //функция управления стейтами количества карточек на странице
+  const handleCardsOnPage = useCallback(() => {
+    //устанавливаем ширину экрана в зависимости от видимой части
+    setPageWidth(document.documentElement.clientWidth);
+    //меняем количество карт в зависимости от ширины экрана
+    if (pageWidth > 1200) {
+      setTotalCardsOnPage(baseNumberOfCards);
+    } else if (pageWidth >= 660 && pageWidth <= 1200) {
+      setTotalCardsOnPage(baseNumberOfCards - 4);
+    } else if (pageWidth < 660) {
+      setTotalCardsOnPage(baseNumberOfCards - 7);
+    }
+  }, [baseNumberOfCards, pageWidth]);
+
+  useEffect(() => {
+    //отрисовываем карточки на странице в зависимости от ширины экрана
+    handleCardsOnPage();
+    //показываем или скрываем кнопку Ещё
+    showMoreButton();
+  }, [handleCardsOnPage, pageWidth, totalCardsOnPage, showMoreButton]);
+
+  useEffect(() => {
     // Добавляем слушатель события изменения размера окна
     window.addEventListener("resize", () => {
       // Устанавливаем setTimeout, чтобы не вызывать слишком часто
@@ -58,7 +75,22 @@ const MoviesCardList = ({
     return () => {
       window.removeEventListener("resize", handleCardsOnPage);
     };
-  }, [totalCardsOnPage, pageWidth]);
+  }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
+
+  //показ кнопки Ещё
+  /*
+
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
+
+
+- у нас есть массив найденных по ключевому слову карточек [filteredMoviesArray] и массив отсортированных слайсом [totalCardsOnPage]
+- filteredMoviesArray - это входящий массив, filteredMoviesArray.length - его длина
+- totalCardsOnPage + 1 = это длина образнного слайсом массива показываемых карточек
+- ЕЩЁ:
+ - на старте скрыта
+ - если filteredMoviesArray.length > totalCardsOnPage + 1 = кнопка видна
+ - если filteredMoviesArray.length <= totalCardsOnPage + 1 = кнопка не видна
+*/
 
   return (
     <>
@@ -116,7 +148,7 @@ const MoviesCardList = ({
           )}
         </>
       )}
-      <MoreButton addCardRows={addCardRows} />
+      {isMoreButtonVisible && <MoreButton addCardRows={addCardRows} />}
     </>
   );
 };

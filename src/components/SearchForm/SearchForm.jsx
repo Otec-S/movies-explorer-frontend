@@ -9,13 +9,16 @@ const SearchForm = ({
   setMovieSearchQuery,
   handleSearchFormSubmit,
   isLoading,
-  handleCheckboxChange
+  handleCheckboxChange,
+  handleClick
+  
 }) => {
   //установление значения стейта movieSearchQuery из значения поля поискового ввода
   function handleChangeMovieSearchQuery(e) {
     e.preventDefault();
     setMovieSearchQuery(e.target.value);
   }
+
 
   return (
     <section className="search-form">
@@ -39,6 +42,7 @@ const SearchForm = ({
         />
         <button
           type="submit"
+          onClick={handleClick}
           className="input__find-button"
           disabled={!movieSearchQuery}
         ></button>

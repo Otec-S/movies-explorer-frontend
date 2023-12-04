@@ -43,6 +43,8 @@ function App() {
 
   //ФУНКЦИИ
 
+
+
   //функция изменяет состояние стейта чекбокса на противоположное
   const handleCheckboxChange = () => {
     setIsShortMovieChecked(!isShortMovieChecked);
@@ -83,6 +85,8 @@ function App() {
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
   const handleSearchFormSubmit = (e) => {
     e.preventDefault();
+    //возвращаем количество отражаемых на странице фильмов на базовое 12
+    //????????
     //отправка запроса в первый раз
     if (allMovies.length === 0) {
       initialSetAllMovies();
@@ -112,7 +116,10 @@ function App() {
     }
   }, [isShortMovieChecked]);
 
-  console.log("allMovies", allMovies);
+  // console.log("allMovies", allMovies);
+
+//?????
+// const restoreInitialTotalCardsOnPage = () => {setTotalCardsOnPage(12)};
 
   return (
     <div className="App">

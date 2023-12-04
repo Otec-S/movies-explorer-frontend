@@ -5,6 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import MoreButton from "./MoreButton/MoreButton";
 import Footer from "../Footer/Footer";
 import Preloader from "./Preloader/Preloader";
+import { useState } from "react";
 
 const Movies = ({
   menuActive,
@@ -20,8 +21,17 @@ const Movies = ({
   handleSearchFormSubmit,
   isSearchErrored,
   allMovies,
-  handleCheckboxChange
+  handleCheckboxChange,
+  // setTotalCardsOnPage,
 }) => {
+  //стейт базового количества карточек на странице
+  const [baseNumberOfCards, setBaseNumberOfCards] = useState(12);
+
+  //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
+  const handleClick = () => {
+    setBaseNumberOfCards(12);
+  };
+
   return (
     <>
       <Header
@@ -40,6 +50,7 @@ const Movies = ({
           handleSearchFormSubmit={handleSearchFormSubmit}
           isLoading={isLoading}
           handleCheckboxChange={handleCheckboxChange}
+          handleClick={handleClick}
         />
 
         {/* Прелоадер */}
@@ -49,6 +60,9 @@ const Movies = ({
           filteredMoviesArray={filteredMoviesArray}
           isSearchErrored={isSearchErrored}
           allMovies={allMovies}
+          // setTotalCardsOnPage={setTotalCardsOnPage}
+          baseNumberOfCards={baseNumberOfCards}
+          setBaseNumberOfCards={setBaseNumberOfCards}
         />
         {/* <MoreButton /> */}
       </main>
