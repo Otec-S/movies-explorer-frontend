@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -10,6 +10,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
+import { useLocalStorageState } from "../../hooks";
 
 function App() {
   //СТЕЙТЫ
@@ -27,19 +28,28 @@ function App() {
   const [isPromo, setIsPromo] = useState(false);
 
   //стейт для загрузки прелоадера
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   //стейт для отфильтрованного поиском массива фильмов
-  const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+  const [filteredMoviesArray, setFilteredMoviesArray] = useLocalStorageState(
+    "filteredMoviesArray",
+    ""
+  );
 
   //стейт для отслеживания состояния строки запроса в форме ввода
-  const [movieSearchQuery, setMovieSearchQuery] = useState("");
+  const [movieSearchQuery, setMovieSearchQuery] = useLocalStorageState(
+    "movieSearchQuery",
+    ""
+  );
 
   //стейт для вывода на страницу ошибки при поиске фиьма
   const [isSearchErrored, setIsSearchErrored] = useState(false);
 
   //стейт для отслеживания состояния чекбокса, включен или нет
-  const [isShortMovieChecked, setIsShortMovieChecked] = useState(false);
+  const [isShortMovieChecked, setIsShortMovieChecked] = useLocalStorageState(
+    "isShortMovieChecked",
+    "false"
+  );
 
   //стейт для отслеживания наличия поискового запроса в форме поиска
   const [isSearchFormEmpty, setIsSearchFormEmpty] = useState(false);
@@ -54,7 +64,7 @@ function App() {
   //функция первоначального получения всех фильмов и записи их в стейт
   const initialSetAllMovies = () => {
     //запускаем Прелоадер
-    setisLoading(true);
+    setIsLoading(true);
     //получили все карточки из базы и записали их в стейт
     getAllMovies()
       .then((allMoviesData) => {
@@ -69,19 +79,33 @@ function App() {
       })
       //выключили Прелоадер
       .finally(() => {
-        setisLoading(false);
+        setIsLoading(false);
       });
   };
 
+  //фильтрация по признаку короткометражек
+  const filterMoviesByDuration = useCallback(
+    (array) => {
+      if (isShortMovieChecked) {
+        return array.filter((array) => array.duration < 40);
+      }
+      return array;
+    },
+    [isShortMovieChecked]
+  );
+
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
-  const searchMovies = (array) => {
-    const filtered = array.filter(
-      (item) =>
-        item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
-        item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
-    );
-    setFilteredMoviesArray(filterMoviesByDuration(filtered));
-  };
+  const searchMovies = useCallback(
+    (array) => {
+      const filtered = array.filter(
+        (item) =>
+          item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
+          item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
+      );
+      setFilteredMoviesArray(filterMoviesByDuration(filtered));
+    },
+    [filterMoviesByDuration, movieSearchQuery, setFilteredMoviesArray]
+  );
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
   const handleSearchFormSubmit = (e) => {
@@ -102,26 +126,48 @@ function App() {
   };
 
   //хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
-  //если слайдер включен, то перерисовывает полученный на вход массив (уже отфильтрованных?) фильмов и переделывает его в массив отфильтрованных (filteredMoviesArray?) и учетом продолжительности
-  //если слайдер отключен, перерисовывает обратно?
-
-  const filterMoviesByDuration = (array) => {
-    if (isShortMovieChecked) {
-      return array.filter((array) => array.duration < 40);
-    }
-    return array;
-  };
-
   useEffect(() => {
     if (isShortMovieChecked) {
-      setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
+      // setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
+      setFilteredMoviesArray((prevFilteredMoviesArray) =>
+        filterMoviesByDuration(prevFilteredMoviesArray)
+      );
     } else {
       searchMovies(allMovies);
     }
-  }, [isShortMovieChecked]);
+  }, [
+    isShortMovieChecked,
+    allMovies,
+    filterMoviesByDuration,
+    searchMovies,
+    setFilteredMoviesArray,
+  ]);
+
+  //??????????????????
+  useEffect(() => {
+    console.log(
+      "filteredMoviesArray in localStorage:      ",
+      localStorage.getItem("filteredMoviesArray")
+    );
+    console.log(
+      "isShortMovieChecked in localStorage:      ",
+      localStorage.getItem("isShortMovieChecked")
+    );
+  }, [filteredMoviesArray, isShortMovieChecked]);
+
+  useEffect(() => {
+    console.log(
+      "filteredMoviesArray from localStorage on mount:       ",
+      localStorage.getItem("filteredMoviesArray")
+    );
+    console.log(
+      "isShortMovieChecked from localStorage on mount:       ",
+      localStorage.getItem("isShortMovieChecked")
+    );
+  }, []);
 
 console.log(allMovies);
-  
+
   return (
     <div className="App">
       <Routes>
@@ -167,6 +213,7 @@ console.log(allMovies);
               allMovies={allMovies}
               handleCheckboxChange={handleCheckboxChange}
               isSearchFormEmpty={isSearchFormEmpty}
+              isShortMovieChecked={isShortMovieChecked}
             />
           }
         />

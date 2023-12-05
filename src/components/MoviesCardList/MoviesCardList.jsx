@@ -14,6 +14,7 @@ const MoviesCardList = ({
   restoreInitialTotalCardsOnPage,
   baseNumberOfCards,
   setBaseNumberOfCards,
+  movieSearchQuery
 }) => {
   //СТЕЙТЫ
   //стейт для определения ширины видимой части страницы
