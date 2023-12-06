@@ -84,28 +84,22 @@ function App() {
   };
 
   //фильтрация по признаку короткометражек
-  const filterMoviesByDuration = useCallback(
-    (array) => {
-      if (isShortMovieChecked) {
-        return array.filter((array) => array.duration < 40);
-      }
-      return array;
-    },
-    [isShortMovieChecked]
-  );
+  const filterMoviesByDuration = (array) => {
+    if (isShortMovieChecked) {
+      return array.filter((array) => array.duration < 40);
+    }
+    return array;
+  };
 
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
-  const searchMovies = useCallback(
-    (array) => {
-      const filtered = array.filter(
-        (item) =>
-          item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
-          item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
-      );
-      setFilteredMoviesArray(filterMoviesByDuration(filtered));
-    },
-    [filterMoviesByDuration, movieSearchQuery, setFilteredMoviesArray]
-  );
+  const searchMovies = (array) => {
+    const filtered = array.filter(
+      (item) =>
+        item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
+        item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
+    );
+    setFilteredMoviesArray(filterMoviesByDuration(filtered));
+  };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
   const handleSearchFormSubmit = (e) => {
@@ -125,23 +119,20 @@ function App() {
     }
   };
 
-  //хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
+  //ТУТ ПРОБЛЕМА С ОБНУЛЕНИЕМ ЛОКАЛЬНОГО ХРАНИЛИЩА
+  // хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
   useEffect(() => {
     if (isShortMovieChecked) {
       // setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
-      setFilteredMoviesArray((prevFilteredMoviesArray) =>
+      return setFilteredMoviesArray((prevFilteredMoviesArray) =>
         filterMoviesByDuration(prevFilteredMoviesArray)
       );
-    } else {
+    } 
+    if(!isShortMovieChecked && allMovies.length !== 0) {
+      // тут проблема, что при отжатии чекбокса происходит новый поиск с нуля по базе
       searchMovies(allMovies);
     }
-  }, [
-    isShortMovieChecked,
-    allMovies,
-    filterMoviesByDuration,
-    searchMovies,
-    setFilteredMoviesArray,
-  ]);
+  }, [isShortMovieChecked]);
 
   //??????????????????
   useEffect(() => {
@@ -166,7 +157,9 @@ function App() {
     );
   }, []);
 
-console.log(allMovies);
+  // console.log(allMovies);
+  console.log('filteredMoviesArray', filteredMoviesArray);
+  console.log('movieSearchQuery', movieSearchQuery);
 
   return (
     <div className="App">

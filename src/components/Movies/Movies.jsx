@@ -68,6 +68,7 @@ const Movies = ({
           baseNumberOfCards={baseNumberOfCards}
           setBaseNumberOfCards={setBaseNumberOfCards}
           movieSearchQuery={movieSearchQuery}
+          isSearchFormEmpty={isSearchFormEmpty}
         />
         {/* <MoreButton /> */}
       </main>

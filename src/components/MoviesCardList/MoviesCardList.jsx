@@ -14,7 +14,8 @@ const MoviesCardList = ({
   restoreInitialTotalCardsOnPage,
   baseNumberOfCards,
   setBaseNumberOfCards,
-  movieSearchQuery
+  movieSearchQuery,
+  isSearchFormEmpty,
 }) => {
   //СТЕЙТЫ
   //стейт для определения ширины видимой части страницы
@@ -26,12 +27,6 @@ const MoviesCardList = ({
   //стейт отображения кнопки Ещё
   const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
 
-  // //стейт базового количества карточек на странице
-  // //поднять этот стейт!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  // const [baseNumberOfCards, setBaseNumberOfCards] = useState(12);
-
-  // console.log("baseNumberOfCards", baseNumberOfCards);
-
   //ФУНКЦИИ
 
   //функция для добавления новых рядов карточек
@@ -40,8 +35,10 @@ const MoviesCardList = ({
   };
 
   const showMoreButton = useCallback(() => {
-    filteredMoviesArray.length > totalCardsOnPage + 1
-      ? setIsMoreButtonVisible(true)
+    filteredMoviesArray
+      ? filteredMoviesArray.length > totalCardsOnPage + 1
+        ? setIsMoreButtonVisible(true)
+        : setIsMoreButtonVisible(false)
       : setIsMoreButtonVisible(false);
   }, [filteredMoviesArray, totalCardsOnPage]);
 
@@ -78,24 +75,9 @@ const MoviesCardList = ({
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
 
-  //показ кнопки Ещё
-  /*
-
-  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
-
-
-- у нас есть массив найденных по ключевому слову карточек [filteredMoviesArray] и массив отсортированных слайсом [totalCardsOnPage]
-- filteredMoviesArray - это входящий массив, filteredMoviesArray.length - его длина
-- totalCardsOnPage + 1 = это длина образнного слайсом массива показываемых карточек
-- ЕЩЁ:
- - на старте скрыта
- - если filteredMoviesArray.length > totalCardsOnPage + 1 = кнопка видна
- - если filteredMoviesArray.length <= totalCardsOnPage + 1 = кнопка не видна
-*/
-
   return (
     <>
-      {/* если ошибка доступа к базе данных фильмов */}
+      {/* ошибка доступа к базе фильмов яндекса */}
       {isSearchErrored ? (
         <p className="search-error-message">
           Во время запроса произошла ошибка. Возможно, проблема с соединением
@@ -103,49 +85,36 @@ const MoviesCardList = ({
         </p>
       ) : (
         <>
-          {/* если это первый запрос к к базе данных фильмов */}
-          {allMovies.length === 0 ? (
+          {/* фильмы не найдены или пустая строка поискового запроса */}
+          {filteredMoviesArray.length === 0 || movieSearchQuery === "" ? (
             <section className="nothing-found-image-block">
               <img
-                src={nothingYet}
-                alt="Тут пока ничего нет"
+                src={nothingFound}
+                alt="Ничего не найдено"
                 className="nothing-found-image"
               />
             </section>
           ) : (
             <>
-              {/* если по поиску ничего не найдено*/}
-              {filteredMoviesArray.length === 0 ? (
-                <section className="nothing-found-image-block">
-                  <img
-                    src={nothingFound}
-                    alt="Ничего не найдено"
-                    className="nothing-found-image"
-                  />
-                </section>
-              ) : (
-                <>
-                  {/* Секция отрисовки карточек */}
-                  <section className="movies-card-section">
-                    <ul className="movies-card-list">
-                      {filteredMoviesArray
-                        .slice(0, totalCardsOnPage)
-                        .map((item) => {
-                          return (
-                            <MoviesCard
-                              isSaved={isSaved}
-                              name={item.nameRU}
-                              duration={item.duration}
-                              image={item.image.url}
-                              key={item.id}
-                              trailer={item.trailerLink}
-                            />
-                          );
-                        })}
-                    </ul>
-                  </section>
-                </>
-              )}
+              {/* Секция отрисовки карточек */}
+              <section className="movies-card-section">
+                <ul className="movies-card-list">
+                  {filteredMoviesArray
+                    .slice(0, totalCardsOnPage)
+                    .map((item) => {
+                      return (
+                        <MoviesCard
+                          isSaved={isSaved}
+                          name={item.nameRU}
+                          duration={item.duration}
+                          image={item.image.url}
+                          key={item.id}
+                          trailer={item.trailerLink}
+                        />
+                      );
+                    })}
+                </ul>
+              </section>
             </>
           )}
         </>
