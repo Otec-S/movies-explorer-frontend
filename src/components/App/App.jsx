@@ -132,7 +132,7 @@ function App() {
       // тут проблема, что при отжатии чекбокса происходит новый поиск с нуля по базе
       searchMovies(allMovies);
     }
-  }, [isShortMovieChecked]);
+  }, [isShortMovieChecked, allMovies]);
 
   //??????????????????
   useEffect(() => {
