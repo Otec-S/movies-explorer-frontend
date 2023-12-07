@@ -84,12 +84,12 @@ function App() {
   };
 
   //фильтрация по признаку короткометражек
-  const filterMoviesByDuration = (array) => {
-    if (isShortMovieChecked) {
-      return array.filter((array) => array.duration < 40);
-    }
-    return array;
-  };
+  // const filterMoviesByDuration = (array) => {
+  //   if (isShortMovieChecked) {
+  //     return array.filter((array) => array.duration < 40);
+  //   }
+  //   return array;
+  // };
 
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchMovies = (array) => {
@@ -98,7 +98,8 @@ function App() {
         item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
         item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
-    setFilteredMoviesArray(filterMoviesByDuration(filtered));
+    // setFilteredMoviesArray(filterMoviesByDuration(filtered));
+    setFilteredMoviesArray(filtered);
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
@@ -121,45 +122,45 @@ function App() {
 
   //ТУТ ПРОБЛЕМА С ОБНУЛЕНИЕМ ЛОКАЛЬНОГО ХРАНИЛИЩА
   // хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
-  useEffect(() => {
-    if (isShortMovieChecked) {
-      // setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
-      return setFilteredMoviesArray((prevFilteredMoviesArray) =>
-        filterMoviesByDuration(prevFilteredMoviesArray)
-      );
-    } 
-    if(!isShortMovieChecked && allMovies.length !== 0) {
-      // тут проблема, что при отжатии чекбокса происходит новый поиск с нуля по базе
-      searchMovies(allMovies);
-    }
-  }, [isShortMovieChecked, allMovies]);
+  // useEffect(() => {
+  //   if (isShortMovieChecked) {
+  //     // setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
+  //     return setFilteredMoviesArray((prevFilteredMoviesArray) =>
+  //       filterMoviesByDuration(prevFilteredMoviesArray)
+  //     );
+  //   } 
+  //   if(!isShortMovieChecked && allMovies.length !== 0) {
+  //     // тут проблема, что при отжатии чекбокса происходит новый поиск с нуля по базе
+  //     searchMovies(allMovies);
+  //   }
+  // }, [isShortMovieChecked, allMovies]);
 
   //??????????????????
-  useEffect(() => {
-    console.log(
-      "filteredMoviesArray in localStorage:      ",
-      localStorage.getItem("filteredMoviesArray")
-    );
-    console.log(
-      "isShortMovieChecked in localStorage:      ",
-      localStorage.getItem("isShortMovieChecked")
-    );
-  }, [filteredMoviesArray, isShortMovieChecked]);
+  // useEffect(() => {
+  //   console.log(
+  //     "filteredMoviesArray in localStorage:      ",
+  //     localStorage.getItem("filteredMoviesArray")
+  //   );
+  //   console.log(
+  //     "isShortMovieChecked in localStorage:      ",
+  //     localStorage.getItem("isShortMovieChecked")
+  //   );
+  // }, [filteredMoviesArray, isShortMovieChecked]);
 
-  useEffect(() => {
-    console.log(
-      "filteredMoviesArray from localStorage on mount:       ",
-      localStorage.getItem("filteredMoviesArray")
-    );
-    console.log(
-      "isShortMovieChecked from localStorage on mount:       ",
-      localStorage.getItem("isShortMovieChecked")
-    );
-  }, []);
+  // useEffect(() => {
+  //   console.log(
+  //     "filteredMoviesArray from localStorage on mount:       ",
+  //     localStorage.getItem("filteredMoviesArray")
+  //   );
+  //   console.log(
+  //     "isShortMovieChecked from localStorage on mount:       ",
+  //     localStorage.getItem("isShortMovieChecked")
+  //   );
+  // }, []);
 
   // console.log(allMovies);
   console.log('filteredMoviesArray', filteredMoviesArray);
-  console.log('movieSearchQuery', movieSearchQuery);
+  // console.log('movieSearchQuery', movieSearchQuery);
 
   return (
     <div className="App">

@@ -4,6 +4,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../Movies/MoreButton/MoreButton";
 import nothingFound from "../../images/nothing-found.jpg";
 import nothingYet from "../../images/nothing-yet.jpg";
+import { useLocalStorageState } from "../../hooks";
 
 const MoviesCardList = ({
   isSearchErrored,
@@ -16,13 +17,19 @@ const MoviesCardList = ({
   setBaseNumberOfCards,
   movieSearchQuery,
   isSearchFormEmpty,
+  isShortMovieChecked,
 }) => {
   //СТЕЙТЫ
   //стейт для определения ширины видимой части страницы
   const [pageWidth, setPageWidth] = useState();
 
   //стейт видимого количества карточек на странице
-  const [totalCardsOnPage, setTotalCardsOnPage] = useState();
+  const [totalCardsOnPage, setTotalCardsOnPage] = useLocalStorageState(
+    "totalCardsOnPage",
+    ""
+  );
+
+  console.log("totalCardsOnPage", totalCardsOnPage);
 
   //стейт отображения кнопки Ещё
   const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
@@ -35,12 +42,22 @@ const MoviesCardList = ({
   };
 
   const showMoreButton = useCallback(() => {
+    //фильтрация по признаку короткометражек
+    const filterMoviesByDuration = () => {
+      if (isShortMovieChecked) {
+        return filteredMoviesArray.filter((array) => array.duration < 40);
+      }
+      return filteredMoviesArray;
+    };
     filteredMoviesArray
-      ? filteredMoviesArray.length > totalCardsOnPage + 1
+      ? filterMoviesByDuration().length > totalCardsOnPage + 1
         ? setIsMoreButtonVisible(true)
         : setIsMoreButtonVisible(false)
       : setIsMoreButtonVisible(false);
-  }, [filteredMoviesArray, totalCardsOnPage]);
+
+    console.log("filteredMoviesArray in showMoreButton", filteredMoviesArray);
+
+  }, [filteredMoviesArray, totalCardsOnPage, isShortMovieChecked]);
 
   //функция управления стейтами количества карточек на странице
   const handleCardsOnPage = useCallback(() => {
@@ -100,6 +117,9 @@ const MoviesCardList = ({
               <section className="movies-card-section">
                 <ul className="movies-card-list">
                   {filteredMoviesArray
+                    .filter((array) => {
+                      return isShortMovieChecked ? array.duration <= 40 : array;
+                    })
                     .slice(0, totalCardsOnPage)
                     .map((item) => {
                       return (

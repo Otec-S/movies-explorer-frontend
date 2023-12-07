@@ -6,6 +6,8 @@ import MoreButton from "./MoreButton/MoreButton";
 import Footer from "../Footer/Footer";
 import Preloader from "./Preloader/Preloader";
 import { useState } from "react";
+import { useLocalStorageState } from "../../hooks";
+
 
 const Movies = ({
   menuActive,
@@ -25,9 +27,13 @@ const Movies = ({
   isSearchFormEmpty,
   isShortMovieChecked
   // setTotalCardsOnPage,
+  
 }) => {
   //стейт базового количества карточек на странице
-  const [baseNumberOfCards, setBaseNumberOfCards] = useState(12);
+  const [baseNumberOfCards, setBaseNumberOfCards] = useLocalStorageState(
+    "baseNumberOfCards",
+    "12"
+  );
 
   //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
   const handleClick = () => {
@@ -69,6 +75,7 @@ const Movies = ({
           setBaseNumberOfCards={setBaseNumberOfCards}
           movieSearchQuery={movieSearchQuery}
           isSearchFormEmpty={isSearchFormEmpty}
+          isShortMovieChecked={isShortMovieChecked}
         />
         {/* <MoreButton /> */}
       </main>
