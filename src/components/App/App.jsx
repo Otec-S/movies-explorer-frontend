@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -83,14 +83,6 @@ function App() {
       });
   };
 
-  //фильтрация по признаку короткометражек
-  // const filterMoviesByDuration = (array) => {
-  //   if (isShortMovieChecked) {
-  //     return array.filter((array) => array.duration < 40);
-  //   }
-  //   return array;
-  // };
-
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchMovies = (array) => {
     const filtered = array.filter(
@@ -119,48 +111,6 @@ function App() {
       searchMovies(allMovies);
     }
   };
-
-  //ТУТ ПРОБЛЕМА С ОБНУЛЕНИЕМ ЛОКАЛЬНОГО ХРАНИЛИЩА
-  // хук useEffect срабатывает на изменение состояние стейта isShortMovieChecked.
-  // useEffect(() => {
-  //   if (isShortMovieChecked) {
-  //     // setFilteredMoviesArray(filterMoviesByDuration(filteredMoviesArray));
-  //     return setFilteredMoviesArray((prevFilteredMoviesArray) =>
-  //       filterMoviesByDuration(prevFilteredMoviesArray)
-  //     );
-  //   } 
-  //   if(!isShortMovieChecked && allMovies.length !== 0) {
-  //     // тут проблема, что при отжатии чекбокса происходит новый поиск с нуля по базе
-  //     searchMovies(allMovies);
-  //   }
-  // }, [isShortMovieChecked, allMovies]);
-
-  //??????????????????
-  // useEffect(() => {
-  //   console.log(
-  //     "filteredMoviesArray in localStorage:      ",
-  //     localStorage.getItem("filteredMoviesArray")
-  //   );
-  //   console.log(
-  //     "isShortMovieChecked in localStorage:      ",
-  //     localStorage.getItem("isShortMovieChecked")
-  //   );
-  // }, [filteredMoviesArray, isShortMovieChecked]);
-
-  // useEffect(() => {
-  //   console.log(
-  //     "filteredMoviesArray from localStorage on mount:       ",
-  //     localStorage.getItem("filteredMoviesArray")
-  //   );
-  //   console.log(
-  //     "isShortMovieChecked from localStorage on mount:       ",
-  //     localStorage.getItem("isShortMovieChecked")
-  //   );
-  // }, []);
-
-  // console.log(allMovies);
-  console.log('filteredMoviesArray', filteredMoviesArray);
-  // console.log('movieSearchQuery', movieSearchQuery);
 
   return (
     <div className="App">

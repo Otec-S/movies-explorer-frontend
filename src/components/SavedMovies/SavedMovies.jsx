@@ -15,7 +15,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
       />
       <main>
         <SearchForm />
-        <MoviesCardList isSaved={true} />
+        {/* <MoviesCardList isSaved={true} /> */}
       </main>
       <Footer />
     </>

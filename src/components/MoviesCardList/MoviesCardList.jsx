@@ -10,13 +10,8 @@ const MoviesCardList = ({
   isSearchErrored,
   isSaved,
   filteredMoviesArray,
-  allMovies,
-  // setTotalCardsOnPage,
-  restoreInitialTotalCardsOnPage,
   baseNumberOfCards,
   setBaseNumberOfCards,
-  movieSearchQuery,
-  isSearchFormEmpty,
   isShortMovieChecked,
 }) => {
   //СТЕЙТЫ
@@ -28,8 +23,6 @@ const MoviesCardList = ({
     "totalCardsOnPage",
     ""
   );
-
-  console.log("totalCardsOnPage", totalCardsOnPage);
 
   //стейт отображения кнопки Ещё
   const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
@@ -54,9 +47,6 @@ const MoviesCardList = ({
         ? setIsMoreButtonVisible(true)
         : setIsMoreButtonVisible(false)
       : setIsMoreButtonVisible(false);
-
-    console.log("filteredMoviesArray in showMoreButton", filteredMoviesArray);
-
   }, [filteredMoviesArray, totalCardsOnPage, isShortMovieChecked]);
 
   //функция управления стейтами количества карточек на странице
