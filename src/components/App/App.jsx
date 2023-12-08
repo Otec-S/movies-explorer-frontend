@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
@@ -53,6 +53,92 @@ function App() {
 
   //стейт для отслеживания наличия поискового запроса в форме поиска
   const [isSearchFormEmpty, setIsSearchFormEmpty] = useState(false);
+
+  
+  
+  //VVVVVVVVVVVVVVVVVVVVV
+  //СТЕЙТЫ
+  //стейт для определения ширины видимой части страницы
+  const [pageWidth, setPageWidth] = useState();
+
+  //стейт видимого количества карточек на странице
+  const [totalCardsOnPage, setTotalCardsOnPage] = useLocalStorageState(
+    "totalCardsOnPage",
+    ""
+  );
+
+  //стейт отображения кнопки Ещё
+  const [isMoreButtonVisible, setIsMoreButtonVisible] = useState(false);
+
+  //стейт базового количества карточек на странице
+  const [baseNumberOfCards, setBaseNumberOfCards] = useLocalStorageState(
+    "baseNumberOfCards",
+    "12"
+  );
+
+//ФУНКЦИИ
+
+  //функция для добавления новых рядов карточек
+  const addCardRows = () => {
+    setBaseNumberOfCards(baseNumberOfCards + (pageWidth > 1200 ? 3 : 2));
+  };
+
+  const showMoreButton = useCallback(() => {
+    //фильтрация по признаку короткометражек
+    const filterMoviesByDuration = () => {
+      if (isShortMovieChecked) {
+        return filteredMoviesArray.filter((array) => array.duration < 40);
+      }
+      return filteredMoviesArray;
+    };
+    filteredMoviesArray
+      ? filterMoviesByDuration().length > totalCardsOnPage + 1
+        ? setIsMoreButtonVisible(true)
+        : setIsMoreButtonVisible(false)
+      : setIsMoreButtonVisible(false);
+  }, [filteredMoviesArray, totalCardsOnPage, isShortMovieChecked]);
+
+  //функция управления стейтами количества карточек на странице
+  const handleCardsOnPage = useCallback(() => {
+    //устанавливаем ширину экрана в зависимости от видимой части
+    setPageWidth(document.documentElement.clientWidth);
+    //меняем количество карт в зависимости от ширины экрана
+    if (pageWidth > 1200) {
+      setTotalCardsOnPage(baseNumberOfCards);
+    } else if (pageWidth >= 660 && pageWidth <= 1200) {
+      setTotalCardsOnPage(baseNumberOfCards - 4);
+    } else if (pageWidth < 660) {
+      setTotalCardsOnPage(baseNumberOfCards - 7);
+    }
+  }, [baseNumberOfCards, pageWidth]);
+
+  useEffect(() => {
+    //отрисовываем карточки на странице в зависимости от ширины экрана
+    handleCardsOnPage();
+    //показываем или скрываем кнопку Ещё
+    showMoreButton();
+  }, [handleCardsOnPage, pageWidth, totalCardsOnPage, showMoreButton]);
+
+  useEffect(() => {
+    // Добавляем слушатель события изменения размера окна
+    window.addEventListener("resize", () => {
+      // Устанавливаем setTimeout, чтобы не вызывать слишком часто
+      setTimeout(handleCardsOnPage, 200);
+    });
+    // Отписываемся от события при размонтировании компонента
+    return () => {
+      window.removeEventListener("resize", handleCardsOnPage);
+    };
+  }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
+
+  //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
+  const handleClick = () => {
+    setBaseNumberOfCards(12);
+  };
+
+  //VVVVVVVVVVVVVVVVVVVVV
+
+
 
   //ФУНКЦИИ
 
@@ -158,6 +244,11 @@ function App() {
               handleCheckboxChange={handleCheckboxChange}
               isSearchFormEmpty={isSearchFormEmpty}
               isShortMovieChecked={isShortMovieChecked}
+              pageWidth={pageWidth}
+              totalCardsOnPage={totalCardsOnPage}
+              isMoreButtonVisible={isMoreButtonVisible}
+              addCardRows={addCardRows}
+              handleClick={handleClick}
             />
           }
         />

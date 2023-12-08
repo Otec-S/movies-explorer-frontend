@@ -25,20 +25,25 @@ const Movies = ({
   allMovies,
   handleCheckboxChange,
   isSearchFormEmpty,
-  isShortMovieChecked
+  isShortMovieChecked,
   // setTotalCardsOnPage,
+  pageWidth,
+  totalCardsOnPage,
+  isMoreButtonVisible,
+  addCardRows,
+  handleClick
   
 }) => {
-  //стейт базового количества карточек на странице
-  const [baseNumberOfCards, setBaseNumberOfCards] = useLocalStorageState(
-    "baseNumberOfCards",
-    "12"
-  );
+  // //стейт базового количества карточек на странице
+  // const [baseNumberOfCards, setBaseNumberOfCards] = useLocalStorageState(
+  //   "baseNumberOfCards",
+  //   "12"
+  // );
 
-  //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
-  const handleClick = () => {
-    setBaseNumberOfCards(12);
-  };
+  // //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
+  // const handleClick = () => {
+  //   setBaseNumberOfCards(12);
+  // };
 
   return (
     <>
@@ -71,11 +76,15 @@ const Movies = ({
           isSearchErrored={isSearchErrored}
           allMovies={allMovies}
           // setTotalCardsOnPage={setTotalCardsOnPage}
-          baseNumberOfCards={baseNumberOfCards}
-          setBaseNumberOfCards={setBaseNumberOfCards}
+          // baseNumberOfCards={baseNumberOfCards}
+          // setBaseNumberOfCards={setBaseNumberOfCards}
           movieSearchQuery={movieSearchQuery}
           isSearchFormEmpty={isSearchFormEmpty}
           isShortMovieChecked={isShortMovieChecked}
+          pageWidth={pageWidth}
+          totalCardsOnPage={totalCardsOnPage}
+          isMoreButtonVisible={isMoreButtonVisible}
+          addCardRows={addCardRows}
         />
         {/* <MoreButton /> */}
       </main>
