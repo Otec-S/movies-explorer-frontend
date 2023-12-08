@@ -1,7 +1,7 @@
 import React from "react";
 import SearchForm from "../SearchForm/SearchForm";
 import Header from "../Header/Header";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
 
 const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
@@ -15,7 +15,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
       />
       <main>
         <SearchForm />
-        {/* <MoviesCardList isSaved={true} /> */}
+        {/* <SavedMoviesCardList /> */}
       </main>
       <Footer />
     </>

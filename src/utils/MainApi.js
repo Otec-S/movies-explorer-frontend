@@ -4,7 +4,7 @@ import { SAVED_MOVIES_BASE } from "../constants.js";
 export const getAllSavedMovies = async () => {
   try {
     const response = await fetch(`${SAVED_MOVIES_BASE}/movies`, {
-      method: "POST",
+      method: "GET",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",

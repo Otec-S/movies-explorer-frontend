@@ -10,6 +10,7 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
+import { getAllSavedMovies } from "../../utils/MainApi";
 import { useLocalStorageState } from "../../hooks";
 
 function App() {
@@ -164,6 +165,11 @@ function App() {
     }
   }, [baseNumberOfCards, pageWidth]);
 
+  //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
+  const handleClick = () => {
+    setBaseNumberOfCards(12);
+  };
+
   //ЭФФЕКТЫ
   useEffect(() => {
     //отрисовываем карточки на странице в зависимости от ширины экрана
@@ -184,10 +190,14 @@ function App() {
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
 
-  //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
-  const handleClick = () => {
-    setBaseNumberOfCards(12);
-  };
+  /////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////
+  //загрузка списка сохраненных фильмов с моего API
+  useEffect(() => {
+    getAllSavedMovies().then((allSavedMoviesData) => {
+      console.log(allSavedMoviesData);
+    });
+  }, []);
 
   return (
     <div className="App">
