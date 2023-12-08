@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./SearchForm.css";
 import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
@@ -20,7 +20,6 @@ const SearchForm = ({
     e.preventDefault();
     setMovieSearchQuery(e.target.value);
   }
-
 
   return (
     <section className="search-form">
@@ -46,7 +45,6 @@ const SearchForm = ({
           type="submit"
           onClick={handleClick}
           className="input__find-button"
-          // disabled={!movieSearchQuery}
         ></button>
       </form>
 
