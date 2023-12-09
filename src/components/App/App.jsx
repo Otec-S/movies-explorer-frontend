@@ -23,7 +23,7 @@ function App() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   //стейт для зарегистрированного пользователя
-  const [isRegistered, setIsRegistered] = useState(true);
+  const [isRegistered, setIsRegistered] = useState(false);
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
@@ -193,11 +193,11 @@ function App() {
   /////////////////////////////////////////////////////
   /////////////////////////////////////////////////////
   //загрузка списка сохраненных фильмов с моего API
-  useEffect(() => {
-    getAllSavedMovies().then((allSavedMoviesData) => {
-      console.log(allSavedMoviesData);
-    });
-  }, []);
+  // useEffect(() => {
+  //   getAllSavedMovies().then((allSavedMoviesData) => {
+  //     console.log(allSavedMoviesData);
+  //   });
+  // }, []);
 
   return (
     <div className="App">

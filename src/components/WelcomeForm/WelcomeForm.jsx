@@ -18,7 +18,7 @@ const WelcomeForm = ({
       </div>
       <h1 className="welcome-form__greetings">{greetings}</h1>
       <form action="" className="welcome-form__form">
-        {isNewUser ? (
+        {isNewUser && (
           <label htmlFor="name" className="welcome-form__form__label">
             Имя
             <input
@@ -29,8 +29,6 @@ const WelcomeForm = ({
               required
             />
           </label>
-        ) : (
-          <div />
         )}
 
         <label htmlFor="email" className="welcome-form__form__label">
@@ -57,6 +55,9 @@ const WelcomeForm = ({
           </span>
         </label>
       </form>
+      <span className="welcome-form__button__error-msg">
+      При регистрации пользователя произошла ошибка.
+      </span>
       <button type="submit" className="welcome-form__button">
         {buttonText}
       </button>
