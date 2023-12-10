@@ -16,7 +16,7 @@
 .welcome-form__form__label {
   display: flex;
   flex-direction: column;
-  margin-bottom: 22px;
+  /* margin-bottom: 22px; */
   font-size: 10px;
   color: rgba(160, 160, 160, 1);
 }
@@ -30,12 +30,18 @@
   outline: none;
 }
 
+.welcome-form__form__input_invalid {
+  color: red;
+  caret-color: black;
+}
+
 .welcome-form__form__input:focus {
   background-color: rgba(255, 104, 56, 0.1);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .welcome-form__form__input__error-msg {
+  height: 11px;
   margin-top: 10px;
   font-weight: 400;
   font-size: 10px;
@@ -71,7 +77,13 @@
   cursor: pointer;
 }
 
-.welcome-form__button:hover {
+.welcome-form__button[disabled] {
+  background-color: rgba(248, 248, 248, 1);
+  cursor: auto;
+  color: black;
+}
+
+.welcome-form__button:not([disabled]):hover {
   opacity: 0.8;
 }
 
