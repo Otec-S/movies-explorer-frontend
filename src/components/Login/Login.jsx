@@ -4,13 +4,10 @@ import { useNavigate } from "react-router-dom";
 import * as auth from "../../utils/MainApi";
 
 export default function Login({
-  userName,
-  email,
-  password,
   isNameValid,
   isEmailValid,
   isPasswordValid,
-  handleFormValidation
+  handleFormValidation,
 }) {
   //стейт для формы логирования
   const [formValue, setFormValue] = useState({
@@ -60,14 +57,10 @@ export default function Login({
       welcomeQuestion="Ещё не зарегистрированы?"
       welcomeLinkName="Регистрация"
       welcomeLink="/signup"
-      userName={userName}
-      email={email}
-      password={password}
       isNameValid={isNameValid}
       isEmailValid={isEmailValid}
       isPasswordValid={isPasswordValid}
       handleFormValidation={handleFormValidation}
-
     />
   );
 }

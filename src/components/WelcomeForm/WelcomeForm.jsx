@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./WelcomeForm.css";
 import { Link } from "react-router-dom";
 import MainLink from "../MainLink/MainLink";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const WelcomeForm = ({
   greetings,
@@ -10,14 +11,13 @@ const WelcomeForm = ({
   welcomeQuestion,
   welcomeLink,
   welcomeLinkName,
-  userName,
-  email,
-  password,
   isNameValid,
   isEmailValid,
   isPasswordValid,
-  handleFormValidation
+  handleFormValidation,
 }) => {
+  const { userName, email, password } = React.useContext(CurrentUserContext);
+
   // const [userName, setUserName] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
@@ -118,7 +118,13 @@ const WelcomeForm = ({
         Ошибка регистрации
       </span>
 
-      <button type="submit" className="welcome-form__button" disabled={(isNewUser && !isNameValid) || !isEmailValid || !isPasswordValid}>
+      <button
+        type="submit"
+        className="welcome-form__button"
+        disabled={
+          (isNewUser && !isNameValid) || !isEmailValid || !isPasswordValid
+        }
+      >
         {buttonText}
       </button>
       <div className="welcome-form__question">
