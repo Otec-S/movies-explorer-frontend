@@ -10,35 +10,42 @@ const WelcomeForm = ({
   welcomeQuestion,
   welcomeLink,
   welcomeLinkName,
+  userName,
+  email,
+  password,
+  isNameValid,
+  isEmailValid,
+  isPasswordValid,
+  handleFormValidation
 }) => {
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  // const [userName, setUserName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
-  const [isNameValid, setIsNameValid] = useState(null);
-  const [isEmailValid, setIsEmailValid] = useState(null);
-  const [isPasswordValid, setIsPasswordValid] = useState(null);
+  // const [isNameValid, setIsNameValid] = useState(null);
+  // const [isEmailValid, setIsEmailValid] = useState(null);
+  // const [isPasswordValid, setIsPasswordValid] = useState(null);
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  // const handleFormValidation = (event) => {
+  //   const { name, value } = event.target;
 
-    switch (name) {
-      case "userName":
-        setUserName(value);
-        setIsNameValid(value ? /^[a-zA-Zа-яА-Я\s-]+$/.test(value) : "");
-        break;
-      case "email":
-        setEmail(value);
-        setIsEmailValid(value ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) : "");
-        break;
-      case "password":
-        setPassword(value);
-        setIsPasswordValid(value ? value.length >= 4 : "");
-        break;
-      default:
-        break;
-    }
-  };
+  //   switch (name) {
+  //     case "userName":
+  //       setUserName(value);
+  //       setIsNameValid(value ? /^[a-zA-Zа-яА-Я\s-]+$/.test(value) : "");
+  //       break;
+  //     case "email":
+  //       setEmail(value);
+  //       setIsEmailValid(value ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) : "");
+  //       break;
+  //     case "password":
+  //       setPassword(value);
+  //       setIsPasswordValid(value ? value.length >= 4 : "");
+  //       break;
+  //     default:
+  //       break;
+  //   }
+  // };
 
   return (
     <main className="welcome-form">
@@ -58,7 +65,7 @@ const WelcomeForm = ({
               }`}
               name="userName"
               value={userName}
-              onChange={handleChange}
+              onChange={handleFormValidation}
               autoFocus
               required
             />
@@ -76,7 +83,7 @@ const WelcomeForm = ({
             id="email"
             name="email"
             value={email}
-            onChange={handleChange}
+            onChange={handleFormValidation}
             className={`welcome-form__form__input ${
               !isEmailValid ? "welcome-form__form__input_invalid" : ""
             }`}
@@ -94,7 +101,7 @@ const WelcomeForm = ({
             id="password"
             name="password"
             value={password}
-            onChange={handleChange}
+            onChange={handleFormValidation}
             className={`welcome-form__form__input ${
               !isPasswordValid ? "welcome-form__form__input_invalid" : ""
             }`}

@@ -16,6 +16,16 @@ import { useLocalStorageState } from "../../hooks";
 function App() {
   //СТЕЙТЫ
 
+  //стейты о пользователе
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  //стейты для проверки валидации
+  const [isNameValid, setIsNameValid] = useState(null);
+  const [isEmailValid, setIsEmailValid] = useState(null);
+  const [isPasswordValid, setIsPasswordValid] = useState(null);
+
   //стейт для массива Всех фильмов
   const [allMovies, setAllMovies] = useState([]);
 
@@ -74,6 +84,28 @@ function App() {
   );
 
   //ФУНКЦИИ
+
+  //валидирование форм ввода
+  const handleFormValidation = (event) => {
+    const { name, value } = event.target;
+
+    switch (name) {
+      case "userName":
+        setUserName(value);
+        setIsNameValid(value ? /^[a-zA-Zа-яА-Я\s-]+$/.test(value) : "");
+        break;
+      case "email":
+        setEmail(value);
+        setIsEmailValid(value ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) : "");
+        break;
+      case "password":
+        setPassword(value);
+        setIsPasswordValid(value ? value.length >= 4 : "");
+        break;
+      default:
+        break;
+    }
+  };
 
   //функция изменяет состояние стейта чекбокса на противоположное
   const handleCheckboxChange = () => {
@@ -202,8 +234,35 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/signup" element={<Register isRegistered={false} />} />
-        <Route path="/signin" element={<Login />} />
+        <Route
+          path="/signup"
+          element={
+            <Register
+              isRegistered={false}
+              userName={userName}
+              email={email}
+              password={password}
+              isNameValid={isNameValid}
+              isEmailValid={isEmailValid}
+              isPasswordValid={isPasswordValid}
+              handleFormValidation={handleFormValidation}
+            />
+          }
+        />
+        <Route
+          path="/signin"
+          element={
+            <Login
+              userName={userName}
+              email={email}
+              password={password}
+              isNameValid={isNameValid}
+              isEmailValid={isEmailValid}
+              isPasswordValid={isPasswordValid}
+              handleFormValidation={handleFormValidation}
+            />
+          }
+        />
         <Route
           path="/"
           element={

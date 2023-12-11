@@ -1,7 +1,15 @@
 import React from "react";
 import WelcomeForm from "../WelcomeForm/WelcomeForm";
 
-const Register = () => {
+const Register = ({
+  userName,
+  email,
+  password,
+  isNameValid,
+  isEmailValid,
+  isPasswordValid,
+  handleFormValidation,
+}) => {
   return (
     <WelcomeForm
       greetings="Добро пожаловать!"
@@ -10,6 +18,13 @@ const Register = () => {
       welcomeQuestion="Уже зарегистрированы?"
       welcomeLinkName="Войти"
       welcomeLink="/signin"
+      userName={userName}
+      email={email}
+      password={password}
+      isNameValid={isNameValid}
+      isEmailValid={isEmailValid}
+      isPasswordValid={isPasswordValid}
+      handleFormValidation={handleFormValidation}
     />
   );
 };

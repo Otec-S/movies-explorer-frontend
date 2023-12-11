@@ -3,7 +3,15 @@ import WelcomeForm from "../WelcomeForm/WelcomeForm";
 import { useNavigate } from "react-router-dom";
 import * as auth from "../../utils/MainApi";
 
-export default function Login() {
+export default function Login({
+  userName,
+  email,
+  password,
+  isNameValid,
+  isEmailValid,
+  isPasswordValid,
+  handleFormValidation
+}) {
   //стейт для формы логирования
   const [formValue, setFormValue] = useState({
     email: "",
@@ -21,17 +29,16 @@ export default function Login() {
     });
   }
 
-
   async function handleSubmit(e) {
     e.preventDefault();
-  
+
     try {
       if (!formValue.email || !formValue.password) {
         return;
       }
-  
+
       const data = await auth.authorize(formValue.email, formValue.password);
-  
+
       if (data.token) {
         setFormValue({ email: "", password: "" });
         // Используем колбэк для гарантии актуальности данных
@@ -44,7 +51,6 @@ export default function Login() {
       // Обработка ошибок, например, уведомление пользователя
     }
   }
-  
 
   return (
     <WelcomeForm
@@ -54,6 +60,14 @@ export default function Login() {
       welcomeQuestion="Ещё не зарегистрированы?"
       welcomeLinkName="Регистрация"
       welcomeLink="/signup"
+      userName={userName}
+      email={email}
+      password={password}
+      isNameValid={isNameValid}
+      isEmailValid={isEmailValid}
+      isPasswordValid={isPasswordValid}
+      handleFormValidation={handleFormValidation}
+
     />
   );
 }
