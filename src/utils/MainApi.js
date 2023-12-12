@@ -45,26 +45,9 @@ export async function authorize(email, password) {
       body: JSON.stringify({ email, password }),
     });
 
-      console.log("response in api", response);
-
-    if (response.ok) {
-      // Получаем токен из куки
-      // const token = response.headers.get("Set-Cookie");
-      // Далее можно использовать токен по необходимости
-
-      const data = await response.json();
-
-      // if (data.token) {
-      //   // Ваши дополнительные действия с токеном
-      // }
-      console.log("Token:", data.token);
-
-      return data, response;
-    } else {
-      // Обработка ошибки, если response.ok === false
-      console.error(`Server returned an error: ${response.statusText}`);
-    }
-  } catch (error) {
+    return response;
+  } 
+  catch (error) {
     console.error(error);
     // Обработка ошибки, например, throw error; или другие действия
   }

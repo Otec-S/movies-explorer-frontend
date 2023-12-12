@@ -47,24 +47,39 @@ export default function Login({
       if (!email || !password) {
         return;
       }
-      //получение и запись в data данных с сервера
-      const data = await auth.authorize(email, password);
-      console.log("data", data);
 
-      //записываем полученные в ответе сервера пароль и _id в стейты
-      setPassword(data.password);
-      setEmail(data.email);
-      setUserId(data._id);
-      //стейт isRegistered в положение true
-      setIsRegistered(true);
-      //перевод на страницу фильмы
-      navigate("/movies", { replace: true });
-    }
-    catch (error) {
-      console.error('error:', error);
-      // Обработка ошибок, например, уведомление пользователя
-      setErrorServerMessage("Вы ввели неправильный логин или пароль.");
-      
+      //получение ответа с сервера
+      const response = await auth.authorize(email, password);
+      console.log("response", response);
+
+      if (response.ok) {
+        // // Получаем токен из куки
+        // const token = response.headers.get("Set-Cookie");
+        // // Далее можно использовать токен по необходимости
+        // if (token) {
+        //   console.log("есть куки");
+        // }
+
+        //получение и запись в data данных с сервера
+        const data = await response.json();
+
+        //записываем полученные в ответе сервера пароль и _id в стейты
+        setPassword(data.password);
+        setEmail(data.email);
+        setUserId(data._id);
+        //стейт isRegistered в положение true
+        setIsRegistered(true);
+        //перевод на страницу фильмы
+        navigate("/movies", { replace: true });
+      } else if (response.status === 401) {
+        // Обработка ошибки, если response.ok === false
+        console.error(`Server returned an error: ${response.statusText}`);
+        setErrorServerMessage("Вы ввели неправильный логин или пароль.");
+      } else {
+        setErrorServerMessage("При авторизации произошла ошибка.");
+      }
+    } catch (error) {
+      console.error("error:", error);
     }
   }
 
