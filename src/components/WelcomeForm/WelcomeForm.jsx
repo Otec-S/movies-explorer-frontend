@@ -15,6 +15,8 @@ const WelcomeForm = ({
   isEmailValid,
   isPasswordValid,
   handleFormValidation,
+  handleUserFormSubmit,
+  errorServerMessage,
 }) => {
   const { userName, email, password } = React.useContext(CurrentUserContext);
 
@@ -53,7 +55,11 @@ const WelcomeForm = ({
         <MainLink />
       </div>
       <h1 className="welcome-form__greetings">{greetings}</h1>
-      <form action="" className="welcome-form__form">
+      <form
+        action=""
+        className="welcome-form__form"
+        onSubmit={handleUserFormSubmit}
+      >
         {isNewUser && (
           <label htmlFor="name" className="welcome-form__form__label">
             Имя
@@ -112,21 +118,23 @@ const WelcomeForm = ({
               "Пароль должен содержать не менее 4 символов"}
           </span>
         </label>
+
+        {/* сообщение об ошибке с сервера */}
+        <span className="welcome-form__button__error-msg">
+          {errorServerMessage && errorServerMessage}
+        </span>
+
+        <button
+          type="submit"
+          className="welcome-form__button"
+          disabled={
+            (isNewUser && !isNameValid) || !isEmailValid || !isPasswordValid
+          }
+        >
+          {buttonText}
+        </button>
       </form>
 
-      <span className="welcome-form__button__error-msg">
-        Ошибка регистрации
-      </span>
-
-      <button
-        type="submit"
-        className="welcome-form__button"
-        disabled={
-          (isNewUser && !isNameValid) || !isEmailValid || !isPasswordValid
-        }
-      >
-        {buttonText}
-      </button>
       <div className="welcome-form__question">
         {welcomeQuestion}
         <Link to={welcomeLink} className="welcome-form__link">

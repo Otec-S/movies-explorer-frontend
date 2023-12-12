@@ -1,5 +1,8 @@
 import { SAVED_MOVIES_BASE } from "../constants.js";
 
+// import { useContext } from "react";
+// const { errorServerMessage, setErrorServerMessage } = useContext(AppContext);
+
 //авторизация
 // export function authorize(email, password) {
 //   return fetch(`${SAVED_MOVIES_BASE}/signin`, {
@@ -24,17 +27,17 @@ import { SAVED_MOVIES_BASE } from "../constants.js";
 // }
 
 // Вспомогательная функция для извлечения токена из куки
-function getTokenFromCookie(cookie) {
-  const tokenMatch = cookie.match(/jwt=([^;]*)/);
-  return tokenMatch ? tokenMatch[1] : null;
-}
+// function getTokenFromCookie(cookie) {
+//   const tokenMatch = cookie.match(/jwt=([^;]*)/);
+//   return tokenMatch ? tokenMatch[1] : null;
+// }
 
 //авторизация
 export async function authorize(email, password) {
   try {
     const response = await fetch(`${SAVED_MOVIES_BASE}/signin`, {
       method: "POST",
-      credentials: 'include',
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -42,20 +45,21 @@ export async function authorize(email, password) {
       body: JSON.stringify({ email, password }),
     });
 
+      console.log("response in api", response);
+
     if (response.ok) {
       // Получаем токен из куки
-      const token = getTokenFromCookie(response.headers.get('Set-Cookie'));
-
+      // const token = response.headers.get("Set-Cookie");
       // Далее можно использовать токен по необходимости
-      console.log('Token:', token);
 
       const data = await response.json();
 
-      if (data.token) {
-        // Ваши дополнительные действия с токеном
-      }
+      // if (data.token) {
+      //   // Ваши дополнительные действия с токеном
+      // }
+      console.log("Token:", data.token);
 
-      return data;
+      return data, response;
     } else {
       // Обработка ошибки, если response.ok === false
       console.error(`Server returned an error: ${response.statusText}`);
@@ -65,7 +69,6 @@ export async function authorize(email, password) {
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
-
 
 //получение с бэка всего списка сохраненных фильмов (убрали из скобок токен)
 export const getAllSavedMovies = async () => {

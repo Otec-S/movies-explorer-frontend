@@ -13,14 +13,18 @@ import { getAllMovies } from "../../utils/MoviesApi";
 import { getAllSavedMovies } from "../../utils/MainApi";
 import { useLocalStorageState } from "../../hooks";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { AppContext } from "../../contexts/AppContext";
 
 function App() {
-  //СТЕЙТЫ
+  /////////////
+  // СТЕЙТЫ  //
+  /////////////
 
   //стейты о пользователе
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("");
 
   //стейты для проверки валидации
   const [isNameValid, setIsNameValid] = useState(null);
@@ -84,7 +88,12 @@ function App() {
     "12"
   );
 
-  //ФУНКЦИИ
+  //стейт для сообщения для ошибок с сервера
+  const [errorServerMessage, setErrorServerMessage] = useState("");
+
+  /////////////
+  // ФУНКЦИИ //
+  /////////////
 
   //валидирование форм ввода
   const handleFormValidation = (event) => {
@@ -203,7 +212,10 @@ function App() {
     setBaseNumberOfCards(12);
   };
 
-  //ЭФФЕКТЫ
+  /////////////
+  // ЭФФЕКТЫ //
+  /////////////
+
   useEffect(() => {
     //отрисовываем карточки на странице в зависимости от ширины экрана
     handleCardsOnPage();
@@ -223,105 +235,110 @@ function App() {
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
 
-  /////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////
-  //загрузка списка сохраненных фильмов с моего API
-  // useEffect(() => {
-  //   getAllSavedMovies().then((allSavedMoviesData) => {
-  //     console.log(allSavedMoviesData);
-  //   });
-  // }, []);
-
   return (
     <div className="App">
-      <CurrentUserContext.Provider value={{ userName, email, password }}>
-        <Routes>
-          <Route
-            path="/signup"
-            element={
-              <Register
-                isRegistered={false}
-                isNameValid={isNameValid}
-                isEmailValid={isEmailValid}
-                isPasswordValid={isPasswordValid}
-                handleFormValidation={handleFormValidation}
-              />
-            }
-          />
-          <Route
-            path="/signin"
-            element={
-              <Login
-                isNameValid={isNameValid}
-                isEmailValid={isEmailValid}
-                isPasswordValid={isPasswordValid}
-                handleFormValidation={handleFormValidation}
-              />
-            }
-          />
-          <Route
-            path="/"
-            element={
-              <Main
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-                isRegistered={isRegistered}
-                isPromo={true}
-              />
-            }
-          />
-          <Route
-            path="/profile"
-            element={
-              <Profile
-                isRegistered={isRegistered}
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-              />
-            }
-          />
-          <Route
-            path="/movies"
-            element={
-              <Movies
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-                isRegistered={isRegistered}
-                isPromo={false}
-                isLoading={isLoading}
-                filteredMoviesArray={filteredMoviesArray}
-                initialSetAllMovies={initialSetAllMovies}
-                movieSearchQuery={movieSearchQuery}
-                searchMovies={searchMovies}
-                setMovieSearchQuery={setMovieSearchQuery}
-                handleSearchFormSubmit={handleSearchFormSubmit}
-                isSearchErrored={isSearchErrored}
-                allMovies={allMovies}
-                handleCheckboxChange={handleCheckboxChange}
-                isSearchFormEmpty={isSearchFormEmpty}
-                isShortMovieChecked={isShortMovieChecked}
-                pageWidth={pageWidth}
-                totalCardsOnPage={totalCardsOnPage}
-                isMoreButtonVisible={isMoreButtonVisible}
-                addCardRows={addCardRows}
-                handleClick={handleClick}
-              />
-            }
-          />
-          <Route
-            path="/saved-movies"
-            element={
-              <SavedMovies
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-                isRegistered={isRegistered}
-                isPromo={false}
-              />
-            }
-          />
-          <Route path="*" element={<Page404 />} />
-        </Routes>
-      </CurrentUserContext.Provider>
+      {/* <AppContext.Provider> */}
+        <CurrentUserContext.Provider
+          value={{ userName, email, password, userId }}
+        >
+          <Routes>
+            <Route
+              path="/signup"
+              element={
+                <Register
+                  isRegistered={false}
+                  isNameValid={isNameValid}
+                  isEmailValid={isEmailValid}
+                  isPasswordValid={isPasswordValid}
+                  handleFormValidation={handleFormValidation}
+                />
+              }
+            />
+            <Route
+              path="/signin"
+              element={
+                <Login
+                  isNameValid={isNameValid}
+                  isEmailValid={isEmailValid}
+                  isPasswordValid={isPasswordValid}
+                  handleFormValidation={handleFormValidation}
+                  setPassword={setPassword}
+                  setUserId={setUserId}
+                  setUserName={setUserName}
+                  email={email}
+                  password={password}
+                  userId={userId}
+                  setEmail={setEmail}
+                  setIsRegistered={setIsRegistered}
+                  errorServerMessage={errorServerMessage}
+                  setErrorServerMessage={setErrorServerMessage}
+                />
+              }
+            />
+            <Route
+              path="/"
+              element={
+                <Main
+                  menuActive={isMenuActive}
+                  setActive={setIsMenuActive}
+                  isRegistered={isRegistered}
+                  isPromo={true}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  isRegistered={isRegistered}
+                  menuActive={isMenuActive}
+                  setActive={setIsMenuActive}
+                />
+              }
+            />
+            <Route
+              path="/movies"
+              element={
+                <Movies
+                  menuActive={isMenuActive}
+                  setActive={setIsMenuActive}
+                  isRegistered={isRegistered}
+                  isPromo={false}
+                  isLoading={isLoading}
+                  filteredMoviesArray={filteredMoviesArray}
+                  initialSetAllMovies={initialSetAllMovies}
+                  movieSearchQuery={movieSearchQuery}
+                  searchMovies={searchMovies}
+                  setMovieSearchQuery={setMovieSearchQuery}
+                  handleSearchFormSubmit={handleSearchFormSubmit}
+                  isSearchErrored={isSearchErrored}
+                  allMovies={allMovies}
+                  handleCheckboxChange={handleCheckboxChange}
+                  isSearchFormEmpty={isSearchFormEmpty}
+                  isShortMovieChecked={isShortMovieChecked}
+                  pageWidth={pageWidth}
+                  totalCardsOnPage={totalCardsOnPage}
+                  isMoreButtonVisible={isMoreButtonVisible}
+                  addCardRows={addCardRows}
+                  handleClick={handleClick}
+                />
+              }
+            />
+            <Route
+              path="/saved-movies"
+              element={
+                <SavedMovies
+                  menuActive={isMenuActive}
+                  setActive={setIsMenuActive}
+                  isRegistered={isRegistered}
+                  isPromo={false}
+                />
+              }
+            />
+            <Route path="*" element={<Page404 />} />
+          </Routes>
+        </CurrentUserContext.Provider>
+      {/* </AppContext.Provider> */}
     </div>
   );
 }
