@@ -14,6 +14,7 @@ const WelcomeForm = ({
   isNameValid,
   isEmailValid,
   isPasswordValid,
+  isRegistered,
   handleFormValidation,
   handleUserFormSubmit,
   errorServerMessage,
@@ -59,6 +60,7 @@ const WelcomeForm = ({
         action=""
         className="welcome-form__form"
         onSubmit={handleUserFormSubmit}
+        noValidate
       >
         {isNewUser && (
           <label htmlFor="name" className="welcome-form__form__label">
@@ -74,6 +76,7 @@ const WelcomeForm = ({
               onChange={handleFormValidation}
               autoFocus
               required
+              
             />
             <span className="welcome-form__form__input__error-msg">
               {isNameValid === false &&
@@ -94,6 +97,7 @@ const WelcomeForm = ({
               !isEmailValid ? "welcome-form__form__input_invalid" : ""
             }`}
             required
+            autoFocus={!isNewUser}
           />
           <span className="welcome-form__form__input__error-msg">
             {isEmailValid === false && "Введите корректный email"}

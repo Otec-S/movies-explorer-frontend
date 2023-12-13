@@ -8,6 +8,7 @@ export default function Login({
   isNameValid,
   isEmailValid,
   isPasswordValid,
+  isRegistered,
   handleFormValidation,
   userName,
   email,
@@ -94,6 +95,7 @@ export default function Login({
       isNameValid={isNameValid}
       isEmailValid={isEmailValid}
       isPasswordValid={isPasswordValid}
+      isRegistered={isRegistered}
       handleFormValidation={handleFormValidation}
       handleUserFormSubmit={handleUserFormSubmit}
       errorServerMessage={errorServerMessage}

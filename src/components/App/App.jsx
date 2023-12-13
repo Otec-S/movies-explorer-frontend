@@ -290,6 +290,11 @@ function App() {
     setIsMoreButtonVisible(false);
     setBaseNumberOfCards("12");
     setErrorServerMessage('');
+
+    setIsNameValid(null);
+    setIsEmailValid(null);
+    setIsPasswordValid(null);
+
     document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
     navigate("/", { replace: true });
   };
@@ -348,6 +353,7 @@ function App() {
                 isNameValid={isNameValid}
                 isEmailValid={isEmailValid}
                 isPasswordValid={isPasswordValid}
+                isRegistered={isRegistered}
                 handleFormValidation={handleFormValidation}
                 setPassword={setPassword}
                 setUserId={setUserId}
