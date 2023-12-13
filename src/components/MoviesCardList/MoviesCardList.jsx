@@ -24,7 +24,7 @@ const MoviesCardList = ({
       ) : (
         <>
           {/* фильмы не найдены или пустая строка поискового запроса */}
-          {filteredMoviesArray.length === 0 ? (
+          {filteredMoviesArray === null || filteredMoviesArray.length === 0 ? (
             <section className="nothing-found-image-block">
               <img
                 src={nothingFound}

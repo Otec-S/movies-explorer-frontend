@@ -3,7 +3,7 @@ import "./Profile.css";
 import Header from "../Header/Header";
 import LineGrey from "../LineGrey/LineGrey";
 
-const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
+const Profile = ({ menuActive, setActive, isRegistered, isPromo, handleUnLogin }) => {
   return (
     <>
       <Header
@@ -39,7 +39,7 @@ const Profile = ({ menuActive, setActive, isRegistered, isPromo }) => {
           </label>
         </form>
         <button type="submit" className="profile__update-btn">Редактировать</button>
-        <button className="profile__logout-btn">Выйти из аккаунта</button>
+        <button className="profile__logout-btn" onClick={handleUnLogin}>Выйти из аккаунта</button>
       </main>
     </>
   );

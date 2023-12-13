@@ -274,6 +274,26 @@ function App() {
     }
   }
 
+  //разлогирование
+  const handleUnLogin = () => {
+    localStorage.clear();
+    setAllMovies([]);
+    setIsShortMovieChecked(false);
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setUserId("");
+    setIsRegistered(false);
+    setFilteredMoviesArray("");
+    setMovieSearchQuery("");
+    setTotalCardsOnPage("");
+    setIsMoreButtonVisible(false);
+    setBaseNumberOfCards("12");
+    setErrorServerMessage('');
+    document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+    navigate("/", { replace: true });
+  };
+
   /////////////
   // ЭФФЕКТЫ //
   /////////////
@@ -360,6 +380,7 @@ function App() {
                 isRegistered={isRegistered}
                 menuActive={isMenuActive}
                 setActive={setIsMenuActive}
+                handleUnLogin={handleUnLogin}
               />
             }
           />
