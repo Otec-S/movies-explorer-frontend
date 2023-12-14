@@ -67,7 +67,7 @@ function App() {
   //стейт для отслеживания состояния чекбокса, включен или нет
   const [isShortMovieChecked, setIsShortMovieChecked] = useLocalStorageState(
     "isShortMovieChecked",
-    "false"
+    false
   );
 
   //стейт для отслеживания наличия поискового запроса в форме поиска
