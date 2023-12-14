@@ -32,6 +32,28 @@ import { SAVED_MOVIES_BASE } from "../constants.js";
 //   return tokenMatch ? tokenMatch[1] : null;
 // }
 
+//регистрация
+export async function register(name, email, password) {
+  try {
+    const response = await fetch(`${SAVED_MOVIES_BASE}/signup`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+
+    return response;
+  } 
+  catch (error) {
+    console.error(error);
+    // Обработка ошибки, например, throw error; или другие действия
+  }
+}
+
+
 //авторизация
 export async function authorize(email, password) {
   try {
@@ -52,6 +74,28 @@ export async function authorize(email, password) {
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
+
+//разлогинивание
+export async function signout() {
+  try {
+    const response = await fetch(`${SAVED_MOVIES_BASE}/signout`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      // body: JSON.stringify({ email, password }),
+    });
+
+    return response;
+  } 
+  catch (error) {
+    console.error(error);
+    // Обработка ошибки, например, throw error; или другие действия
+  }
+}
+
 
 //получение с бэка всего списка сохраненных фильмов (убрали из скобок токен)
 export const getAllSavedMovies = async () => {

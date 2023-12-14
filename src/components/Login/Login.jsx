@@ -41,7 +41,7 @@ export default function Login({
   //   });
   // }
 
-  async function handleUserFormSubmit(e) {
+  async function handleLoginFormSubmit(e) {
     e.preventDefault();
 
     try {
@@ -97,7 +97,7 @@ export default function Login({
       isPasswordValid={isPasswordValid}
       isRegistered={isRegistered}
       handleFormValidation={handleFormValidation}
-      handleUserFormSubmit={handleUserFormSubmit}
+      handleLoginFormSubmit={handleLoginFormSubmit}
       errorServerMessage={errorServerMessage}
     />
   );

@@ -235,7 +235,8 @@ function App() {
   //   }
   // }
 
-  async function tokenCheck() {
+  function tokenCheck() {
+    //??????тут точно асинхрон НЕ нужен
     try {
       const currentPath = window.location.pathname;
 
@@ -275,28 +276,29 @@ function App() {
   }
 
   //разлогирование
-  const handleUnLogin = () => {
-    localStorage.clear();
-    setAllMovies([]);
-    setIsShortMovieChecked(false);
-    setUserName("");
-    setEmail("");
-    setPassword("");
-    setUserId("");
-    setIsRegistered(false);
-    setFilteredMoviesArray("");
-    setMovieSearchQuery("");
-    setTotalCardsOnPage("");
-    setIsMoreButtonVisible(false);
-    setBaseNumberOfCards("12");
-    setErrorServerMessage('');
-
-    setIsNameValid(null);
-    setIsEmailValid(null);
-    setIsPasswordValid(null);
-
-    document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-    navigate("/", { replace: true });
+  const handleUnLogin = async () => {
+    const response = await auth.signout();
+    if (response.ok) {
+      localStorage.clear();
+      setAllMovies([]);
+      setIsShortMovieChecked(false);
+      setUserName("");
+      setEmail("");
+      setPassword("");
+      setUserId("");
+      setIsRegistered(false);
+      setFilteredMoviesArray("");
+      setMovieSearchQuery("");
+      setTotalCardsOnPage("");
+      setIsMoreButtonVisible(false);
+      setBaseNumberOfCards("12");
+      setErrorServerMessage("");
+      setIsNameValid(null);
+      setIsEmailValid(null);
+      setIsPasswordValid(null);
+      navigate("/", { replace: true });
+    }
+    // document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 
   /////////////
@@ -338,11 +340,21 @@ function App() {
             path="/signup"
             element={
               <Register
-                isRegistered={false}
+                isRegistered={isRegistered}
                 isNameValid={isNameValid}
                 isEmailValid={isEmailValid}
                 isPasswordValid={isPasswordValid}
                 handleFormValidation={handleFormValidation}
+                setUserId={setUserId}
+                setUserName={setUserName}
+                userName={userName}
+                email={email}
+                password={password}
+                userId={userId}
+                setEmail={setEmail}
+                setIsRegistered={setIsRegistered}
+                errorServerMessage={errorServerMessage}
+                setErrorServerMessage={setErrorServerMessage}
               />
             }
           />

@@ -16,7 +16,8 @@ const WelcomeForm = ({
   isPasswordValid,
   isRegistered,
   handleFormValidation,
-  handleUserFormSubmit,
+  handleLoginFormSubmit,
+  handleRegisterFormSubmit,
   errorServerMessage,
 }) => {
   const { userName, email, password } = React.useContext(CurrentUserContext);
@@ -59,7 +60,7 @@ const WelcomeForm = ({
       <form
         action=""
         className="welcome-form__form"
-        onSubmit={handleUserFormSubmit}
+        onSubmit={isNewUser ? handleRegisterFormSubmit : handleLoginFormSubmit}
         noValidate
       >
         {isNewUser && (
