@@ -34,6 +34,11 @@
   margin-right: -3px;
 }
 
+.profile__form__input_invalid {
+  color: red;
+  caret-color: black;
+}
+
 .profile__form__linegrey {
   margin: 16px 0 17px;
 }

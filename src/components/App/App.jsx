@@ -24,8 +24,8 @@ function App() {
   /////////////
 
   //стейты о пользователе
-  const [userName, setUserName] = useState("");
-  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useLocalStorageState("userName", "");
+  const [email, setEmail] = useLocalStorageState("email", "");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
 
@@ -399,6 +399,11 @@ function App() {
                 menuActive={isMenuActive}
                 setActive={setIsMenuActive}
                 handleUnLogin={handleUnLogin}
+                isNameValid={isNameValid}
+                isEmailValid={isEmailValid}
+                isPasswordValid={isPasswordValid}
+                handleFormValidation={handleFormValidation}
+                errorServerMessage={errorServerMessage}
               />
             }
           />

@@ -67,6 +67,7 @@ export default function Login({
         //записываем полученные в ответе сервера пароль и _id в стейты
         setPassword(data.password);
         setEmail(data.email);
+        setUserName(data.name);
         setUserId(data._id);
         //стейт isRegistered в положение true
         setIsRegistered(true);

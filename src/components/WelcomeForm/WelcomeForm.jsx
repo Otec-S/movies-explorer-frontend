@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./WelcomeForm.css";
 import { Link } from "react-router-dom";
 import MainLink from "../MainLink/MainLink";
@@ -20,7 +20,7 @@ const WelcomeForm = ({
   handleRegisterFormSubmit,
   errorServerMessage,
 }) => {
-  const { userName, email, password } = React.useContext(CurrentUserContext);
+  const { userName, email, password } = useContext(CurrentUserContext);
 
   // const [userName, setUserName] = useState("");
   // const [email, setEmail] = useState("");
@@ -64,7 +64,7 @@ const WelcomeForm = ({
         noValidate
       >
         {isNewUser && (
-          <label htmlFor="name" className="welcome-form__form__label">
+          <label htmlFor="userName" className="welcome-form__form__label">
             Имя
             <input
               type="text"
