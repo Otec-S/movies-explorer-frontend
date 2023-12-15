@@ -18,7 +18,7 @@ const Profile = ({
 }) => {
   const { userName, email, password } = useContext(CurrentUserContext);
 
-  console.log('userName', userName);
+  // console.log('userName', userName);
 
   return (
     <>
@@ -31,38 +31,41 @@ const Profile = ({
       <main className="profile">
         <h1 className="profile__greetings">{`Привет, ${userName}!`}</h1>
         <form action="" className="profile__form" noValidate>
-          <label htmlFor="name" className="profile__form__label">
+          <label htmlFor="userName" className="profile__form__label">
             Имя
             <input
               type="text"
               id="userName"
               name="userName"
-              className={`profile__form__input ${
-                !isNameValid ? "profile__form__input_invalid" : ""
-              }`}
+              className="profile__form__input"
               value={userName}
               onChange={handleFormValidation}
               required
             />
-            {/* TODO!!!!!!!!!!!!!!!! */}
-            <span className="welcome-form__form__input__error-msg">
-              {isNameValid === false &&
-                "Введите корректное имя (латиница, кириллица, пробел или дефис)"}
-            </span>
           </label>
+          <span className="profile__form__input__error-msg">
+            {isNameValid === false &&
+              "Введите корректное имя (латиница, кириллица, пробел или дефис)"}
+          </span>
           <div className="profile__form__linegrey">
             <LineGrey />
           </div>
 
-          <label htmlFor="" className="profile__form__label">
+          <label htmlFor="email" className="profile__form__label">
             E&shy;mail
             <input
               type="text"
+              id="email"
+              name="email"
+              onChange={handleFormValidation}
               className="profile__form__input"
               value={email}
               required
             />
           </label>
+          <span className="profile__form__input__error-msg">
+            {isEmailValid === false && "Введите корректный email"}
+          </span>
         </form>
         <button type="submit" className="profile__update-btn">
           Редактировать

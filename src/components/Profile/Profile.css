@@ -39,8 +39,17 @@
   caret-color: black;
 }
 
+.profile__form__input__error-msg{
+  height: 11px;
+  /* margin-top: 10px; */
+  font-weight: 400;
+  font-size: 10px;
+  color: rgba(238, 52, 101, 1);
+  text-align: end;
+}
+
 .profile__form__linegrey {
-  margin: 16px 0 17px;
+  margin: 5px 0 17px;
 }
 
 .profile__update-btn {
