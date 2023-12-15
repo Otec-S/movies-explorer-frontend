@@ -11,7 +11,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
 import { getAllSavedMovies } from "../../utils/MainApi";
-import { useLocalStorageState } from "../../hooks";
+import { useLocalStorageState, useSessionStorageState } from "../../hooks";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import * as auth from "../../utils/MainApi";
@@ -235,39 +235,28 @@ function App() {
   //   }
   // }
 
-  function tokenCheck() {
-    //??????тут точно асинхрон НЕ нужен
+  async function tokenCheck() {
     try {
+      //определяем текущее местрорасположение
       const currentPath = window.location.pathname;
-
-      // Пытаемся получить значение токена из кук
-      // const cookies = document.cookie;
-      // console.log('cookies', document.cookie);
-      // const tokenCookie = cookies
-      //   .split("; ")
-      //   .find((cookie) => cookie.startsWith("jwt="));
-      // console.log('tokenCookie', tokenCookie);
-      // console.log('document.cookie.length', document.cookie.length);
-
-      if (document.cookie.length > 0) {
-        // console.log('COOKIE!!!');
-        // Извлекаем значение токена из куки
-        // const token = tokenCookie.split("=")[1];
-
-        // Предположим, что auth - это объект или модуль, предоставляющий метод getContent
-        // const res = await auth.getContent(token);
-
-        //авторизуемся
-        // const response = await auth.authorize(email, password);
+      //если есть куки, то значит мы зарегистрированы
+      if (document.cookie.length > 0 || localStorage.getItem("email")) {
         setIsRegistered(true);
         navigate(currentPath, { replace: true });
-        // if (response.ok) {
-        //   // Авторизуем пользователя
-        //   // handleLogin();
-        //   // setUsersEmail(res.email);
-        //   // Перенаправляем пользователя на главную страницу
-        //   //  стейт isRegistered в положение true
-
+        //если в сессионном хранилище нет имени и email, то получаем их с сервера и записываем в стейты
+        // if (Object.keys(sessionStorage).length === 0) {
+        //   try {
+        //     const response = await auth.authorize(email, password);
+        //     if (response.ok) {
+        //       //получение и запись в data данных с сервера
+        //       const data = await response.json();
+        //       //записываем полученные в ответе сервера пароль и _id в стейты
+        //       setEmail(data.email);
+        //       setUserName(data.name);
+        //     }
+        //   } catch (error) {
+        //     console.error(error);
+        //   }
         // }
       }
     } catch (error) {
@@ -278,26 +267,27 @@ function App() {
   //разлогирование
   const handleUnLogin = async () => {
     const response = await auth.signout();
-    if (response.ok) {
-      localStorage.clear();
-      setAllMovies([]);
-      setIsShortMovieChecked(false);
-      setUserName("");
-      setEmail("");
-      setPassword("");
-      setUserId("");
-      setIsRegistered(false);
-      setFilteredMoviesArray("");
-      setMovieSearchQuery("");
-      setTotalCardsOnPage("");
-      setIsMoreButtonVisible(false);
-      setBaseNumberOfCards("12");
-      setErrorServerMessage("");
-      setIsNameValid(null);
-      setIsEmailValid(null);
-      setIsPasswordValid(null);
-      navigate("/", { replace: true });
-    }
+    console.log("response", response);
+
+    localStorage.clear();
+    setAllMovies([]);
+    setIsShortMovieChecked(false);
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setUserId("");
+    setIsRegistered(false);
+    setFilteredMoviesArray("");
+    setMovieSearchQuery("");
+    setTotalCardsOnPage("");
+    setIsMoreButtonVisible(false);
+    setBaseNumberOfCards("12");
+    setErrorServerMessage("");
+    setIsNameValid(null);
+    setIsEmailValid(null);
+    setIsPasswordValid(null);
+    navigate("/", { replace: true });
+
     // document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
   };
 

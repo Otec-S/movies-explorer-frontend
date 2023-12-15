@@ -54,13 +54,6 @@ export default function Login({
       console.log("response", response);
 
       if (response.ok) {
-        // // Получаем токен из куки
-        // const token = response.headers.get("Set-Cookie");
-        // // Далее можно использовать токен по необходимости
-        // if (token) {
-        //   console.log("есть куки");
-        // }
-
         //получение и запись в data данных с сервера
         const data = await response.json();
 
