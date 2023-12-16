@@ -42,7 +42,10 @@ function App() {
   const [isMenuActive, setIsMenuActive] = useState(false);
 
   //стейт для зарегистрированного пользователя
-  const [isRegistered, setIsRegistered] = useState(false);
+  const [isRegistered, setIsRegistered] = useLocalStorageState(
+    "isRegistered",
+    false
+  );
 
   //стейт для стилизации Header и его наполнения
   const [isPromo, setIsPromo] = useState(false);
@@ -268,18 +271,19 @@ function App() {
     const currentPath = window.location.pathname;
     //если есть куки, то значит мы зарегистрированы
     if (
-      document.cookie.length > 0 ||
-      (localStorage.getItem("email") &&
-        localStorage.getItem("email") !== "" && //нужно это условие, если начальное значение стейта null?
-        localStorage.getItem("email") !== "null" &&
-        localStorage.getItem("email") !== "undefined")
+      isRegistered
+      // document.cookie.length > 0 ||
+      // (localStorage.getItem("email") &&
+      //   localStorage.getItem("email") !== "" && //нужно это условие, если начальное значение стейта null?
+      //   localStorage.getItem("email") !== "null" &&
+      //   localStorage.getItem("email") !== "undefined")
     ) {
-      setIsRegistered(true);
+      // setIsRegistered(true);
       console.log("yes");
-      console.log("localStorage.getItem(email)", localStorage.getItem("email"));
+      // console.log("localStorage.getItem(email)", localStorage.getItem("email"));
       navigate(currentPath, { replace: true });
     } else {
-      setIsRegistered(false);
+      // setIsRegistered(false);
       console.log("no");
       navigate("/", { replace: true });
     }
@@ -352,44 +356,54 @@ function App() {
           <Route
             path="/signup"
             element={
-              <Register
-                isRegistered={isRegistered}
-                isNameValid={isNameValid}
-                isEmailValid={isEmailValid}
-                isPasswordValid={isPasswordValid}
-                handleFormValidation={handleFormValidation}
-                setUserId={setUserId}
-                setUserName={setUserName}
-                userName={userName}
-                email={email}
-                password={password}
-                userId={userId}
-                setEmail={setEmail}
-                setIsRegistered={setIsRegistered}
-                errorServerMessage={errorServerMessage}
-                setErrorServerMessage={setErrorServerMessage}
+              <ProtectedRouteElement
+                isRegistered={!isRegistered}
+                element={
+                  <Register
+                    isRegistered={isRegistered}
+                    isNameValid={isNameValid}
+                    isEmailValid={isEmailValid}
+                    isPasswordValid={isPasswordValid}
+                    handleFormValidation={handleFormValidation}
+                    setUserId={setUserId}
+                    setUserName={setUserName}
+                    userName={userName}
+                    email={email}
+                    password={password}
+                    userId={userId}
+                    setEmail={setEmail}
+                    setIsRegistered={setIsRegistered}
+                    errorServerMessage={errorServerMessage}
+                    setErrorServerMessage={setErrorServerMessage}
+                  />
+                }
               />
             }
           />
           <Route
             path="/signin"
             element={
-              <Login
-                isNameValid={isNameValid}
-                isEmailValid={isEmailValid}
-                isPasswordValid={isPasswordValid}
-                isRegistered={isRegistered}
-                handleFormValidation={handleFormValidation}
-                setPassword={setPassword}
-                setUserId={setUserId}
-                setUserName={setUserName}
-                email={email}
-                password={password}
-                userId={userId}
-                setEmail={setEmail}
-                setIsRegistered={setIsRegistered}
-                errorServerMessage={errorServerMessage}
-                setErrorServerMessage={setErrorServerMessage}
+              <ProtectedRouteElement
+                isRegistered={!isRegistered}
+                element={
+                  <Login
+                    isNameValid={isNameValid}
+                    isEmailValid={isEmailValid}
+                    isPasswordValid={isPasswordValid}
+                    isRegistered={isRegistered}
+                    handleFormValidation={handleFormValidation}
+                    setPassword={setPassword}
+                    setUserId={setUserId}
+                    setUserName={setUserName}
+                    email={email}
+                    password={password}
+                    userId={userId}
+                    setEmail={setEmail}
+                    setIsRegistered={setIsRegistered}
+                    errorServerMessage={errorServerMessage}
+                    setErrorServerMessage={setErrorServerMessage}
+                  />
+                }
               />
             }
           />
@@ -428,39 +442,49 @@ function App() {
           <Route
             path="/movies"
             element={
-              <Movies
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
+              <ProtectedRouteElement
                 isRegistered={isRegistered}
-                isPromo={false}
-                isLoading={isLoading}
-                filteredMoviesArray={filteredMoviesArray}
-                initialSetAllMovies={initialSetAllMovies}
-                movieSearchQuery={movieSearchQuery}
-                searchMovies={searchMovies}
-                setMovieSearchQuery={setMovieSearchQuery}
-                handleSearchFormSubmit={handleSearchFormSubmit}
-                isSearchErrored={isSearchErrored}
-                allMovies={allMovies}
-                handleCheckboxChange={handleCheckboxChange}
-                isSearchFormEmpty={isSearchFormEmpty}
-                isShortMovieChecked={isShortMovieChecked}
-                pageWidth={pageWidth}
-                totalCardsOnPage={totalCardsOnPage}
-                isMoreButtonVisible={isMoreButtonVisible}
-                addCardRows={addCardRows}
-                handleClick={handleClick}
+                element={
+                  <Movies
+                    menuActive={isMenuActive}
+                    setActive={setIsMenuActive}
+                    isRegistered={isRegistered}
+                    isPromo={false}
+                    isLoading={isLoading}
+                    filteredMoviesArray={filteredMoviesArray}
+                    initialSetAllMovies={initialSetAllMovies}
+                    movieSearchQuery={movieSearchQuery}
+                    searchMovies={searchMovies}
+                    setMovieSearchQuery={setMovieSearchQuery}
+                    handleSearchFormSubmit={handleSearchFormSubmit}
+                    isSearchErrored={isSearchErrored}
+                    allMovies={allMovies}
+                    handleCheckboxChange={handleCheckboxChange}
+                    isSearchFormEmpty={isSearchFormEmpty}
+                    isShortMovieChecked={isShortMovieChecked}
+                    pageWidth={pageWidth}
+                    totalCardsOnPage={totalCardsOnPage}
+                    isMoreButtonVisible={isMoreButtonVisible}
+                    addCardRows={addCardRows}
+                    handleClick={handleClick}
+                  />
+                }
               />
             }
           />
           <Route
             path="/saved-movies"
             element={
-              <SavedMovies
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
+              <ProtectedRouteElement
                 isRegistered={isRegistered}
-                isPromo={false}
+                element={
+                  <SavedMovies
+                    menuActive={isMenuActive}
+                    setActive={setIsMenuActive}
+                    isRegistered={isRegistered}
+                    isPromo={false}
+                  />
+                }
               />
             }
           />
