@@ -15,6 +15,7 @@ import { useLocalStorageState, useSessionStorageState } from "../../hooks";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import * as auth from "../../utils/MainApi";
+import ProtectedRouteElement from "../../utils/ProtectedRoute";
 
 function App() {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ function App() {
 
   //стейты о пользователе
   const [userName, setUserName] = useLocalStorageState("userName", "");
-  const [email, setEmail] = useLocalStorageState("email", "");
+  const [email, setEmail] = useLocalStorageState("email", null);
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
 
@@ -235,34 +236,54 @@ function App() {
   //   }
   // }
 
-  async function tokenCheck() {
-    try {
-      //определяем текущее местрорасположение
-      const currentPath = window.location.pathname;
-      //если есть куки, то значит мы зарегистрированы
-      if (document.cookie.length > 0 || localStorage.getItem("email")) {
-        setIsRegistered(true);
-        navigate(currentPath, { replace: true });
-        //если в сессионном хранилище нет имени и email, то получаем их с сервера и записываем в стейты
-        // if (Object.keys(sessionStorage).length === 0) {
-        //   try {
-        //     const response = await auth.authorize(email, password);
-        //     if (response.ok) {
-        //       //получение и запись в data данных с сервера
-        //       const data = await response.json();
-        //       //записываем полученные в ответе сервера пароль и _id в стейты
-        //       setEmail(data.email);
-        //       setUserName(data.name);
-        //     }
-        //   } catch (error) {
-        //     console.error(error);
-        //   }
-        // }
-      }
-    } catch (error) {
-      console.error(error);
+  // async function tokenCheck() {
+  //   try {
+  //     //определяем текущее местрорасположение
+  //     const currentPath = window.location.pathname;
+  //     //если есть куки, то значит мы зарегистрированы
+  //     if (
+  //       document.cookie.length > 0 ||
+  //       (
+  //         localStorage.getItem("email") &&
+  //         localStorage.getItem("email") !== "" &&
+  //         localStorage.getItem("email") !== "null" &&
+  //         localStorage.getItem("email") !== "undefined")
+  //     ) {
+  //       setIsRegistered(true);
+  //       console.log("yes");
+  //       console.log("localStorage.getItem(email)", localStorage.getItem("email"));
+  //       navigate(currentPath, { replace: true });
+  //     } else {
+  //       setIsRegistered(false);
+  //       console.log("no");
+  //       navigate("/", { replace: true });
+  //     }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
+
+  const tokenCheck = () => {
+    //определяем текущее местрорасположение
+    const currentPath = window.location.pathname;
+    //если есть куки, то значит мы зарегистрированы
+    if (
+      document.cookie.length > 0 ||
+      (localStorage.getItem("email") &&
+        localStorage.getItem("email") !== "" && //нужно это условие, если начальное значение стейта null?
+        localStorage.getItem("email") !== "null" &&
+        localStorage.getItem("email") !== "undefined")
+    ) {
+      setIsRegistered(true);
+      console.log("yes");
+      console.log("localStorage.getItem(email)", localStorage.getItem("email"));
+      navigate(currentPath, { replace: true });
+    } else {
+      setIsRegistered(false);
+      console.log("no");
+      navigate("/", { replace: true });
     }
-  }
+  };
 
   //разлогирование
   const handleUnLogin = async () => {
@@ -273,7 +294,7 @@ function App() {
     setAllMovies([]);
     setIsShortMovieChecked(false);
     setUserName("");
-    setEmail("");
+    setEmail(null);
     setPassword("");
     setUserId("");
     setIsRegistered(false);
@@ -318,6 +339,8 @@ function App() {
       window.removeEventListener("resize", handleCardsOnPage);
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
+
+  console.log("isRegistered", isRegistered);
 
   return (
     <div className="App">
@@ -384,16 +407,21 @@ function App() {
           <Route
             path="/profile"
             element={
-              <Profile
+              <ProtectedRouteElement
                 isRegistered={isRegistered}
-                menuActive={isMenuActive}
-                setActive={setIsMenuActive}
-                handleUnLogin={handleUnLogin}
-                isNameValid={isNameValid}
-                isEmailValid={isEmailValid}
-                isPasswordValid={isPasswordValid}
-                handleFormValidation={handleFormValidation}
-                errorServerMessage={errorServerMessage}
+                element={
+                  <Profile
+                    isRegistered={isRegistered}
+                    menuActive={isMenuActive}
+                    setActive={setIsMenuActive}
+                    handleUnLogin={handleUnLogin}
+                    isNameValid={isNameValid}
+                    isEmailValid={isEmailValid}
+                    isPasswordValid={isPasswordValid}
+                    handleFormValidation={handleFormValidation}
+                    errorServerMessage={errorServerMessage}
+                  />
+                }
               />
             }
           />

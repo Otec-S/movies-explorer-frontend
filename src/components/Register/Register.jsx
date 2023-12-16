@@ -27,9 +27,9 @@ const Register = ({
     e.preventDefault();
 
     try {
-      if (!userName || !email || !password) {
-        return;
-      }
+      // if (!userName || !email || !password) {
+      //   return;
+      // }
 
       const response = await auth.register(userName, email, password);
       console.log("response", response);

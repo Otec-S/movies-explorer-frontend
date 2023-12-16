@@ -63,6 +63,9 @@ export default function Login({
         setUserName(data.name);
         setUserId(data._id);
         //стейт isRegistered в положение true
+
+
+
         setIsRegistered(true);
         //перевод на страницу фильмы
         navigate("/movies", { replace: true });
