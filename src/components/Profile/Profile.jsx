@@ -32,6 +32,10 @@ const Profile = ({
   const [editedUserName, setEditedUserName] = useState(initialUserName);
   //состояние измененного email
   const [editedEmail, setEditedEmail] = useState(initialEmail);
+
+  const [originalUserName, setOriginalUserName] = useState(initialUserName);
+  const [originalEmail, setOriginalEmail] = useState(initialEmail);
+
   //активна ли кнопка Сохранить
   const [isSaveButtonActive, setIsSaveButtonActive] = useState(false);
 
@@ -41,13 +45,34 @@ const Profile = ({
   // }, [editedUserName, editedEmail]);
 
   useEffect(() => {
-    handleFormValidation({ target: { name: "userName", value: editedUserName } });
+    handleFormValidation({
+      target: { name: "userName", value: editedUserName },
+    });
     handleFormValidation({ target: { name: "email", value: editedEmail } });
   }, [editedUserName, editedEmail, handleFormValidation]);
+
+  useEffect(() => {
+    // Проверка изменений и валидации для активации/деактивации кнопки Сохранить
+    const isUserNameChanged = editedUserName !== originalUserName;
+    const isEmailChanged = editedEmail !== originalEmail;
+
+    setIsSaveButtonActive(
+      (isUserNameChanged || isEmailChanged) && isNameValid && isEmailValid
+    );
+  }, [
+    editedUserName,
+    editedEmail,
+    originalUserName,
+    originalEmail,
+    isNameValid,
+    isEmailValid,
+  ]);
 
   //нажатие на кнопку Редактировать переводит стейт режима редактирования в true, то есть включает этот режим
   const handleEditClick = () => {
     setIsEditing(true);
+    setOriginalUserName(editedUserName);
+    setOriginalEmail(editedEmail);
   };
 
   //обработка клика по кнопке Сохранить
@@ -80,7 +105,6 @@ const Profile = ({
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    
     //обратобка изменений в полях ввода
     if (name === "userName") {
       setEditedUserName(value);
@@ -90,20 +114,19 @@ const Profile = ({
 
     //проверка, нужно ли активировать кнопку Сохранить
     //передается true если вводимые значения полей отличаются от прежних
-    setIsSaveButtonActive(
-      ((name === "userName" && value !== initialUserName) ||
-        (name === "email" && value !== initialEmail))
-        // &&
-        // isNameValid &&
-        // isEmailValid
-    );
+    // setIsSaveButtonActive(
+    //   (name === "userName" && value !== initialUserName) ||
+    //     (name === "email" && value !== initialEmail)
+    //   // &&
+    //   // isNameValid &&
+    //   // isEmailValid
+    // );
 
     // handleFormValidation(event);
 
     // console.log("isNameValid", isNameValid);
     // console.log("isEmailValid", isEmailValid);
     // console.log("isSaveButtonActive", isSaveButtonActive);
-
   };
 
   // console.log("isNameValid", isNameValid);
