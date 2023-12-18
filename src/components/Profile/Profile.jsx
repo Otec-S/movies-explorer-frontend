@@ -40,7 +40,10 @@ const Profile = ({
   //   handleFormValidation();
   // }, [editedUserName, editedEmail]);
 
-
+  useEffect(() => {
+    handleFormValidation({ target: { name: "userName", value: editedUserName } });
+    handleFormValidation({ target: { name: "email", value: editedEmail } });
+  }, [editedUserName, editedEmail, handleFormValidation]);
 
   //нажатие на кнопку Редактировать переводит стейт режима редактирования в true, то есть включает этот режим
   const handleEditClick = () => {
@@ -90,19 +93,10 @@ const Profile = ({
     setIsSaveButtonActive(
       ((name === "userName" && value !== initialUserName) ||
         (name === "email" && value !== initialEmail))
-    //     // &&
-    //     // isNameValid &&
-    //     // isEmailValid
+        // &&
+        // isNameValid &&
+        // isEmailValid
     );
-
-    //проверка, нужно ли активировать кнопку Сохранить
-  //передается true если вводимые значения полей отличаются от прежних
-  // setIsSaveButtonActive((prev) => {
-  //   return (
-  //     ((name === "userName" && value !== initialUserName) ||
-  //       (name === "email" && value !== initialEmail)) && prev
-  //   );
-  // });
 
     // handleFormValidation(event);
 
