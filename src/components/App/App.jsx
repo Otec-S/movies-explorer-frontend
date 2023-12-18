@@ -104,7 +104,7 @@ function App() {
 
   //валидирование форм ввода
   const handleFormValidation = (event) => {
-    const { name, value } = event.target;
+    const { name, value } = event.target || event;
 
     switch (name) {
       case "userName":
