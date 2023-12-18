@@ -39,6 +39,9 @@ const Profile = ({
   //активна ли кнопка Сохранить
   const [isSaveButtonActive, setIsSaveButtonActive] = useState(false);
 
+  //имя для шапки профиля из ответа сервера
+  const [greetingsName, setGreetingsName] = useState(initialUserName);
+
   // При изменении editedUserName или editedEmail вызываем handleFormValidation для живой валидации
   // useEffect(() => {
   //   handleFormValidation();
@@ -85,9 +88,13 @@ const Profile = ({
       if (response.ok) {
         //получение и запись в data данных с сервера
         const data = await response.json();
+        console.log("data", data);
+
         //записываем полученные в ответе сервера пароль и почту в стейты
         setEmail(data.email);
         setUserName(data.name);
+        //берем имя для шапки профиля из ответа сервера
+        setGreetingsName(data.name);
 
         // После успешного обновления данных:
         setIsEditing(false);
@@ -142,7 +149,7 @@ const Profile = ({
         isPromo={isPromo}
       />
       <main className="profile">
-        <h1 className="profile__greetings">{`Привет, ${initialUserName}!`}</h1>
+        <h1 className="profile__greetings">{`Привет, ${greetingsName}!`}</h1>
         <form action="" className="profile__form" noValidate>
           <label htmlFor="userName" className="profile__form__label">
             Имя
