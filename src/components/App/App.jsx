@@ -26,7 +26,7 @@ function App() {
 
   //стейты о пользователе
   const [userName, setUserName] = useLocalStorageState("userName", "");
-  const [email, setEmail] = useLocalStorageState("email", null);
+  const [email, setEmail] = useLocalStorageState("email", "");
   const [password, setPassword] = useState("");
   const [userId, setUserId] = useState("");
 
@@ -279,7 +279,7 @@ function App() {
       //   localStorage.getItem("email") !== "undefined")
     ) {
       // setIsRegistered(true);
-      console.log("yes");
+      // console.log("yes");
       // console.log("localStorage.getItem(email)", localStorage.getItem("email"));
       navigate(currentPath, { replace: true });
     } else {
@@ -323,7 +323,7 @@ function App() {
   //функция проверки токена, чтобы не вводить его повторно (при перезагрузке страницы например)
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [isRegistered]);
 
   useEffect(() => {
     //отрисовываем карточки на странице в зависимости от ширины экрана
@@ -344,7 +344,7 @@ function App() {
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
 
-  console.log("isRegistered", isRegistered);
+  // console.log("isRegistered", isRegistered);
 
   return (
     <div className="App">
@@ -434,6 +434,9 @@ function App() {
                     isPasswordValid={isPasswordValid}
                     handleFormValidation={handleFormValidation}
                     errorServerMessage={errorServerMessage}
+                    setErrorServerMessage={setErrorServerMessage}
+                    setEmail={setEmail}
+                    setUserName={setUserName}
                   />
                 }
               />

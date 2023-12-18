@@ -1,37 +1,5 @@
 import { SAVED_MOVIES_BASE } from "../constants.js";
 
-// import { useContext } from "react";
-// const { errorServerMessage, setErrorServerMessage } = useContext(AppContext);
-
-//авторизация
-// export function authorize(email, password) {
-//   return fetch(`${SAVED_MOVIES_BASE}/signin`, {
-//     method: "POST",
-//     credentials: 'include', // теперь куки посылаются вместе с запросом
-//     headers: {
-//       Accept: "application/json",
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify({ email, password }),
-//   })
-//     .then((response) => {
-//       return response.json();
-//     })
-//     .then((data) => {
-//       if (data.token) {
-//         localStorage.setItem("token", data.token);
-//         return data; //возвращается только токен
-//       }
-//     })
-//     .catch(console.error);
-// }
-
-// Вспомогательная функция для извлечения токена из куки
-// function getTokenFromCookie(cookie) {
-//   const tokenMatch = cookie.match(/jwt=([^;]*)/);
-//   return tokenMatch ? tokenMatch[1] : null;
-// }
-
 //регистрация
 export async function register(name, email, password) {
   try {
@@ -53,7 +21,6 @@ export async function register(name, email, password) {
   }
 }
 
-
 //авторизация
 export async function authorize(email, password) {
   try {
@@ -74,6 +41,30 @@ export async function authorize(email, password) {
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
+
+
+//изменение данных пользователя
+export async function updateProfile(name, email) {
+  try {
+    const response = await fetch(`${SAVED_MOVIES_BASE}/users/me`, {
+      method: "PATCH",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, email }),
+    });
+
+    return response;
+  } 
+  catch (error) {
+    console.error(error);
+    // Обработка ошибки, например, throw error; или другие действия
+  }
+}
+
+
 
 //разлогинивание
 export async function signout() {
