@@ -22,33 +22,12 @@ export default function Login({
   errorServerMessage,
   setErrorServerMessage,
 }) {
-  // const { userName, email, password, userId } = useContext(CurrentUserContext);
-
-  //стейт для формы логирования
-  // const [formValue, setFormValue] = useState({
-  //   email: "",
-  //   password: "",
-  // });
-
   const navigate = useNavigate();
-
-  // function handleChange(event) {
-  //   const { name, value } = event.target;
-
-  //   setFormValue({
-  //     ...formValue,
-  //     [name]: value,
-  //   });
-  // }
 
   async function handleLoginFormSubmit(e) {
     e.preventDefault();
 
     try {
-      if (!email || !password) {
-        return;
-      }
-
       //получение ответа с сервера
       const response = await auth.authorize(email, password);
       console.log("response", response);
@@ -63,8 +42,6 @@ export default function Login({
         setUserName(data.name);
         setUserId(data._id);
         //стейт isRegistered в положение true
-
-
 
         setIsRegistered(true);
         //перевод на страницу фильмы

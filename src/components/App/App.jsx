@@ -298,7 +298,7 @@ function App() {
     setAllMovies([]);
     setIsShortMovieChecked(false);
     setUserName("");
-    setEmail(null);
+    setEmail("");
     setPassword("");
     setUserId("");
     setIsRegistered(false);
