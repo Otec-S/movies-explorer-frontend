@@ -43,6 +43,9 @@ const Profile = ({
   //имя для шапки профиля из ответа сервера
   const [greetingsName, setGreetingsName] = useState(initialUserName);
 
+  //анимация
+  const [showSuccessNotification, setShowSuccessNotification] = useState(false);
+
   // При изменении editedUserName или editedEmail вызываем handleFormValidation для живой валидации
   //явно обозначаем, что такое таргет и его значение, так как из этой функции нет доступа к полю ввода
   useEffect(() => {
@@ -96,6 +99,14 @@ const Profile = ({
         setIsEditing(false);
         setIsSaveButtonActive(false);
         setErrorServerMessage("");
+
+        // Показываем уведомление об успешном обновлении
+        setShowSuccessNotification(true);
+
+        // Скрываем уведомление через 3 секунды
+        setTimeout(() => {
+          setShowSuccessNotification(false);
+        }, 3000);
       } else {
         console.log("ошибка1");
         setErrorServerMessage("При обновлении профиля произошла ошибка.");
@@ -183,6 +194,13 @@ const Profile = ({
             {isEmailValid === false && "Введите корректный email"}
           </span>
         </form>
+        
+        {/* анимация успешного обновления профиля */}
+        {showSuccessNotification && (
+          <div className="profile__success-notification">
+            Профиль успешно обновлен!
+          </div>
+        )}
 
         {/* сообщение об ошибке с сервера */}
         <span className="profile-form__button__error-msg">
