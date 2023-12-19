@@ -269,10 +269,9 @@ function App() {
   const tokenCheck = () => {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
-    //если есть куки, то значит мы зарегистрированы
-    if (
-      isRegistered
-      // document.cookie.length > 0 ||
+    if (document.cookie.length > 0
+      // isRegistered
+      //  ||
       // (localStorage.getItem("email") &&
       //   localStorage.getItem("email") !== "" && //нужно это условие, если начальное значение стейта null?
       //   localStorage.getItem("email") !== "null" &&
@@ -283,8 +282,7 @@ function App() {
       // console.log("localStorage.getItem(email)", localStorage.getItem("email"));
       navigate(currentPath, { replace: true });
     } else {
-      // setIsRegistered(false);
-      console.log("no");
+      setIsRegistered(false);
       navigate("/", { replace: true });
     }
   };
