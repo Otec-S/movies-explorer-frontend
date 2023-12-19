@@ -20,19 +20,20 @@ const Profile = ({
   setEmail,
   setUserName,
 }) => {
-  //userName и email берем из контекста
+  //userName и email берем из контекста и переназываем их в переменные initial
   const {
     userName: initialUserName,
     email: initialEmail,
     password,
   } = useContext(CurrentUserContext);
+
   //устанавливаем состояние редактирования
   const [isEditing, setIsEditing] = useState(false);
-  //состояние измененного имени
+  //состояние отредактированного имени
   const [editedUserName, setEditedUserName] = useState(initialUserName);
-  //состояние измененного email
+  //состояние отредактированного email
   const [editedEmail, setEditedEmail] = useState(initialEmail);
-
+  //состояние "оригинальных" переменных для отслеживания их изменения
   const [originalUserName, setOriginalUserName] = useState(initialUserName);
   const [originalEmail, setOriginalEmail] = useState(initialEmail);
 
@@ -43,10 +44,7 @@ const Profile = ({
   const [greetingsName, setGreetingsName] = useState(initialUserName);
 
   // При изменении editedUserName или editedEmail вызываем handleFormValidation для живой валидации
-  // useEffect(() => {
-  //   handleFormValidation();
-  // }, [editedUserName, editedEmail]);
-
+  //явно обозначаем, что такое таргет и его значение, так как из этой функции нет доступа к полю ввода
   useEffect(() => {
     handleFormValidation({
       target: { name: "userName", value: editedUserName },
@@ -54,11 +52,10 @@ const Profile = ({
     handleFormValidation({ target: { name: "email", value: editedEmail } });
   }, [editedUserName, editedEmail, handleFormValidation]);
 
+  // Проверка изменений и валидации для активации/деактивации кнопки Сохранить
   useEffect(() => {
-    // Проверка изменений и валидации для активации/деактивации кнопки Сохранить
     const isUserNameChanged = editedUserName !== originalUserName;
     const isEmailChanged = editedEmail !== originalEmail;
-
     setIsSaveButtonActive(
       (isUserNameChanged || isEmailChanged) && isNameValid && isEmailValid
     );
@@ -71,7 +68,7 @@ const Profile = ({
     isEmailValid,
   ]);
 
-  //нажатие на кнопку Редактировать переводит стейт режима редактирования в true, то есть включает этот режим
+  //нажатие на кнопку Редактировать переводит стейт режима редактирования в true, то есть включает этот режим и переназывает "оригинальные" переменные
   const handleEditClick = () => {
     setIsEditing(true);
     setOriginalUserName(editedUserName);
@@ -79,7 +76,6 @@ const Profile = ({
   };
 
   //обработка клика по кнопке Сохранить
-
   const handleSaveClick = async () => {
     try {
       const response = await updateProfile(editedUserName, editedEmail);
@@ -90,7 +86,7 @@ const Profile = ({
         const data = await response.json();
         console.log("data", data);
 
-        //записываем полученные в ответе сервера пароль и почту в стейты
+        //записываем полученные в ответе сервера имя и почту в стейты
         setEmail(data.email);
         setUserName(data.name);
         //берем имя для шапки профиля из ответа сервера
@@ -99,11 +95,14 @@ const Profile = ({
         // После успешного обновления данных:
         setIsEditing(false);
         setIsSaveButtonActive(false);
+        setErrorServerMessage("");
       } else {
+        console.log("ошибка1");
         setErrorServerMessage("При обновлении профиля произошла ошибка.");
       }
     } catch (error) {
       console.error("error:", error);
+      console.log("ошибка2");
       setErrorServerMessage("При обновлении профиля произошла ошибка.");
     }
   };
@@ -118,27 +117,15 @@ const Profile = ({
     } else if (name === "email") {
       setEditedEmail(value);
     }
-
-    //проверка, нужно ли активировать кнопку Сохранить
-    //передается true если вводимые значения полей отличаются от прежних
-    // setIsSaveButtonActive(
-    //   (name === "userName" && value !== initialUserName) ||
-    //     (name === "email" && value !== initialEmail)
-    //   // &&
-    //   // isNameValid &&
-    //   // isEmailValid
-    // );
-
-    // handleFormValidation(event);
-
-    // console.log("isNameValid", isNameValid);
-    // console.log("isEmailValid", isEmailValid);
-    // console.log("isSaveButtonActive", isSaveButtonActive);
   };
 
-  // console.log("isNameValid", isNameValid);
-  // console.log("isEmailValid", isEmailValid);
-  // console.log("setIsSaveButtonActive()", setIsSaveButtonActive());
+  // обработчик нажатия на Enter
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && isSaveButtonActive) {
+      // если нажата клавиша Enter и кнопка Сохранить активна, вызываем handleSaveClick
+      handleSaveClick();
+    }
+  };
 
   return (
     <>
@@ -150,7 +137,12 @@ const Profile = ({
       />
       <main className="profile">
         <h1 className="profile__greetings">{`Привет, ${greetingsName}!`}</h1>
-        <form action="" className="profile__form" noValidate>
+        <form
+          action=""
+          className="profile__form"
+          noValidate
+          onKeyDown={handleKeyDown}
+        >
           <label htmlFor="userName" className="profile__form__label">
             Имя
             <input
@@ -192,6 +184,12 @@ const Profile = ({
           </span>
         </form>
 
+        {/* сообщение об ошибке с сервера */}
+        <span className="profile-form__button__error-msg">
+          {errorServerMessage && errorServerMessage}
+        </span>
+
+        {/* кнопки под формой */}
         {isEditing ? (
           <button
             type="submit"
@@ -217,14 +215,6 @@ const Profile = ({
             </button>
           </>
         )}
-
-        {/* <button
-            type="button"
-            className="profile__edit-btn"
-            onClick={handleEditClick}
-          >
-            Редактировать
-          </button> */}
       </main>
     </>
   );

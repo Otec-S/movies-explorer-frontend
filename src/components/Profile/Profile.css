@@ -51,6 +51,20 @@
 .profile__form__linegrey {
   margin: 5px 0 17px;
 }
+.profile-form__button__error-msg {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  text-align: center;
+  color: rgba(255, 0, 76, 1);
+  font-size: 11px;
+  line-height: 1.21;
+  margin-top: -4px;
+  width: 100%;
+  height: 30px;
+}
+
+
 
 .profile__save-btn {
   margin-top: 20px;
