@@ -24,7 +24,9 @@ const MoviesCardList = ({
       ) : (
         <>
           {/* фильмы не найдены или пустая строка поискового запроса */}
-          {filteredMoviesArray === null || filteredMoviesArray === '' || filteredMoviesArray.length === 0 ? (
+          {filteredMoviesArray === null ||
+          filteredMoviesArray === "" ||
+          filteredMoviesArray.length === 0 ? (
             <section className="nothing-found-image-block">
               <img
                 src={nothingFound}
@@ -45,12 +47,25 @@ const MoviesCardList = ({
                     .map((item) => {
                       return (
                         <MoviesCard
-                          isSaved={isSaved}
-                          name={item.nameRU}
-                          duration={item.duration}
-                          image={item.image.url}
+                          // isSaved={isSaved}
+                          // name={item.nameRU}
+                          // duration={item.duration}
+                          // image={item.image.url}
+                          // key={item.id}
+                          // trailer={item.trailerLink}
                           key={item.id}
-                          trailer={item.trailerLink}
+                          isSaved={isSaved}
+                          nameRU={item.nameRU}
+                          duration={item.duration}
+                          imageShortUrl={item.image.url}
+                          trailerLink={item.trailerLink}
+                          country={item.country}
+                          director={item.director}
+                          year={item.year}
+                          description={item.description}
+                          thumbnail={item.thumbnail}
+                          movieId={item.id}
+                          nameEN={item.nameEN}
                         />
                       );
                     })}

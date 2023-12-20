@@ -283,6 +283,7 @@ function App() {
       navigate(currentPath, { replace: true });
     } else {
       setIsRegistered(false);
+      setEmail("");
       navigate("/", { replace: true });
     }
   };
@@ -342,7 +343,7 @@ function App() {
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
 
-  // console.log("isRegistered", isRegistered);
+  console.log("filteredMoviesArray", filteredMoviesArray[0]);
 
   return (
     <div className="App">

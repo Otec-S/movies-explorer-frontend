@@ -9,7 +9,6 @@
 
 .movies-card:hover {
   box-shadow: 0 0 15px 0 grey;
-  cursor: pointer;
 }
 
 .movies-card__description {
@@ -60,12 +59,16 @@
   background-size: cover;
 }
 
+.movies-card__picture:hover {
+  cursor: pointer;
+}
+
 .movies-card__description__icon:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .movies-card__description__icon_saved:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1270px) {

@@ -19,12 +19,19 @@ const SavedMoviesCardList = ({
           {filteredMoviesArray.map((item) => {
             return (
               <MoviesCard
+                key={item.id}
                 isSaved={isSaved}
-                name={item.nameRU}
+                nameRU={item.nameRU}
                 duration={item.duration}
                 image={item.image.url}
-                key={item.id}
-                trailer={item.trailerLink}
+                trailerLink={item.trailerLink}
+                country={item.country}
+                director={item.director}
+                year={item.year}
+                description={item.description}
+                thumbnail={item.thumbnail}
+                movieId={item.movieId}
+                nameEN={item.nameEN}
               />
             );
           })}

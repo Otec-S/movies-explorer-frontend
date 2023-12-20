@@ -82,12 +82,10 @@ const Profile = ({
   const handleSaveClick = async () => {
     try {
       const response = await updateProfile(editedUserName, editedEmail);
-      console.log("updateProfileResponse", response);
 
       if (response.ok) {
         //получение и запись в data данных с сервера
         const data = await response.json();
-        console.log("data", data);
 
         //записываем полученные в ответе сервера имя и почту в стейты
         setEmail(data.email);
@@ -108,12 +106,10 @@ const Profile = ({
           setShowSuccessNotification(false);
         }, 3000);
       } else {
-        console.log("ошибка1");
         setErrorServerMessage("При обновлении профиля произошла ошибка.");
       }
     } catch (error) {
       console.error("error:", error);
-      console.log("ошибка2");
       setErrorServerMessage("При обновлении профиля произошла ошибка.");
     }
   };

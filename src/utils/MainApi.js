@@ -93,6 +93,7 @@ export const getAllSavedMovies = async () => {
   try {
     const response = await fetch(`${SAVED_MOVIES_BASE}/movies`, {
       method: "GET",
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
@@ -107,7 +108,7 @@ export const getAllSavedMovies = async () => {
 };
 
 //отправка в бэк карточки фильма
-export const saveMovie = async (
+export const saveMovieOnServer = async (
   country,
   director,
   duration,
@@ -123,6 +124,7 @@ export const saveMovie = async (
   try {
     const response = await fetch(`${SAVED_MOVIES_BASE}/movies`, {
       method: "POST",
+      credentials: "include",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
