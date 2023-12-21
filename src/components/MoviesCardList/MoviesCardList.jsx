@@ -47,12 +47,6 @@ const MoviesCardList = ({
                     .map((item) => {
                       return (
                         <MoviesCard
-                          // isSaved={isSaved}
-                          // name={item.nameRU}
-                          // duration={item.duration}
-                          // image={item.image.url}
-                          // key={item.id}
-                          // trailer={item.trailerLink}
                           key={item.id}
                           isSaved={isSaved}
                           nameRU={item.nameRU}
@@ -65,6 +59,7 @@ const MoviesCardList = ({
                           description={item.description}
                           thumbnail={item.thumbnail}
                           movieId={item.id}
+                          owner={item.owner}
                           nameEN={item.nameEN}
                         />
                       );

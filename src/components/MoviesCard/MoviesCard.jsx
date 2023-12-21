@@ -1,9 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 
 import "./MoviesCard.css";
 import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 import MinutesToHoursAndMinutes from "./MinutesToHoursAndMinutes/MinutesToHoursAndMinutes";
-import { saveMovieOnServer } from "../../utils/MainApi";
+import { saveMovieOnServer, deleteMovieFromServer } from "../../utils/MainApi";
+import { MOVIE_IMAGE_PATH } from "../../constants";
+
 
 const MoviesCard = ({
   isSaved,
@@ -19,16 +21,17 @@ const MoviesCard = ({
   movieId,
   nameEN,
 }) => {
+
+  const [movieCardId, setMovieCardId] = useState(null);
+
   //показваем трейлер фильма в отдельном окне
   const showTrailer = () => {
     window.open(trailerLink, "_blank");
   };
 
+  const image = `${MOVIE_IMAGE_PATH}${imageShortUrl}`;
 
-  const image = `https://api.nomoreparties.co${imageShortUrl}`;
-  console.log("image", image);
-  console.log("тип image", typeof(image));
-
+ 
   //функция сохранения фильма
   const saveMovie = async () => {
     try {
@@ -45,10 +48,25 @@ const MoviesCard = ({
         nameRU,
         nameEN
       );
+      console.log("save-response", response);
 
-      console.log("response", response);
-    } catch (error) {}
+      setMovieCardId(response._id);
+
+    } catch (error) {
+      console.log(error);
+    }
   };
+
+  //удаление карточки фильма
+  const deleteMovie = async () => {
+    try {
+      const response = await deleteMovieFromServer(movieCardId);
+      console.log("delete-response", response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <li className="movies-card">
@@ -66,7 +84,10 @@ const MoviesCard = ({
           <button className="movies-card__description__icon_saved" />
         ) : (
           <div className="movies-card__description__icon">
-            <SaveCheckbox saveMovie={saveMovie} />
+            <SaveCheckbox
+              saveMovie={saveMovie}
+              deleteMovie={deleteMovie}
+            />
           </div>
         )}
       </div>

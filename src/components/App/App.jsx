@@ -269,7 +269,8 @@ function App() {
   const tokenCheck = () => {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
-    if (document.cookie.length > 0
+    if (
+      document.cookie.length > 0
       // isRegistered
       //  ||
       // (localStorage.getItem("email") &&
@@ -342,8 +343,6 @@ function App() {
       window.removeEventListener("resize", handleCardsOnPage);
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
-
-  console.log("filteredMoviesArray", filteredMoviesArray[0]);
 
   return (
     <div className="App">

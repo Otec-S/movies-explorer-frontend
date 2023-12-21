@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./SaveCheckbox.css";
 
 //передаем как пропс функцию onSave
-const SaveCheckbox = ({ saveMovie, onDeleteMovie }) => {
+const SaveCheckbox = ({ saveMovie, deleteMovie }) => {
   //вводим стейт для состояния "отмеченности" чекбокса, по умолчанию он неактивен
   const [isChecked, setIsChecked] = useState(false);
 
@@ -14,7 +14,7 @@ const SaveCheckbox = ({ saveMovie, onDeleteMovie }) => {
     if (!isChecked) {
       saveMovie();
     } else {
-      // onDeleteMovie();
+      deleteMovie();
     }
   };
 

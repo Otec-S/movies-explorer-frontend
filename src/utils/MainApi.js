@@ -14,8 +14,7 @@ export async function register(name, email, password) {
     });
 
     return response;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error(error);
     // Обработка ошибки, например, throw error; или другие действия
   }
@@ -35,13 +34,11 @@ export async function authorize(email, password) {
     });
 
     return response;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error(error);
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
-
 
 //изменение данных пользователя
 export async function updateProfile(name, email) {
@@ -57,14 +54,11 @@ export async function updateProfile(name, email) {
     });
 
     return response;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error(error);
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
-
-
 
 //разлогинивание
 export async function signout() {
@@ -80,13 +74,11 @@ export async function signout() {
     });
 
     return response;
-  } 
-  catch (error) {
+  } catch (error) {
     console.error(error);
     // Обработка ошибки, например, throw error; или другие действия
   }
 }
-
 
 //получение с бэка всего списка сохраненных фильмов (убрали из скобок токен)
 export const getAllSavedMovies = async () => {
@@ -146,6 +138,39 @@ export const saveMovieOnServer = async (
 
     const savedMovieData = await response.json();
     return savedMovieData; //возвращаем Promise на сохраненный фильм
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+/*
+  deleteCard(cardId) {
+    return fetch(`${this._url}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then(this._handleResponse);
+  }
+*/
+
+//удаление из бэка карточки фильма
+export const deleteMovieFromServer = async (_id) => {
+  try {
+    const response = await fetch(`${SAVED_MOVIES_BASE}/movies/${_id}`, {
+      method: "DELETE",
+      credentials: "include",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    });
+
+    const deletedMovieData = await response.json();
+    return deletedMovieData; //возвращаем Promise на сохраненный фильм
+
   } catch (error) {
     console.error(error);
   }
