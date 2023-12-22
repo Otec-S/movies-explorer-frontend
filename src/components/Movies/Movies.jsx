@@ -5,7 +5,6 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Footer from "../Footer/Footer";
 import Preloader from "./Preloader/Preloader";
 
-
 const Movies = ({
   menuActive,
   setActive,
@@ -27,10 +26,12 @@ const Movies = ({
   totalCardsOnPage,
   isMoreButtonVisible,
   addCardRows,
-  handleClick
-  
+  handleClick,
+  movieCardId,
+  setMovieCardId,
+  isChecked,
+  setIsChecked,
 }) => {
-
   return (
     <>
       <Header
@@ -67,6 +68,10 @@ const Movies = ({
           totalCardsOnPage={totalCardsOnPage}
           isMoreButtonVisible={isMoreButtonVisible}
           addCardRows={addCardRows}
+          movieCardId={movieCardId}
+          setMovieCardId={setMovieCardId}
+          isChecked={isChecked}
+          setIsChecked={setIsChecked}
         />
       </main>
       <Footer />

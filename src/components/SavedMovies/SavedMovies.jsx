@@ -4,7 +4,7 @@ import Header from "../Header/Header";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
+const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMovies }) => {
   return (
     <>
       <Header
@@ -15,7 +15,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
       />
       <main>
         <SearchForm />
-        <SavedMoviesCardList />
+        <SavedMoviesCardList allSavedMovies={allSavedMovies}/>
       </main>
       <Footer />
     </>

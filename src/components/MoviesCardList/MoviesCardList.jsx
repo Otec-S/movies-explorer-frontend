@@ -3,6 +3,7 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../Movies/MoreButton/MoreButton";
 import nothingFound from "../../images/nothing-found.jpg";
+import { MOVIE_IMAGE_PATH } from "../../constants";
 
 const MoviesCardList = ({
   isSearchErrored,
@@ -12,6 +13,10 @@ const MoviesCardList = ({
   totalCardsOnPage,
   isMoreButtonVisible,
   addCardRows,
+  movieCardId,
+  setMovieCardId,
+  isChecked,
+  setIsChecked,
 }) => {
   return (
     <>
@@ -51,7 +56,8 @@ const MoviesCardList = ({
                           isSaved={isSaved}
                           nameRU={item.nameRU}
                           duration={item.duration}
-                          imageShortUrl={item.image.url}
+                          // imageShortUrl={item.image.url}
+                          image={`${MOVIE_IMAGE_PATH}${item.image.url}`}
                           trailerLink={item.trailerLink}
                           country={item.country}
                           director={item.director}
@@ -61,6 +67,10 @@ const MoviesCardList = ({
                           movieId={item.id}
                           owner={item.owner}
                           nameEN={item.nameEN}
+                          movieCardId={movieCardId}
+                          setMovieCardId={setMovieCardId}
+                          isChecked={isChecked}
+                          setIsChecked={setIsChecked}
                         />
                       );
                     })}

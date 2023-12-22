@@ -16,6 +16,8 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import * as auth from "../../utils/MainApi";
 import ProtectedRouteElement from "../../utils/ProtectedRoute";
+import { saveMovieOnServer, deleteMovieFromServer } from "../../utils/MainApi";
+import { MOVIE_IMAGE_PATH } from "../../constants";
 
 function App() {
   const navigate = useNavigate();
@@ -38,6 +40,9 @@ function App() {
   //стейт для массива Всех фильмов
   const [allMovies, setAllMovies] = useState([]);
 
+  //стейт для массива всех сохраненных фильмов
+  const [allSavedMovies, setAllSavedMovies] = useState([]);
+
   //стейт для активации BurgerMenu
   const [isMenuActive, setIsMenuActive] = useState(false);
 
@@ -58,7 +63,6 @@ function App() {
     "filteredMoviesArray",
     ""
   );
-
 
   //стейт для отслеживания состояния строки запроса в форме ввода
   const [movieSearchQuery, setMovieSearchQuery] = useLocalStorageState(
@@ -98,6 +102,77 @@ function App() {
 
   //стейт для сообщения для ошибок с сервера
   const [errorServerMessage, setErrorServerMessage] = useState("");
+
+  //в локальном хранилище привязываем ID карточки к ID фильма
+  // const [movieCardId, setMovieCardId] = useState(null);
+  // const [movieCardId, setMovieCardId] = useLocalStorageState(
+  //   `movieCardId-${movieId}`,
+  //   ""
+  // );
+
+  //вводим стейт для состояния "отмеченности" чекбокса, по умолчанию он неактивен
+  //привязываем его к ID фильма
+  // const [isChecked, setIsChecked] = useState(false);
+
+  // const [isChecked, setIsChecked] = useLocalStorageState(
+  //   `isChecked-${movieId}`,
+  //   false
+  // );
+
+  // //вводим функцию "тогла" состояния чекбокса
+  // const handleCheckboxClick = () => {
+  //   setIsChecked(!isChecked);
+
+  //   //активизируя функцию onSave из пропсов мы отправляем запрос на сервер для сохранения/удаления этой карточки фильма
+  //   if (!isChecked) {
+  //     saveMovie();
+  //   } else {
+  //     deleteMovie();
+  //   }
+  // };
+
+  // //показваем трейлер фильма в отдельном окне
+  // const showTrailer = () => {
+  //   window.open(trailerLink, "_blank");
+  // };
+
+  // //полнвый абсолютный путь к фотографии карточки фильма
+  // const image = `${MOVIE_IMAGE_PATH}${imageShortUrl}`;
+
+  // //функция сохранения фильма
+  // const saveMovie = async () => {
+  //   try {
+  //     const response = await saveMovieOnServer(
+  //       country,
+  //       director,
+  //       duration,
+  //       year,
+  //       description,
+  //       image,
+  //       trailerLink,
+  //       thumbnail,
+  //       movieId,
+  //       nameRU,
+  //       nameEN
+  //     );
+  //     console.log("save-response", response);
+  //     //вытаскиваем сформированный сервером _id карточки фильма, записываем его в стейт
+  //     setMovieCardId(response._id);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+
+  // //удаление карточки фильма
+  // const deleteMovie = async () => {
+  //   try {
+  //     //удаляем по _id из ответа сервера
+  //     const response = await deleteMovieFromServer(movieCardId);
+  //     console.log("delete-response", response);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   /////////////
   // ФУНКЦИИ //
@@ -220,53 +295,7 @@ function App() {
     setBaseNumberOfCards(12);
   };
 
-  // function tokenCheck() {
-  //   // если у пользователя есть токен в localStorage,
-  //   // эта функция проверит валидность токена, и если токен валидный, то перебросит (или оставит) его на главной странице
-  //   const token = localStorage.getItem("token");
-  //   if (token) {
-  //     // проверим токен
-  //     auth
-  //       .getContent(token)
-  //       .then((res) => {
-  //         if (res) {
-  //           // авторизуем пользователя
-  //           handleLogin();
-  //           setUsersEmail(res.email); // тут убрали data посередине
-  //           navigate("/", { replace: true });
-  //         }
-  //       })
-  //       .catch(console.error);
-  //   }
-  // }
-
-  // async function tokenCheck() {
-  //   try {
-  //     //определяем текущее местрорасположение
-  //     const currentPath = window.location.pathname;
-  //     //если есть куки, то значит мы зарегистрированы
-  //     if (
-  //       document.cookie.length > 0 ||
-  //       (
-  //         localStorage.getItem("email") &&
-  //         localStorage.getItem("email") !== "" &&
-  //         localStorage.getItem("email") !== "null" &&
-  //         localStorage.getItem("email") !== "undefined")
-  //     ) {
-  //       setIsRegistered(true);
-  //       console.log("yes");
-  //       console.log("localStorage.getItem(email)", localStorage.getItem("email"));
-  //       navigate(currentPath, { replace: true });
-  //     } else {
-  //       setIsRegistered(false);
-  //       console.log("no");
-  //       navigate("/", { replace: true });
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
-
+  //функция постоянной авторизации
   const tokenCheck = () => {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
@@ -313,8 +342,13 @@ function App() {
     setIsEmailValid(null);
     setIsPasswordValid(null);
     navigate("/", { replace: true });
+  };
 
-    // document.cookie = `jwt=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  //функция запроса с сервера списка всех сохраненных фильмов
+  const getSavedMovies = async () => {
+    const response = await auth.getAllSavedMovies();
+    console.log("getSavedMovies-response", response);
+    setAllSavedMovies(response);
   };
 
   /////////////
@@ -344,6 +378,12 @@ function App() {
       window.removeEventListener("resize", handleCardsOnPage);
     };
   }, [totalCardsOnPage, baseNumberOfCards, pageWidth, handleCardsOnPage]);
+
+  //запрос массива всех сохраненных фильмов
+  useEffect(() => {
+    getSavedMovies();
+    // console.log("allSavedMovies", allSavedMovies);
+  }, []);
 
   return (
     <div className="App">
@@ -469,6 +509,10 @@ function App() {
                     isMoreButtonVisible={isMoreButtonVisible}
                     addCardRows={addCardRows}
                     handleClick={handleClick}
+                    // movieCardId={movieCardId}
+                    // setMovieCardId={setMovieCardId}
+                    // isChecked={isChecked}
+                    // setIsChecked={setIsChecked}
                   />
                 }
               />
@@ -485,6 +529,7 @@ function App() {
                     setActive={setIsMenuActive}
                     isRegistered={isRegistered}
                     isPromo={false}
+                    allSavedMovies={allSavedMovies}
                   />
                 }
               />

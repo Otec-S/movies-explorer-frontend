@@ -10,27 +10,28 @@ const SavedMoviesCardList = ({
   totalCardsOnPage,
   isMoreButtonVisible,
   addCardRows,
+  allSavedMovies
 }) => {
   return (
     <>
       {/* Секция отрисовки карточек */}
       <section className="movies-card-section">
         <ul className="movies-card-list">
-          {filteredMoviesArray.map((item) => {
+          {allSavedMovies.map((item) => {
             return (
               <MoviesCard
-                key={item.id}
+                key={item.movieId}
                 isSaved={isSaved}
                 nameRU={item.nameRU}
                 duration={item.duration}
-                imageShortUrl={item.image.url}
+                image={item.image}
                 trailerLink={item.trailerLink}
                 country={item.country}
                 director={item.director}
                 year={item.year}
                 description={item.description}
                 thumbnail={item.thumbnail}
-                movieId={item.id}
+                // movieId={item.id}
                 owner={item.owner}
                 nameEN={item.nameEN}
               />

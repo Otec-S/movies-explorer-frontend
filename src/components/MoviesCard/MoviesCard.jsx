@@ -11,7 +11,7 @@ const MoviesCard = ({
   isSaved,
   nameRU,
   duration,
-  imageShortUrl,
+  image,
   trailerLink,
   country,
   director,
@@ -20,26 +20,30 @@ const MoviesCard = ({
   thumbnail,
   movieId,
   nameEN,
+  // movieCardId,
+  // setMovieCardId,
+  // isChecked,
+  // setIsChecked,
 }) => {
   /*
 ВАРИАНТ:
 const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${currentUser.userId}-${movieId}`, "");
   const [isChecked, setIsChecked] = useLocalStorageState(`isChecked-${currentUser.userId}-${movieId}`, false);
 */
-  //в локальном хранилище привязываем ID карточки к ID фильма
-  // const [movieCardId, setMovieCardId] = useState(null);
-  const [movieCardId, setMovieCardId] = useLocalStorageState(
-    `movieCardId-${movieId}`,
-    ""
-  );
+  // //в локальном хранилище привязываем ID карточки к ID фильма
+  const [movieCardId, setMovieCardId] = useState(null);
+  // const [movieCardId, setMovieCardId] = useLocalStorageState(
+  //   `movieCardId-${movieId}`,
+  //   ""
+  // );
 
-  //вводим стейт для состояния "отмеченности" чекбокса, по умолчанию он неактивен
-  //привязываем его к ID фильма
-  const [isChecked, setIsChecked] = useLocalStorageState(
-    `isChecked-${movieId}`,
-    false
-  );
-  // const [isChecked, setIsChecked] = useState(false);
+  // //вводим стейт для состояния "отмеченности" чекбокса, по умолчанию он неактивен
+  // //привязываем его к ID фильма
+  // const [isChecked, setIsChecked] = useLocalStorageState(
+  //   `isChecked-${movieId}`,
+  //   false
+  // );
+  const [isChecked, setIsChecked] = useState(false);
 
   //вводим функцию "тогла" состояния чекбокса
   const handleCheckboxClick = () => {
@@ -59,7 +63,7 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
   };
 
   //полнвый абсолютный путь к фотографии карточки фильма
-  const image = `${MOVIE_IMAGE_PATH}${imageShortUrl}`;
+  // const image = `${MOVIE_IMAGE_PATH}${imageShortUrl}`;
 
   //функция сохранения фильма
   const saveMovie = async () => {
