@@ -15,7 +15,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
       />
       <main>
         <SearchForm />
-        {/* <SavedMoviesCardList /> */}
+        <SavedMoviesCardList />
       </main>
       <Footer />
     </>

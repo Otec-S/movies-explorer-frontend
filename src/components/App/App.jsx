@@ -11,7 +11,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
 import { getAllSavedMovies } from "../../utils/MainApi";
-import { useLocalStorageState, useSessionStorageState } from "../../hooks";
+import { useLocalStorageState } from "../../hooks";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { AppContext } from "../../contexts/AppContext";
 import * as auth from "../../utils/MainApi";
@@ -58,6 +58,7 @@ function App() {
     "filteredMoviesArray",
     ""
   );
+
 
   //стейт для отслеживания состояния строки запроса в форме ввода
   const [movieSearchQuery, setMovieSearchQuery] = useLocalStorageState(

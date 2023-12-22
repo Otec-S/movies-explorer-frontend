@@ -23,14 +23,15 @@ const SavedMoviesCardList = ({
                 isSaved={isSaved}
                 nameRU={item.nameRU}
                 duration={item.duration}
-                image={item.image.url}
+                imageShortUrl={item.image.url}
                 trailerLink={item.trailerLink}
                 country={item.country}
                 director={item.director}
                 year={item.year}
                 description={item.description}
                 thumbnail={item.thumbnail}
-                movieId={item.movieId}
+                movieId={item.id}
+                owner={item.owner}
                 nameEN={item.nameEN}
               />
             );
