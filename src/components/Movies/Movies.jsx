@@ -31,6 +31,8 @@ const Movies = ({
   setMovieCardId,
   isChecked,
   setIsChecked,
+  handleSaveStatusChange,
+  allSavedMovies
 }) => {
   return (
     <>
@@ -72,6 +74,8 @@ const Movies = ({
           setMovieCardId={setMovieCardId}
           isChecked={isChecked}
           setIsChecked={setIsChecked}
+          handleSaveStatusChange={handleSaveStatusChange}
+          allSavedMovies={allSavedMovies}
         />
       </main>
       <Footer />

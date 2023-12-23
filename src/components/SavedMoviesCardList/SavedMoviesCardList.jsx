@@ -10,14 +10,16 @@ const SavedMoviesCardList = ({
   totalCardsOnPage,
   isMoreButtonVisible,
   addCardRows,
-  allSavedMovies
+  allSavedMovies,
+  handleSaveStatusChange,
 }) => {
+
   return (
     <>
       {/* Секция отрисовки карточек */}
       <section className="movies-card-section">
         <ul className="movies-card-list">
-          {allSavedMovies.map((item) => {
+          {allSavedMovies?.map((item) => {
             return (
               <MoviesCard
                 key={item.movieId}
@@ -31,9 +33,10 @@ const SavedMoviesCardList = ({
                 year={item.year}
                 description={item.description}
                 thumbnail={item.thumbnail}
-                // movieId={item.id}
+                movieId={item.movieId}
                 owner={item.owner}
                 nameEN={item.nameEN}
+                handleSaveStatusChange={handleSaveStatusChange}
               />
             );
           })}

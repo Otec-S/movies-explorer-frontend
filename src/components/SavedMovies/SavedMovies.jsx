@@ -4,7 +4,8 @@ import Header from "../Header/Header";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMovies }) => {
+const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMovies, handleSaveStatusChange }) => {
+  // console.log('handleSaveStatusChange in SavedMovies', handleSaveStatusChange);
   return (
     <>
       <Header
@@ -15,7 +16,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMov
       />
       <main>
         <SearchForm />
-        <SavedMoviesCardList allSavedMovies={allSavedMovies}/>
+        <SavedMoviesCardList allSavedMovies={allSavedMovies} handleSaveStatusChange={handleSaveStatusChange}/>
       </main>
       <Footer />
     </>

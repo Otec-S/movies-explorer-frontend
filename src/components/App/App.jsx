@@ -345,11 +345,36 @@ function App() {
   };
 
   //функция запроса с сервера списка всех сохраненных фильмов
-  const getSavedMovies = async () => {
-    const response = await auth.getAllSavedMovies();
-    console.log("getSavedMovies-response", response);
-    setAllSavedMovies(response);
+  // const getSavedMovies = async () => {
+  //   const response = await auth.getAllSavedMovies();
+  //   console.log("getSavedMovies-response", response);
+  //   setAllSavedMovies(response);
+  // };
+
+
+  // Обновление списка сохраненных фильмов в зависимости от действия пользователя
+  const handleSaveStatusChange = (movie, isMovieSaved) => {
+
+    //movie - это объект фильма, с которым производится действие добавления или удаления
+    //isSaved - булевое значение. Если true - фильм сохраняется, если false — удаляется
+
+    //обновляем массив сохраненных фильмов allSavedMovies в зависимости от действий пользователя
+    if (isMovieSaved) {
+      //если true и фильм сохранен, то добавляем фильм в массив allSavedMovies
+      setAllSavedMovies((oldSavedMoviesArray) => [
+        ...oldSavedMoviesArray,
+        movie,
+      ]);
+    } else {
+      //если false, то методом filter фильтруем массив, оставляя в нем только фильмы, movieId которых не совпадает с текущим movieId фильма
+      setAllSavedMovies((oldSavedMoviesArray) =>
+        oldSavedMoviesArray.filter(
+          (savedMovie) => savedMovie.movieId !== movie.movieId
+        )
+      );
+    }
   };
+
 
   /////////////
   // ЭФФЕКТЫ //
@@ -381,7 +406,17 @@ function App() {
 
   //запрос массива всех сохраненных фильмов
   useEffect(() => {
-    getSavedMovies();
+    const fetchSavedMovies = async () => {
+      try {
+        const response = await auth.getAllSavedMovies();
+        setAllSavedMovies(response);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchSavedMovies();
+
     // console.log("allSavedMovies", allSavedMovies);
   }, []);
 
@@ -513,6 +548,9 @@ function App() {
                     // setMovieCardId={setMovieCardId}
                     // isChecked={isChecked}
                     // setIsChecked={setIsChecked}
+                    handleSaveStatusChange={handleSaveStatusChange}
+                    allSavedMovies={allSavedMovies}
+
                   />
                 }
               />
@@ -530,6 +568,7 @@ function App() {
                     isRegistered={isRegistered}
                     isPromo={false}
                     allSavedMovies={allSavedMovies}
+                    handleSaveStatusChange={handleSaveStatusChange}
                   />
                 }
               />

@@ -6,6 +6,7 @@ import MinutesToHoursAndMinutes from "./MinutesToHoursAndMinutes/MinutesToHoursA
 import { saveMovieOnServer, deleteMovieFromServer } from "../../utils/MainApi";
 import { MOVIE_IMAGE_PATH } from "../../constants";
 import { useLocalStorageState } from "../../hooks";
+import { useEffect } from "react";
 
 const MoviesCard = ({
   isSaved,
@@ -20,6 +21,9 @@ const MoviesCard = ({
   thumbnail,
   movieId,
   nameEN,
+  handleSaveStatusChange,
+  allSavedMovies,
+
   // movieCardId,
   // setMovieCardId,
   // isChecked,
@@ -45,6 +49,24 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
   // );
   const [isChecked, setIsChecked] = useState(false);
 
+  useEffect(() => {
+    //проверяем, сохранена ли карточка в массив, например, при обновлении страницы
+    //то есть методом find мы проверяем, совпадает ли movieId нашей карточки с movieId хоть какой-то карточки в массиве сохраненных фильмов
+
+    const savedMovie = allSavedMovies?.find(
+      (savedMovie) => savedMovie.movieId === movieId
+    );
+    //если совпадает, то устанавлиаем положение чекбокса в активное (true) и ... ????????
+    if (savedMovie) {
+      setIsChecked(true);
+      //?????
+      setMovieCardId(savedMovie._id);
+    } else {
+      setIsChecked(false);
+      setMovieCardId(null);
+    }
+  }, [allSavedMovies, movieId]);
+
   //вводим функцию "тогла" состояния чекбокса
   const handleCheckboxClick = () => {
     setIsChecked(!isChecked);
@@ -61,9 +83,6 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
   const showTrailer = () => {
     window.open(trailerLink, "_blank");
   };
-
-  //полнвый абсолютный путь к фотографии карточки фильма
-  // const image = `${MOVIE_IMAGE_PATH}${imageShortUrl}`;
 
   //функция сохранения фильма
   const saveMovie = async () => {
@@ -84,6 +103,8 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
       console.log("save-response", response);
       //вытаскиваем сформированный сервером _id карточки фильма, записываем его в стейт
       setMovieCardId(response._id);
+      //добавляем вновь сохранненный фильм в массив
+      handleSaveStatusChange(response, true);
     } catch (error) {
       console.log(error);
     }
@@ -95,6 +116,8 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
       //удаляем по _id из ответа сервера
       const response = await deleteMovieFromServer(movieCardId);
       console.log("delete-response", response);
+      //?????????
+      handleSaveStatusChange(response, false);
     } catch (error) {
       console.log(error);
     }
