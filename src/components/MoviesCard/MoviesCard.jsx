@@ -56,7 +56,7 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
     const savedMovie = allSavedMovies?.find(
       (savedMovie) => savedMovie.movieId === movieId
     );
-    //если совпадает, то устанавлиаем положение чекбокса в активное (true) и ... ????????
+    //если совпадает, то устанавлиаем положение чекбокса в активное (true)
     if (savedMovie) {
       setIsChecked(true);
       //?????
@@ -103,7 +103,7 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
       console.log("save-response", response);
       //вытаскиваем сформированный сервером _id карточки фильма, записываем его в стейт
       setMovieCardId(response._id);
-      //добавляем вновь сохранненный фильм в массив
+      //добавляем вновь сохранненный фильм в массив allSavedMovies по флагу true
       handleSaveStatusChange(response, true);
     } catch (error) {
       console.log(error);
@@ -116,7 +116,7 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
       //удаляем по _id из ответа сервера
       const response = await deleteMovieFromServer(movieCardId);
       console.log("delete-response", response);
-      //?????????
+      //функция удаляет фильм из массива allSavedMovies по флагу false
       handleSaveStatusChange(response, false);
     } catch (error) {
       console.log(error);

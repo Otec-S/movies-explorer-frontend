@@ -30,7 +30,7 @@ function App() {
   const [userName, setUserName] = useLocalStorageState("userName", "");
   const [email, setEmail] = useLocalStorageState("email", "");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState("");
+  const [userId, setUserId] = useLocalStorageState("userId", "");
 
   //стейты для проверки валидации
   const [isNameValid, setIsNameValid] = useState(null);
@@ -351,10 +351,8 @@ function App() {
   //   setAllSavedMovies(response);
   // };
 
-
   // Обновление списка сохраненных фильмов в зависимости от действия пользователя
   const handleSaveStatusChange = (movie, isMovieSaved) => {
-
     //movie - это объект фильма, с которым производится действие добавления или удаления
     //isSaved - булевое значение. Если true - фильм сохраняется, если false — удаляется
 
@@ -374,7 +372,6 @@ function App() {
       );
     }
   };
-
 
   /////////////
   // ЭФФЕКТЫ //
@@ -408,17 +405,25 @@ function App() {
   useEffect(() => {
     const fetchSavedMovies = async () => {
       try {
+        console.log("userId", userId);
         const response = await auth.getAllSavedMovies();
-        setAllSavedMovies(response);
+        //фетчим с сервера только те сохраненные там фильмы, owner которых совпадает с id текущего пользователя
+        const currentUserSavedMovies = response?.filter(
+          (item) => item.owner === userId
+        );
+
+        setAllSavedMovies(currentUserSavedMovies);
       } catch (error) {
         console.error(error);
       }
     };
-
-    fetchSavedMovies();
+    //фетчим только в случае, если пользователь зарегистрирован
+    if (isRegistered) {
+      fetchSavedMovies();
+    }
 
     // console.log("allSavedMovies", allSavedMovies);
-  }, []);
+  }, [userId, isRegistered]);
 
   return (
     <div className="App">
@@ -550,7 +555,6 @@ function App() {
                     // setIsChecked={setIsChecked}
                     handleSaveStatusChange={handleSaveStatusChange}
                     allSavedMovies={allSavedMovies}
-
                   />
                 }
               />
