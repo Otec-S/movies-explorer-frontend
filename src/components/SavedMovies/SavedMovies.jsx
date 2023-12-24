@@ -1,5 +1,5 @@
 import React from "react";
-import SearchForm from "../SearchForm/SearchForm";
+import SavedMoviesSearchForm from "../SavedMoviesSearchForm/SavedMoviesSearchForm";
 import Header from "../Header/Header";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
@@ -14,7 +14,7 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMov
         isPromo={isPromo}
       />
       <main>
-        <SearchForm />
+        <SavedMoviesSearchForm allSavedMovies={allSavedMovies}/>
         <SavedMoviesCardList isSaved={true} allSavedMovies={allSavedMovies} handleSaveStatusChange={handleSaveStatusChange}/>
       </main>
       <Footer />
