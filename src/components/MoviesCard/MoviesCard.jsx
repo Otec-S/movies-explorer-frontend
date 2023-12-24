@@ -23,30 +23,10 @@ const MoviesCard = ({
   nameEN,
   handleSaveStatusChange,
   allSavedMovies,
-
-  // movieCardId,
-  // setMovieCardId,
-  // isChecked,
-  // setIsChecked,
 }) => {
-  /*
-ВАРИАНТ:
-const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${currentUser.userId}-${movieId}`, "");
-  const [isChecked, setIsChecked] = useLocalStorageState(`isChecked-${currentUser.userId}-${movieId}`, false);
-*/
   // //в локальном хранилище привязываем ID карточки к ID фильма
   const [movieCardId, setMovieCardId] = useState(null);
-  // const [movieCardId, setMovieCardId] = useLocalStorageState(
-  //   `movieCardId-${movieId}`,
-  //   ""
-  // );
 
-  // //вводим стейт для состояния "отмеченности" чекбокса, по умолчанию он неактивен
-  // //привязываем его к ID фильма
-  // const [isChecked, setIsChecked] = useLocalStorageState(
-  //   `isChecked-${movieId}`,
-  //   false
-  // );
   const [isChecked, setIsChecked] = useState(false);
 
   useEffect(() => {
@@ -56,16 +36,13 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
     const savedMovie = allSavedMovies?.find(
       (savedMovie) => savedMovie.movieId === movieId
     );
+
     //если совпадает, то устанавлиаем положение чекбокса в активное (true)
     if (savedMovie) {
       setIsChecked(true);
-      //?????
       setMovieCardId(savedMovie._id);
-    } else {
-      setIsChecked(false);
-      setMovieCardId(null);
     }
-  }, [allSavedMovies, movieId]);
+  }, [allSavedMovies, movieId, movieCardId]);
 
   //вводим функцию "тогла" состояния чекбокса
   const handleCheckboxClick = () => {
@@ -113,6 +90,7 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
   //удаление карточки фильма
   const deleteMovie = async () => {
     try {
+
       //удаляем по _id из ответа сервера
       const response = await deleteMovieFromServer(movieCardId);
       console.log("delete-response", response);
@@ -136,7 +114,10 @@ const [movieCardId, setMovieCardId] = useLocalStorageState(`movieCardId-${curren
         </div>
         {/* Иконка справа */}
         {isSaved ? (
-          <button className="movies-card__description__icon_saved" />
+          <button
+            className="movies-card__description__icon_saved"
+            onClick={deleteMovie}
+          />
         ) : (
           <div className="movies-card__description__icon">
             <SaveCheckbox

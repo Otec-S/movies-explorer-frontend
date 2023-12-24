@@ -3,13 +3,7 @@ import "./SavedMoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 const SavedMoviesCardList = ({
-  isSearchErrored,
   isSaved,
-  filteredMoviesArray,
-  isShortMovieChecked,
-  totalCardsOnPage,
-  isMoreButtonVisible,
-  addCardRows,
   allSavedMovies,
   handleSaveStatusChange,
 }) => {
@@ -37,6 +31,7 @@ const SavedMoviesCardList = ({
                 owner={item.owner}
                 nameEN={item.nameEN}
                 handleSaveStatusChange={handleSaveStatusChange}
+                allSavedMovies={allSavedMovies}
               />
             );
           })}
