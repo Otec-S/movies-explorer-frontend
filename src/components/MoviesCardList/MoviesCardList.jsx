@@ -3,7 +3,9 @@ import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../Movies/MoreButton/MoreButton";
 import nothingFound from "../../images/nothing-found.jpg";
+import notYet from "../../images/nothing-yet.jpg";
 import { MOVIE_IMAGE_PATH } from "../../constants";
+import { getAllMovies } from "../../utils/MoviesApi";
 
 const MoviesCardList = ({
   isSearchErrored,
@@ -18,8 +20,8 @@ const MoviesCardList = ({
   isChecked,
   setIsChecked,
   handleSaveStatusChange,
-  allSavedMovies
-
+  allSavedMovies,
+  allMovies,
 }) => {
   return (
     <>
@@ -29,12 +31,18 @@ const MoviesCardList = ({
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз ☹
         </p>
+      ) : allMovies.length === 0 && !filteredMoviesArray.length ? (
+        <section className="nothing-found-image-block">
+          <img
+            src={notYet}
+            alt="Тут пока ничего нет"
+            className="nothing-found-image"
+          />
+        </section>
       ) : (
         <>
           {/* фильмы не найдены или пустая строка поискового запроса */}
-          {filteredMoviesArray === null ||
-          filteredMoviesArray === "" ||
-          filteredMoviesArray.length === 0 ? (
+          {!filteredMoviesArray || filteredMoviesArray.length === 0 ? (
             <section className="nothing-found-image-block">
               <img
                 src={nothingFound}
@@ -48,7 +56,7 @@ const MoviesCardList = ({
               <section className="movies-card-section">
                 <ul className="movies-card-list">
                   {filteredMoviesArray
-                    .filter((array) => {
+                    ?.filter((array) => {
                       return isShortMovieChecked ? array.duration <= 40 : array;
                     })
                     .slice(0, totalCardsOnPage)
@@ -76,7 +84,6 @@ const MoviesCardList = ({
                           setIsChecked={setIsChecked}
                           handleSaveStatusChange={handleSaveStatusChange}
                           allSavedMovies={allSavedMovies}
-
                         />
                       );
                     })}
