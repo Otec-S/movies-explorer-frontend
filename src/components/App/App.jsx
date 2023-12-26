@@ -90,6 +90,11 @@ function App() {
 
   //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
   const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
+  
+  
+  const [isSearching, setIsSearching] = useState(false);
+
+
 
   //стейт для определения ширины видимой части страницы
   const [pageWidth, setPageWidth] = useState();
@@ -518,6 +523,8 @@ function App() {
                     setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
                     savedMovieSearchQuery={savedMovieSearchQuery}
                     setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+                    isSearching={isSearching}
+                    setIsSearching={setIsSearching}
                   />
                 }
               />

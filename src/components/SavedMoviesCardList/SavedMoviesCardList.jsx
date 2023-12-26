@@ -12,6 +12,8 @@ const SavedMoviesCardList = ({
   setIsSavedSearchFormEmpty,
   savedMovieSearchQuery,
   setSavedMovieSearchQuery,
+  isSearching,
+  setIsSearching
 }) => {
   console.log("savedMovieSearchQuery", savedMovieSearchQuery);
   console.log(
@@ -22,17 +24,18 @@ const SavedMoviesCardList = ({
   // Проверка на наличие поискового запроса и наличие фильмов
   const displayMovies =
     //поисковая строка заполнена ИЛИ есть найденные фильмы => показываем массив найденных
-    savedMovieSearchQuery !== "" || filteredSavedMoviesArray.length > 0
+    isSearching && (
+      savedMovieSearchQuery !== "" ||
+       filteredSavedMoviesArray.length > 0)
       ? filteredSavedMoviesArray
       : //иначе показываем массив всех фильмов
         allSavedMovies;
 
   useEffect(() => {
-    // Обнуляем фильтрованный массив при обнулении поисковой строки
-    if (savedMovieSearchQuery === "") {
+    if (isSavedSearchFormEmpty) {
       setFilteredSavedMoviesArray([]);
     }
-  }, [savedMovieSearchQuery]);
+  }, [isSavedSearchFormEmpty, setFilteredSavedMoviesArray]);
 
   return (
     <>

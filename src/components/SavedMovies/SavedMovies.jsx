@@ -17,6 +17,8 @@ const SavedMovies = ({
   setIsSavedSearchFormEmpty,
   savedMovieSearchQuery,
   setSavedMovieSearchQuery,
+  isSearching,
+  setIsSearching
 }) => {
   return (
     <>
@@ -35,6 +37,8 @@ const SavedMovies = ({
           setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
           savedMovieSearchQuery={savedMovieSearchQuery}
           setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+          isSearching={isSearching}
+                    setIsSearching={setIsSearching}
         />
         <SavedMoviesCardList
           isSaved={true}
@@ -46,6 +50,8 @@ const SavedMovies = ({
           setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
           savedMovieSearchQuery={savedMovieSearchQuery}
           setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+          isSearching={isSearching}
+                    setIsSearching={setIsSearching}
         />
       </main>
       <Footer />

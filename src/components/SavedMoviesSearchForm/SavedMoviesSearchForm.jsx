@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SearchForm.css";
 import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
@@ -11,10 +11,12 @@ const SavedMoviesSearchForm = ({
   isSavedSearchFormEmpty,
   setIsSavedSearchFormEmpty,
   savedMovieSearchQuery,
-  setSavedMovieSearchQuery
+  setSavedMovieSearchQuery,
+  isSearching,
+  setIsSearching
 }) => {
-  // //стейт для отфильтрованного поиском массива Сохраненных фильмов
-  // const [filteredSavedMoviesArray, setFilteredSavedMoviesArray] = useState("");
+  // стейт для отображения состояния фильтрации фильмов
+  const [isFiltering, setIsFiltering] = useState("");
 
   // //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
   // const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
@@ -22,7 +24,7 @@ const SavedMoviesSearchForm = ({
   //стейт для вывода на страницу ошибки при поиске Сохраненного фильма
   const [isSavedSearchErrored, setIsSavedSearchErrored] = useState(false);
 
-  //стейт для отслеживания состояния чекбокса, включен или нет
+  //стейт для отслеживания состояния чекбокса короткометражек, включен или нет
   const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
     useState(false);
 
@@ -42,6 +44,7 @@ const SavedMoviesSearchForm = ({
 
   //функция фильтации массива Сохраненных фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchSavedMovies = () => {
+    setIsFiltering(true);
     const filtered = allSavedMovies.filter(
       (item) =>
         item.nameRU
@@ -51,20 +54,29 @@ const SavedMoviesSearchForm = ({
     );
     // setFilteredMoviesArray(filterMoviesByDuration(filtered));
     setFilteredSavedMoviesArray(filtered);
-    console.log('filtered', filtered);
+    console.log("filtered", filtered);
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
   const handleSavedSearchFormSubmit = (e) => {
     e.preventDefault();
+    setIsFiltering(false);
+    setIsSearching(true);
     if (savedMovieSearchQuery) {
       setIsSavedSearchFormEmpty(false);
+      searchSavedMovies();
     } else {
-      return setIsSavedSearchFormEmpty(true);
+      setIsSearching(false);
+      setIsSavedSearchFormEmpty(true);
+      return;
     }
-
-    searchSavedMovies();
   };
+
+  useEffect(() => {
+    if (!isFiltering) {
+      setFilteredSavedMoviesArray([]);
+    }
+  }, [isFiltering, savedMovieSearchQuery, setFilteredSavedMoviesArray]);
 
   console.log("filteredSavedMoviesArray:", filteredSavedMoviesArray);
 
