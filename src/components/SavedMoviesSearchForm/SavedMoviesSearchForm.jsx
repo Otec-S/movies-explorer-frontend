@@ -16,7 +16,9 @@ const SavedMoviesSearchForm = ({
   setIsSearching
 }) => {
   // стейт для отображения состояния фильтрации фильмов
-  const [isFiltering, setIsFiltering] = useState("");
+  const [isFiltering, setIsFiltering] = useState(false);
+  console.log('isFiltering:', isFiltering);
+
 
   // //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
   // const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
@@ -54,7 +56,7 @@ const SavedMoviesSearchForm = ({
     );
     // setFilteredMoviesArray(filterMoviesByDuration(filtered));
     setFilteredSavedMoviesArray(filtered);
-    console.log("filtered", filtered);
+    // console.log("filtered", filtered);
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
@@ -78,7 +80,6 @@ const SavedMoviesSearchForm = ({
     }
   }, [isFiltering, savedMovieSearchQuery, setFilteredSavedMoviesArray]);
 
-  console.log("filteredSavedMoviesArray:", filteredSavedMoviesArray);
 
   return (
     <section className="search-form">
