@@ -4,7 +4,20 @@ import Header from "../Header/Header";
 import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMovies, handleSaveStatusChange }) => {
+const SavedMovies = ({
+  menuActive,
+  setActive,
+  isRegistered,
+  isPromo,
+  allSavedMovies,
+  handleSaveStatusChange,
+  filteredSavedMoviesArray,
+  setFilteredSavedMoviesArray,
+  isSavedSearchFormEmpty,
+  setIsSavedSearchFormEmpty,
+  savedMovieSearchQuery,
+  setSavedMovieSearchQuery,
+}) => {
   return (
     <>
       <Header
@@ -14,8 +27,26 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo, allSavedMov
         isPromo={isPromo}
       />
       <main>
-        <SavedMoviesSearchForm allSavedMovies={allSavedMovies}/>
-        <SavedMoviesCardList isSaved={true} allSavedMovies={allSavedMovies} handleSaveStatusChange={handleSaveStatusChange}/>
+        <SavedMoviesSearchForm
+          allSavedMovies={allSavedMovies}
+          filteredSavedMoviesArray={filteredSavedMoviesArray}
+          setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
+          isSavedSearchFormEmpty={isSavedSearchFormEmpty}
+          setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
+          savedMovieSearchQuery={savedMovieSearchQuery}
+          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+        />
+        <SavedMoviesCardList
+          isSaved={true}
+          allSavedMovies={allSavedMovies}
+          handleSaveStatusChange={handleSaveStatusChange}
+          filteredSavedMoviesArray={filteredSavedMoviesArray}
+          setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
+          isSavedSearchFormEmpty={isSavedSearchFormEmpty}
+          setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
+          savedMovieSearchQuery={savedMovieSearchQuery}
+          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+        />
       </main>
       <Footer />
     </>

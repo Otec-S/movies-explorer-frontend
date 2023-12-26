@@ -4,12 +4,20 @@ import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
-const SavedMoviesSearchForm = ({ allSavedMovies }) => {
-  //стейт для отфильтрованного поиском массива Сохраненных фильмов
-  const [filteredSavedMoviesArray, setFilteredSavedMoviesArray] = useState("");
+const SavedMoviesSearchForm = ({
+  allSavedMovies,
+  filteredSavedMoviesArray,
+  setFilteredSavedMoviesArray,
+  isSavedSearchFormEmpty,
+  setIsSavedSearchFormEmpty,
+  savedMovieSearchQuery,
+  setSavedMovieSearchQuery
+}) => {
+  // //стейт для отфильтрованного поиском массива Сохраненных фильмов
+  // const [filteredSavedMoviesArray, setFilteredSavedMoviesArray] = useState("");
 
-  //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
-  const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
+  // //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
+  // const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
 
   //стейт для вывода на страницу ошибки при поиске Сохраненного фильма
   const [isSavedSearchErrored, setIsSavedSearchErrored] = useState(false);
@@ -18,8 +26,8 @@ const SavedMoviesSearchForm = ({ allSavedMovies }) => {
   const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
     useState(false);
 
-  //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
-  const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
+  // //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
+  // const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
 
   //установление значения стейта movieSavedSearchQuery из значения поля поискового ввода
   function handleChangeSavedMovieSearchQuery(e) {
@@ -43,6 +51,7 @@ const SavedMoviesSearchForm = ({ allSavedMovies }) => {
     );
     // setFilteredMoviesArray(filterMoviesByDuration(filtered));
     setFilteredSavedMoviesArray(filtered);
+    console.log('filtered', filtered);
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
@@ -56,6 +65,8 @@ const SavedMoviesSearchForm = ({ allSavedMovies }) => {
 
     searchSavedMovies();
   };
+
+  console.log("filteredSavedMoviesArray:", filteredSavedMoviesArray);
 
   return (
     <section className="search-form">
@@ -95,8 +106,8 @@ const SavedMoviesSearchForm = ({ allSavedMovies }) => {
       </div>
       <div className="short-films">
         <Slider
-        handleCheckboxChange={handleCheckboxChange}
-        isShortMovieChecked={isShortSavedMovieChecked}
+          handleCheckboxChange={handleCheckboxChange}
+          isShortMovieChecked={isShortSavedMovieChecked}
         />
         <span className="short-films__text">Короткометражки</span>
       </div>

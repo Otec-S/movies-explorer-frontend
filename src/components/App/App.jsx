@@ -64,11 +64,17 @@ function App() {
     ""
   );
 
+  //стейт для отфильтрованного поиском массива Сохраненных фильмов
+  const [filteredSavedMoviesArray, setFilteredSavedMoviesArray] = useState("");
+
   //стейт для отслеживания состояния строки запроса в форме ввода
   const [movieSearchQuery, setMovieSearchQuery] = useLocalStorageState(
     "movieSearchQuery",
     ""
   );
+
+  //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
+  const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
 
   //стейт для вывода на страницу ошибки при поиске фиьма
   const [isSearchErrored, setIsSearchErrored] = useState(false);
@@ -81,6 +87,9 @@ function App() {
 
   //стейт для отслеживания наличия поискового запроса в форме поиска
   const [isSearchFormEmpty, setIsSearchFormEmpty] = useState(false);
+
+  //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
+  const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
 
   //стейт для определения ширины видимой части страницы
   const [pageWidth, setPageWidth] = useState();
@@ -102,7 +111,6 @@ function App() {
 
   //стейт для сообщения для ошибок с сервера
   const [errorServerMessage, setErrorServerMessage] = useState("");
-
 
   /////////////
   // ФУНКЦИИ //
@@ -274,7 +282,6 @@ function App() {
     navigate("/", { replace: true });
   };
 
-
   // Обновление списка сохраненных фильмов в зависимости от действия пользователя
   const handleSaveStatusChange = (movie, isMovieSaved) => {
     //movie - это объект фильма, с которым производится действие добавления или удаления
@@ -293,6 +300,14 @@ function App() {
         oldSavedMoviesArray.filter(
           (savedMovie) => savedMovie.movieId !== movie.movieId
         )
+      );
+      //также в этом случае удаляем этот фиьльм из массива отобранных по поиску, если такой массив есть
+      setFilteredSavedMoviesArray((oldSavedMoviesArray) =>
+        oldSavedMoviesArray
+          ? oldSavedMoviesArray.filter(
+              (savedMovie) => savedMovie.movieId !== movie.movieId
+            )
+          : []
       );
     }
   };
@@ -497,6 +512,12 @@ function App() {
                     isPromo={false}
                     allSavedMovies={allSavedMovies}
                     handleSaveStatusChange={handleSaveStatusChange}
+                    filteredSavedMoviesArray={filteredSavedMoviesArray}
+                    setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
+                    isSavedSearchFormEmpty={isSavedSearchFormEmpty}
+                    setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
+                    savedMovieSearchQuery={savedMovieSearchQuery}
+                    setSavedMovieSearchQuery={setSavedMovieSearchQuery}
                   />
                 }
               />
