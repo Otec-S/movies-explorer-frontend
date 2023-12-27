@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./SavedMoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import nothingFound from "../../images/nothing-found.jpg";
+import nothing from "../../images/nothing.jpg";
 
 const SavedMoviesCardList = ({
   isSaved,
@@ -75,7 +75,7 @@ const SavedMoviesCardList = ({
       ) : (
         <section className="nothing-found-image-block">
           <img
-            src={nothingFound}
+            src={nothing}
             alt="Ничего не найдено"
             className="nothing-found-image"
           />

@@ -154,26 +154,49 @@ function App() {
     setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
   };
 
+  // //функция первоначального получения всех фильмов и записи их в стейт
+  // const initialSetAllMovies = () => {
+  //   //запускаем Прелоадер
+  //   setIsLoading(true);
+  //   //получили все карточки из базы и записали их в стейт
+  //   getAllMovies()
+  //     .then((allMoviesData) => {
+  //       //записываем результаты поиска из api в стейт с фильмами
+  //       setAllMovies(allMoviesData);
+  //       //первичный параллельный приск по фильмам из api для отображения на странице + прогон через проверку на включенный чекбокс
+  //       searchMovies(allMoviesData);
+  //     })
+  //     .catch((err) => {
+  //       //если ошибка соединения с базой Яндекса - устанавливается этот стейт и выводится сообщение через тернарный оператор в MoviesCardList
+  //       setIsSearchErrored(true);
+  //     })
+  //     //выключили Прелоадер
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  // };
+
   //функция первоначального получения всех фильмов и записи их в стейт
-  const initialSetAllMovies = () => {
-    //запускаем Прелоадер
-    setIsLoading(true);
-    //получили все карточки из базы и записали их в стейт
-    getAllMovies()
-      .then((allMoviesData) => {
-        //записываем результаты поиска из api в стейт с фильмами
-        setAllMovies(allMoviesData);
-        //первичный параллельный приск по фильмам из api для отображения на странице + прогон через проверку на включенный чекбокс
-        searchMovies(allMoviesData);
-      })
-      .catch((err) => {
-        //если ошибка соединения с базой Яндекса - устанавливается этот стейт и выводится сообщение через тернарный оператор в MoviesCardList
-        setIsSearchErrored(true);
-      })
-      //выключили Прелоадер
-      .finally(() => {
-        setIsLoading(false);
-      });
+  const initialSetAllMovies = async () => {
+    try {
+      // Запускаем Прелоадер
+      setIsLoading(true);
+
+      // Получаем все карточки из базы
+      const allMoviesData = await getAllMovies();
+
+      // Записываем результаты поиска из API в стейт с фильмами
+      setAllMovies(allMoviesData);
+
+      // Первичный параллельный поиск по фильмам из API для отображения на странице + прогон через проверку на включенный чекбокс
+      await searchMovies(allMoviesData);
+    } catch (err) {
+      // Если произошла ошибка, устанавливаем стейт и выводим сообщение через тернарный оператор в MoviesCardList
+      setIsSearchErrored(true);
+    } finally {
+      // Выключаем Прелоадер
+      setIsLoading(false);
+    }
   };
 
   //функция фильтации входящего массива фильмов по слову из строки поиска и запись в стейт найденных фильмов
@@ -389,7 +412,6 @@ function App() {
                 isRegistered={!isRegistered}
                 element={
                   <Register
-
                     isNameValid={isNameValid}
                     isEmailValid={isEmailValid}
                     isPasswordValid={isPasswordValid}
@@ -418,7 +440,6 @@ function App() {
                     isNameValid={isNameValid}
                     isEmailValid={isEmailValid}
                     isPasswordValid={isPasswordValid}
-
                     handleFormValidation={handleFormValidation}
                     setPassword={setPassword}
                     setUserId={setUserId}
