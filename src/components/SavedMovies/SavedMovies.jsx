@@ -33,13 +33,11 @@ const SavedMovies = ({
       <main>
         <SavedMoviesSearchForm
           allSavedMovies={allSavedMovies}
-          filteredSavedMoviesArray={filteredSavedMoviesArray}
           setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
           isSavedSearchFormEmpty={isSavedSearchFormEmpty}
           setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
           savedMovieSearchQuery={savedMovieSearchQuery}
           setSavedMovieSearchQuery={setSavedMovieSearchQuery}
-          isSearching={isSearching}
           setIsSearching={setIsSearching}
           handleSavedCheckboxChange={handleSavedCheckboxChange}
           isShortSavedMovieChecked={isShortSavedMovieChecked}
@@ -51,10 +49,7 @@ const SavedMovies = ({
           handleSaveStatusChange={handleSaveStatusChange}
           filteredSavedMoviesArray={filteredSavedMoviesArray}
           setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
-          isSavedSearchFormEmpty={isSavedSearchFormEmpty}
-          setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
           savedMovieSearchQuery={savedMovieSearchQuery}
-          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
           isShortSavedMovieChecked={isShortSavedMovieChecked}

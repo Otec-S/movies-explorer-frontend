@@ -13,7 +13,6 @@ const Profile = ({
   handleUnLogin,
   isNameValid,
   isEmailValid,
-  isPasswordValid,
   handleFormValidation,
   errorServerMessage,
   setErrorServerMessage,

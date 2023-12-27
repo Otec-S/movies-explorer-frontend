@@ -14,7 +14,6 @@ const WelcomeForm = ({
   isNameValid,
   isEmailValid,
   isPasswordValid,
-  isRegistered,
   handleFormValidation,
   handleLoginFormSubmit,
   handleRegisterFormSubmit,

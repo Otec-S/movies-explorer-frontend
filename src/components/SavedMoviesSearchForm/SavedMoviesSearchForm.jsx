@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from "react";
-import "./SearchForm.css";
+import "./SavedMoviesSearchForm.css";
 import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
 const SavedMoviesSearchForm = ({
   allSavedMovies,
-  filteredSavedMoviesArray,
   setFilteredSavedMoviesArray,
   isSavedSearchFormEmpty,
   setIsSavedSearchFormEmpty,
   savedMovieSearchQuery,
   setSavedMovieSearchQuery,
-  isSearching,
   setIsSearching,
   handleSavedCheckboxChange,
   isShortSavedMovieChecked

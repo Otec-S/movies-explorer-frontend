@@ -9,10 +9,7 @@ const SavedMoviesCardList = ({
   handleSaveStatusChange,
   filteredSavedMoviesArray,
   setFilteredSavedMoviesArray,
-  isSavedSearchFormEmpty,
-  setIsSavedSearchFormEmpty,
   savedMovieSearchQuery,
-  setSavedMovieSearchQuery,
   isSearching,
   setIsSearching,
   isShortSavedMovieChecked

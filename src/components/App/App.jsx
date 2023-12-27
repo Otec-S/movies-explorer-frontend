@@ -389,7 +389,7 @@ function App() {
                 isRegistered={!isRegistered}
                 element={
                   <Register
-                    isRegistered={isRegistered}
+
                     isNameValid={isNameValid}
                     isEmailValid={isEmailValid}
                     isPasswordValid={isPasswordValid}
@@ -399,7 +399,6 @@ function App() {
                     userName={userName}
                     email={email}
                     password={password}
-                    userId={userId}
                     setEmail={setEmail}
                     setIsRegistered={setIsRegistered}
                     errorServerMessage={errorServerMessage}
@@ -419,14 +418,13 @@ function App() {
                     isNameValid={isNameValid}
                     isEmailValid={isEmailValid}
                     isPasswordValid={isPasswordValid}
-                    isRegistered={isRegistered}
+
                     handleFormValidation={handleFormValidation}
                     setPassword={setPassword}
                     setUserId={setUserId}
                     setUserName={setUserName}
                     email={email}
                     password={password}
-                    userId={userId}
                     setEmail={setEmail}
                     setIsRegistered={setIsRegistered}
                     errorServerMessage={errorServerMessage}
@@ -460,7 +458,6 @@ function App() {
                     handleUnLogin={handleUnLogin}
                     isNameValid={isNameValid}
                     isEmailValid={isEmailValid}
-                    isPasswordValid={isPasswordValid}
                     handleFormValidation={handleFormValidation}
                     errorServerMessage={errorServerMessage}
                     setErrorServerMessage={setErrorServerMessage}
