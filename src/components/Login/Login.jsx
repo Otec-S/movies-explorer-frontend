@@ -1,8 +1,7 @@
-import React, { useState, useContext } from "react";
+import React from "react";
 import WelcomeForm from "../WelcomeForm/WelcomeForm";
 import { useNavigate } from "react-router-dom";
 import * as auth from "../../utils/MainApi";
-import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 export default function Login({
   isNameValid,
@@ -27,7 +26,6 @@ export default function Login({
     try {
       //получение ответа с сервера
       const response = await auth.authorize(email, password);
-      console.log("response", response);
 
       if (response.ok) {
         //получение и запись в data данных с сервера

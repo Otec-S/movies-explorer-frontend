@@ -16,7 +16,6 @@ export async function register(name, email, password) {
     return response;
   } catch (error) {
     console.error(error);
-    // Обработка ошибки, например, throw error; или другие действия
   }
 }
 
@@ -36,7 +35,6 @@ export async function authorize(email, password) {
     return response;
   } catch (error) {
     console.error(error);
-    // Обработка ошибки, например, throw error; или другие действия
   }
 }
 
@@ -56,7 +54,6 @@ export async function updateProfile(name, email) {
     return response;
   } catch (error) {
     console.error(error);
-    // Обработка ошибки, например, throw error; или другие действия
   }
 }
 
@@ -70,17 +67,15 @@ export async function signout() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      // body: JSON.stringify({ email, password }),
     });
 
     return response;
   } catch (error) {
     console.error(error);
-    // Обработка ошибки, например, throw error; или другие действия
   }
 }
 
-//получение с бэка всего списка сохраненных фильмов (убрали из скобок токен)
+//получение с бэка всего списка сохраненных фильмов
 export const getAllSavedMovies = async () => {
   try {
     const response = await fetch(`${SAVED_MOVIES_BASE}/movies`, {
@@ -89,7 +84,6 @@ export const getAllSavedMovies = async () => {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
-        // Authorization: `Bearer ${token}`,
       },
     });
     const allSavedMoviesData = await response.json();
@@ -143,19 +137,6 @@ export const saveMovieOnServer = async (
   }
 };
 
-/*
-  deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
-      method: "DELETE",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then(this._handleResponse);
-  }
-*/
-
 //удаление из бэка карточки фильма
 export const deleteMovieFromServer = async (_id) => {
   try {
@@ -170,7 +151,6 @@ export const deleteMovieFromServer = async (_id) => {
 
     const deletedMovieData = await response.json();
     return deletedMovieData; //возвращаем Promise на сохраненный фильм
-
   } catch (error) {
     console.error(error);
   }

@@ -10,14 +10,10 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Page404 from "../Page404/Page404";
 import { getAllMovies } from "../../utils/MoviesApi";
-import { getAllSavedMovies } from "../../utils/MainApi";
 import { useLocalStorageState } from "../../hooks";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { AppContext } from "../../contexts/AppContext";
 import * as auth from "../../utils/MainApi";
 import ProtectedRouteElement from "../../utils/ProtectedRoute";
-import { saveMovieOnServer, deleteMovieFromServer } from "../../utils/MainApi";
-import { MOVIE_IMAGE_PATH } from "../../constants";
 
 function App() {
   const navigate = useNavigate();
@@ -51,9 +47,6 @@ function App() {
     "isRegistered",
     false
   );
-
-  //стейт для стилизации Header и его наполнения
-  // const [isPromo, setIsPromo] = useState(false);
 
   //стейт для загрузки прелоадера
   const [isLoading, setIsLoading] = useState(false);
@@ -154,28 +147,6 @@ function App() {
     setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
   };
 
-  // //функция первоначального получения всех фильмов и записи их в стейт
-  // const initialSetAllMovies = () => {
-  //   //запускаем Прелоадер
-  //   setIsLoading(true);
-  //   //получили все карточки из базы и записали их в стейт
-  //   getAllMovies()
-  //     .then((allMoviesData) => {
-  //       //записываем результаты поиска из api в стейт с фильмами
-  //       setAllMovies(allMoviesData);
-  //       //первичный параллельный приск по фильмам из api для отображения на странице + прогон через проверку на включенный чекбокс
-  //       searchMovies(allMoviesData);
-  //     })
-  //     .catch((err) => {
-  //       //если ошибка соединения с базой Яндекса - устанавливается этот стейт и выводится сообщение через тернарный оператор в MoviesCardList
-  //       setIsSearchErrored(true);
-  //     })
-  //     //выключили Прелоадер
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  // };
-
   //функция первоначального получения всех фильмов и записи их в стейт
   const initialSetAllMovies = async () => {
     try {
@@ -206,7 +177,6 @@ function App() {
         item.nameRU.toLowerCase().includes(movieSearchQuery.toLowerCase()) ||
         item.nameEN.toLowerCase().includes(movieSearchQuery.toLowerCase())
     );
-    // setFilteredMoviesArray(filterMoviesByDuration(filtered));
     setFilteredMoviesArray(filtered);
   };
 
@@ -271,18 +241,7 @@ function App() {
   const tokenCheck = () => {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
-    if (
-      document.cookie.length > 0
-      // isRegistered
-      //  ||
-      // (localStorage.getItem("email") &&
-      //   localStorage.getItem("email") !== "" && //нужно это условие, если начальное значение стейта null?
-      //   localStorage.getItem("email") !== "null" &&
-      //   localStorage.getItem("email") !== "undefined")
-    ) {
-      // setIsRegistered(true);
-      // console.log("yes");
-      // console.log("localStorage.getItem(email)", localStorage.getItem("email"));
+    if (document.cookie.length > 0) {
       navigate(currentPath, { replace: true });
     } else {
       setIsRegistered(false);
@@ -293,9 +252,7 @@ function App() {
 
   //разлогирование
   const handleUnLogin = async () => {
-    const response = await auth.signout();
-    console.log("response", response);
-
+    await auth.signout();
     localStorage.clear();
     setAllMovies([]);
     setIsShortMovieChecked(false);
@@ -378,7 +335,6 @@ function App() {
   useEffect(() => {
     const fetchSavedMovies = async () => {
       try {
-        console.log("userId", userId);
         const response = await auth.getAllSavedMovies();
         //фетчим с сервера только те сохраненные там фильмы, owner которых совпадает с id текущего пользователя
         const currentUserSavedMovies = response?.filter(
@@ -395,12 +351,10 @@ function App() {
       fetchSavedMovies();
     }
 
-    // console.log("allSavedMovies", allSavedMovies);
   }, [userId, isRegistered]);
 
   return (
     <div className="App">
-      {/* <AppContext.Provider> */}
       <CurrentUserContext.Provider
         value={{ userName, email, password, userId }}
       >
@@ -517,10 +471,6 @@ function App() {
                     isMoreButtonVisible={isMoreButtonVisible}
                     addCardRows={addCardRows}
                     handleClick={handleClick}
-                    // movieCardId={movieCardId}
-                    // setMovieCardId={setMovieCardId}
-                    // isChecked={isChecked}
-                    // setIsChecked={setIsChecked}
                     handleSaveStatusChange={handleSaveStatusChange}
                     allSavedMovies={allSavedMovies}
                   />
@@ -559,7 +509,6 @@ function App() {
           <Route path="*" element={<Page404 />} />
         </Routes>
       </CurrentUserContext.Provider>
-      {/* </AppContext.Provider> */}
     </div>
   );
 }

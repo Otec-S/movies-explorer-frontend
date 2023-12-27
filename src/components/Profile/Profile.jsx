@@ -116,7 +116,7 @@ const Profile = ({
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    //обратобка изменений в полях ввода
+    //обработка изменений в полях ввода
     if (name === "userName") {
       setEditedUserName(value);
     } else if (name === "email") {

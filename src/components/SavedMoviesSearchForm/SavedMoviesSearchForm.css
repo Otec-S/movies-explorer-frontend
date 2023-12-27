@@ -44,11 +44,6 @@
   opacity: 0.8;
 }
 
-/* .input__find-button:disabled {
-  opacity: 0.3;
-  cursor: auto;
-} */
-
 .short-films {
   display: flex;
   margin-top: 10px;

@@ -13,37 +13,16 @@ const SavedMoviesSearchForm = ({
   setSavedMovieSearchQuery,
   setIsSearching,
   handleSavedCheckboxChange,
-  isShortSavedMovieChecked
-
+  isShortSavedMovieChecked,
 }) => {
   // стейт для отображения состояния фильтрации фильмов
   const [isFiltering, setIsFiltering] = useState(false);
-  // console.log('isFiltering:', isFiltering);
-
-
-  // //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов
-  // const [savedMovieSearchQuery, setSavedMovieSearchQuery] = useState("");
-
-  //стейт для вывода на страницу ошибки при поиске Сохраненного фильма
-  const [isSavedSearchErrored, setIsSavedSearchErrored] = useState(false);
-
-  //стейт для отслеживания состояния чекбокса короткометражек, включен или нет
-  // const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
-  //   useState(false);
-
-  // //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
-  // const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
 
   //установление значения стейта movieSavedSearchQuery из значения поля поискового ввода
   function handleChangeSavedMovieSearchQuery(e) {
     e.preventDefault();
     setSavedMovieSearchQuery(e.target.value);
   }
-
-  //функция изменяет состояние стейта чекбокса на противоположное
-  // const handleCheckboxChange = () => {
-  //   setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
-  // };
 
   //функция фильтации массива Сохраненных фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchSavedMovies = () => {
@@ -55,9 +34,7 @@ const SavedMoviesSearchForm = ({
           .includes(savedMovieSearchQuery.toLowerCase()) ||
         item.nameEN.toLowerCase().includes(savedMovieSearchQuery.toLowerCase())
     );
-    // setFilteredMoviesArray(filterMoviesByDuration(filtered));
     setFilteredSavedMoviesArray(filtered);
-    // console.log("filtered", filtered);
   };
 
   //функция срабатывает по клику на кнопку поиска - отправляется форма поиска
@@ -81,7 +58,6 @@ const SavedMoviesSearchForm = ({
     }
   }, [isFiltering, savedMovieSearchQuery, setFilteredSavedMoviesArray]);
 
-
   return (
     <section className="search-form">
       <form className="input" onSubmit={handleSavedSearchFormSubmit} noValidate>
@@ -100,13 +76,8 @@ const SavedMoviesSearchForm = ({
           autoFocus
           value={savedMovieSearchQuery}
           onChange={handleChangeSavedMovieSearchQuery}
-          // disabled={isLoading}
         />
-        <button
-          type="submit"
-          // onClick={handleClick}
-          className="input__find-button"
-        ></button>
+        <button type="submit" className="input__find-button"></button>
       </form>
 
       <LineGrey />

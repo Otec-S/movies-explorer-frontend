@@ -27,7 +27,6 @@ const Register = ({
     try {
       //асинхронно получаем ответ на регистрацию с сервера
       const registerResponse = await auth.register(userName, email, password);
-      console.log("registerResponse", registerResponse);
 
       //если статус ответа ok
       if (registerResponse.ok) {
@@ -35,7 +34,6 @@ const Register = ({
         try {
           //асинхронно получаем ответ на авторизацию с сервера
           const authResponse = await auth.authorize(email, password);
-          console.log("authResponse", authResponse);
 
           if (authResponse.ok) {
             //получение и запись в data данных с сервера

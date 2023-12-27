@@ -16,7 +16,6 @@
 .welcome-form__form__label {
   display: flex;
   flex-direction: column;
-  /* margin-bottom: 22px; */
   font-size: 10px;
   color: rgba(160, 160, 160, 1);
 }

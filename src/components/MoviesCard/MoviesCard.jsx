@@ -1,11 +1,8 @@
 import React, { useState } from "react";
-
 import "./MoviesCard.css";
 import SaveCheckbox from "../SaveCheckbox/SaveCheckbox";
 import MinutesToHoursAndMinutes from "./MinutesToHoursAndMinutes/MinutesToHoursAndMinutes";
 import { saveMovieOnServer, deleteMovieFromServer } from "../../utils/MainApi";
-import { MOVIE_IMAGE_PATH } from "../../constants";
-import { useLocalStorageState } from "../../hooks";
 import { useEffect } from "react";
 
 const MoviesCard = ({
@@ -77,13 +74,12 @@ const MoviesCard = ({
         nameRU,
         nameEN
       );
-      console.log("save-response", response);
       //вытаскиваем сформированный сервером _id карточки фильма, записываем его в стейт
       setMovieCardId(response._id);
       //добавляем вновь сохранненный фильм в массив allSavedMovies по флагу true
       handleSaveStatusChange(response, true);
     } catch (error) {
-      console.log(error);
+      console.error("error:", error);
     }
   };
 
@@ -93,11 +89,10 @@ const MoviesCard = ({
 
       //удаляем по _id из ответа сервера
       const response = await deleteMovieFromServer(movieCardId);
-      console.log("delete-response", response);
       //функция удаляет фильм из массива allSavedMovies по флагу false
       handleSaveStatusChange(response, false);
     } catch (error) {
-      console.log(error);
+      console.error("error:", error);
     }
   };
 

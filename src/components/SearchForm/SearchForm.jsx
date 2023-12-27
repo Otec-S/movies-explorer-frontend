@@ -12,8 +12,7 @@ const SearchForm = ({
   handleCheckboxChange,
   handleClick,
   isSearchFormEmpty,
-  isShortMovieChecked
-  
+  isShortMovieChecked,
 }) => {
   //установление значения стейта movieSearchQuery из значения поля поискового ввода
   function handleChangeMovieSearchQuery(e) {
@@ -58,7 +57,10 @@ const SearchForm = ({
         )}
       </div>
       <div className="short-films">
-        <Slider handleCheckboxChange={handleCheckboxChange} isShortMovieChecked={isShortMovieChecked}/>
+        <Slider
+          handleCheckboxChange={handleCheckboxChange}
+          isShortMovieChecked={isShortMovieChecked}
+        />
         <span className="short-films__text">Короткометражки</span>
       </div>
     </section>

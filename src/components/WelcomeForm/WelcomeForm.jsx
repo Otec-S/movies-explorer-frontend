@@ -21,35 +21,6 @@ const WelcomeForm = ({
 }) => {
   const { userName, email, password } = useContext(CurrentUserContext);
 
-  // const [userName, setUserName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // const [isNameValid, setIsNameValid] = useState(null);
-  // const [isEmailValid, setIsEmailValid] = useState(null);
-  // const [isPasswordValid, setIsPasswordValid] = useState(null);
-
-  // const handleFormValidation = (event) => {
-  //   const { name, value } = event.target;
-
-  //   switch (name) {
-  //     case "userName":
-  //       setUserName(value);
-  //       setIsNameValid(value ? /^[a-zA-Zа-яА-Я\s-]+$/.test(value) : "");
-  //       break;
-  //     case "email":
-  //       setEmail(value);
-  //       setIsEmailValid(value ? /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value) : "");
-  //       break;
-  //     case "password":
-  //       setPassword(value);
-  //       setIsPasswordValid(value ? value.length >= 4 : "");
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // };
-
   return (
     <main className="welcome-form">
       <div className="welcome-form__main-link">
@@ -76,7 +47,6 @@ const WelcomeForm = ({
               onChange={handleFormValidation}
               autoFocus
               required
-              
             />
             <span className="welcome-form__form__input__error-msg">
               {isNameValid === false &&

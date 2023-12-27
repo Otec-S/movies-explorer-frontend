@@ -5,7 +5,6 @@ import MoreButton from "../Movies/MoreButton/MoreButton";
 import nothingFound from "../../images/nothing-found.jpg";
 import notYet from "../../images/nothing-yet.jpg";
 import { MOVIE_IMAGE_PATH } from "../../constants";
-import { getAllMovies } from "../../utils/MoviesApi";
 
 const MoviesCardList = ({
   isSearchErrored,
@@ -67,7 +66,6 @@ const MoviesCardList = ({
                           isSaved={isSaved}
                           nameRU={item.nameRU}
                           duration={item.duration}
-                          // imageShortUrl={item.image.url}
                           image={`${MOVIE_IMAGE_PATH}${item.image.url}`}
                           trailerLink={item.trailerLink}
                           country={item.country}
