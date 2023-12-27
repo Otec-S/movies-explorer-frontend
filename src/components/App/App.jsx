@@ -230,7 +230,7 @@ function App() {
     } else if (pageWidth < 660) {
       setTotalCardsOnPage(baseNumberOfCards - 7);
     }
-  }, [baseNumberOfCards, pageWidth]);
+  }, [baseNumberOfCards, pageWidth, setTotalCardsOnPage]);
 
   //по клику на кнопку поиска также сбрасываем до базового количество отражаемых на странице карточек
   const handleClick = () => {

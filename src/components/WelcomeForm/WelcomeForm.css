@@ -50,7 +50,7 @@
 .welcome-form__button__error-msg {
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   text-align: center;
   color: rgba(255, 0, 76, 1);
   font-size: 11px;
