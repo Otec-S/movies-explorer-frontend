@@ -24,7 +24,6 @@ const Profile = ({
   const {
     userName: initialUserName,
     email: initialEmail,
-    password,
   } = useContext(CurrentUserContext);
 
   //устанавливаем состояние редактирования

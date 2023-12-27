@@ -18,9 +18,9 @@ const SavedMoviesCardList = ({
   isShortSavedMovieChecked
 }) => {
   // console.log("SearchQuery:", savedMovieSearchQuery);
-  console.log("filteredArray:", filteredSavedMoviesArray);
-  console.log("allMovies", allSavedMovies);
-  console.log("isSearching:", isSearching);
+  // console.log("filteredArray:", filteredSavedMoviesArray);
+  // console.log("allMovies", allSavedMovies);
+  // console.log("isSearching:", isSearching);
 
   // Проверка на наличие поискового запроса и наличие фильмов
   const displayMovies =

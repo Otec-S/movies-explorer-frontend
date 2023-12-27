@@ -20,7 +20,7 @@ const SavedMoviesSearchForm = ({
 }) => {
   // стейт для отображения состояния фильтрации фильмов
   const [isFiltering, setIsFiltering] = useState(false);
-  console.log('isFiltering:', isFiltering);
+  // console.log('isFiltering:', isFiltering);
 
 
   // //стейт для отслеживания состояния строки запроса в форме ввода Сохраненных фильов

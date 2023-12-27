@@ -53,7 +53,7 @@ function App() {
   );
 
   //стейт для стилизации Header и его наполнения
-  const [isPromo, setIsPromo] = useState(false);
+  // const [isPromo, setIsPromo] = useState(false);
 
   //стейт для загрузки прелоадера
   const [isLoading, setIsLoading] = useState(false);
