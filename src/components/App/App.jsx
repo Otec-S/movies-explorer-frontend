@@ -85,16 +85,17 @@ function App() {
     false
   );
 
+  //стейт для отслеживания состояния чекбокса Сохрененных фильмов, включен или нет
+  const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
+    useState(false);
+
   //стейт для отслеживания наличия поискового запроса в форме поиска
   const [isSearchFormEmpty, setIsSearchFormEmpty] = useState(false);
 
   //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
   const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
-  
-  
+
   const [isSearching, setIsSearching] = useState(false);
-
-
 
   //стейт для определения ширины видимой части страницы
   const [pageWidth, setPageWidth] = useState();
@@ -146,6 +147,11 @@ function App() {
   //функция изменяет состояние стейта чекбокса на противоположное
   const handleCheckboxChange = () => {
     setIsShortMovieChecked(!isShortMovieChecked);
+  };
+
+  //функция изменяет состояние стейта чекбокса Сохраненных фильмов на противоположное
+  const handleSavedCheckboxChange = () => {
+    setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
   };
 
   //функция первоначального получения всех фильмов и записи их в стейт
@@ -525,6 +531,8 @@ function App() {
                     setSavedMovieSearchQuery={setSavedMovieSearchQuery}
                     isSearching={isSearching}
                     setIsSearching={setIsSearching}
+                    isShortSavedMovieChecked={isShortSavedMovieChecked}
+                    handleSavedCheckboxChange={handleSavedCheckboxChange}
                   />
                 }
               />

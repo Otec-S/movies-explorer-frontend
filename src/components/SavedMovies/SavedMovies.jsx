@@ -18,7 +18,9 @@ const SavedMovies = ({
   savedMovieSearchQuery,
   setSavedMovieSearchQuery,
   isSearching,
-  setIsSearching
+  setIsSearching,
+  isShortSavedMovieChecked,
+  handleSavedCheckboxChange
 }) => {
   return (
     <>
@@ -38,7 +40,10 @@ const SavedMovies = ({
           savedMovieSearchQuery={savedMovieSearchQuery}
           setSavedMovieSearchQuery={setSavedMovieSearchQuery}
           isSearching={isSearching}
-                    setIsSearching={setIsSearching}
+          setIsSearching={setIsSearching}
+          handleSavedCheckboxChange={handleSavedCheckboxChange}
+          isShortSavedMovieChecked={isShortSavedMovieChecked}
+
         />
         <SavedMoviesCardList
           isSaved={true}
@@ -51,7 +56,8 @@ const SavedMovies = ({
           savedMovieSearchQuery={savedMovieSearchQuery}
           setSavedMovieSearchQuery={setSavedMovieSearchQuery}
           isSearching={isSearching}
-                    setIsSearching={setIsSearching}
+          setIsSearching={setIsSearching}
+          isShortSavedMovieChecked={isShortSavedMovieChecked}
         />
       </main>
       <Footer />

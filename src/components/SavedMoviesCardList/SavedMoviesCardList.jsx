@@ -15,6 +15,7 @@ const SavedMoviesCardList = ({
   setSavedMovieSearchQuery,
   isSearching,
   setIsSearching,
+  isShortSavedMovieChecked
 }) => {
   // console.log("SearchQuery:", savedMovieSearchQuery);
   console.log("filteredArray:", filteredSavedMoviesArray);
@@ -33,9 +34,8 @@ const SavedMoviesCardList = ({
   console.log("displayMovies", displayMovies);
 
   useEffect(() => {
-
     // if (isSavedSearchFormEmpty) {
-    if (savedMovieSearchQuery === '') {
+    if (savedMovieSearchQuery === "") {
       setFilteredSavedMoviesArray([]);
       //???????????????????????????????????????
       setIsSearching(false);
@@ -47,28 +47,32 @@ const SavedMoviesCardList = ({
       {displayMovies.length > 0 ? (
         <section className="movies-card-section">
           <ul className="movies-card-list">
-            {displayMovies?.map((item) => {
-              return (
-                <MoviesCard
-                  key={item.movieId}
-                  isSaved={isSaved}
-                  nameRU={item.nameRU}
-                  duration={item.duration}
-                  image={item.image}
-                  trailerLink={item.trailerLink}
-                  country={item.country}
-                  director={item.director}
-                  year={item.year}
-                  description={item.description}
-                  thumbnail={item.thumbnail}
-                  movieId={item.movieId}
-                  owner={item.owner}
-                  nameEN={item.nameEN}
-                  handleSaveStatusChange={handleSaveStatusChange}
-                  allSavedMovies={allSavedMovies}
-                />
-              );
-            })}
+            {displayMovies
+              ?.filter((array) => {
+                return isShortSavedMovieChecked ? array.duration <= 40 : array;
+              })
+              .map((item) => {
+                return (
+                  <MoviesCard
+                    key={item.movieId}
+                    isSaved={isSaved}
+                    nameRU={item.nameRU}
+                    duration={item.duration}
+                    image={item.image}
+                    trailerLink={item.trailerLink}
+                    country={item.country}
+                    director={item.director}
+                    year={item.year}
+                    description={item.description}
+                    thumbnail={item.thumbnail}
+                    movieId={item.movieId}
+                    owner={item.owner}
+                    nameEN={item.nameEN}
+                    handleSaveStatusChange={handleSaveStatusChange}
+                    allSavedMovies={allSavedMovies}
+                  />
+                );
+              })}
           </ul>
         </section>
       ) : (

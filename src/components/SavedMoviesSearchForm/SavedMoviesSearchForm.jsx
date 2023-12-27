@@ -13,7 +13,10 @@ const SavedMoviesSearchForm = ({
   savedMovieSearchQuery,
   setSavedMovieSearchQuery,
   isSearching,
-  setIsSearching
+  setIsSearching,
+  handleSavedCheckboxChange,
+  isShortSavedMovieChecked
+
 }) => {
   // стейт для отображения состояния фильтрации фильмов
   const [isFiltering, setIsFiltering] = useState(false);
@@ -27,8 +30,8 @@ const SavedMoviesSearchForm = ({
   const [isSavedSearchErrored, setIsSavedSearchErrored] = useState(false);
 
   //стейт для отслеживания состояния чекбокса короткометражек, включен или нет
-  const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
-    useState(false);
+  // const [isShortSavedMovieChecked, setIsShortSavedMovieChecked] =
+  //   useState(false);
 
   // //стейт для отслеживания наличия поискового запроса в форме поиска Сохренных фильмов
   // const [isSavedSearchFormEmpty, setIsSavedSearchFormEmpty] = useState(false);
@@ -40,9 +43,9 @@ const SavedMoviesSearchForm = ({
   }
 
   //функция изменяет состояние стейта чекбокса на противоположное
-  const handleCheckboxChange = () => {
-    setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
-  };
+  // const handleCheckboxChange = () => {
+  //   setIsShortSavedMovieChecked(!isShortSavedMovieChecked);
+  // };
 
   //функция фильтации массива Сохраненных фильмов по слову из строки поиска и запись в стейт найденных фильмов
   const searchSavedMovies = () => {
@@ -119,7 +122,7 @@ const SavedMoviesSearchForm = ({
       </div>
       <div className="short-films">
         <Slider
-          handleCheckboxChange={handleCheckboxChange}
+          handleCheckboxChange={handleSavedCheckboxChange}
           isShortMovieChecked={isShortSavedMovieChecked}
         />
         <span className="short-films__text">Короткометражки</span>
