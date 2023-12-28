@@ -32,15 +32,15 @@ const SavedMoviesCardList = ({
 
   return (
     <>
-      {displayMovies.length > 0 ? (
-        <section className="movies-card-section">
-          <ul className="movies-card-list">
-            {displayMovies
-              ?.filter((array) => {
-                return isShortSavedMovieChecked ? array.duration <= 40 : array;
-              })
-              .map((item) => {
-                return (
+      {displayMovies !== undefined ? (
+        displayMovies.length > 0 ? (
+          <section className="movies-card-section">
+            <ul className="movies-card-list">
+              {displayMovies
+                ?.filter((array) =>
+                  isShortSavedMovieChecked ? array.duration <= 40 : array
+                )
+                .map((item) => (
                   <MoviesCard
                     key={item.movieId}
                     isSaved={isSaved}
@@ -59,18 +59,22 @@ const SavedMoviesCardList = ({
                     handleSaveStatusChange={handleSaveStatusChange}
                     allSavedMovies={allSavedMovies}
                   />
-                );
-              })}
-          </ul>
-        </section>
+                ))}
+            </ul>
+          </section>
+        ) : (
+          <section className="nothing-found-image-block">
+            <img
+              src={nothing}
+              alt="Ничего не найдено"
+              className="nothing-found-image"
+            />
+          </section>
+        )
       ) : (
-        <section className="nothing-found-image-block">
-          <img
-            src={nothing}
-            alt="Ничего не найдено"
-            className="nothing-found-image"
-          />
-        </section>
+        <p className="search-error-message">
+          Сервер недоступен. Подождите немного и попробуйте ещё раз ☹
+        </p>
       )}
     </>
   );
