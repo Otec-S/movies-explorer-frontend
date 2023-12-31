@@ -242,9 +242,11 @@ function App() {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
     if (document.cookie.length > 0) {
+      console.log('tockenChek плюс');
       navigate(currentPath, { replace: true });
     } else {
-      setIsRegistered(false);
+      console.log('tockenChek минус');
+      // setIsRegistered(false);
       setEmail("");
       navigate("/", { replace: true });
     }
