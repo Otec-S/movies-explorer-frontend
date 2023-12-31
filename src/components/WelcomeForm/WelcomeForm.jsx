@@ -18,6 +18,7 @@ const WelcomeForm = ({
   handleLoginFormSubmit,
   handleRegisterFormSubmit,
   errorServerMessage,
+  // setErrorServerMessage
 }) => {
   const { userName, email, password } = useContext(CurrentUserContext);
 
@@ -104,6 +105,7 @@ const WelcomeForm = ({
           disabled={
             (isNewUser && !isNameValid) || !isEmailValid || !isPasswordValid
           }
+          // onClick={setErrorServerMessage("")}
         >
           {buttonText}
         </button>

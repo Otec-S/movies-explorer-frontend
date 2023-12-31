@@ -87,6 +87,7 @@ const Register = ({
       handleFormValidation={handleFormValidation}
       handleRegisterFormSubmit={handleRegisterFormSubmit}
       errorServerMessage={errorServerMessage}
+      setErrorServerMessage={setErrorServerMessage}
     />
   );
 };

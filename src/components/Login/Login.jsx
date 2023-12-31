@@ -39,6 +39,7 @@ export default function Login({
         //стейт isRegistered в положение true
 
         setIsRegistered(true);
+        setErrorServerMessage("");
         //перевод на страницу фильмы
         navigate("/movies", { replace: true });
       } else if (response.status === 401) {
@@ -67,6 +68,7 @@ export default function Login({
       handleFormValidation={handleFormValidation}
       handleLoginFormSubmit={handleLoginFormSubmit}
       errorServerMessage={errorServerMessage}
+      setErrorServerMessage={setErrorServerMessage}
     />
   );
 }
