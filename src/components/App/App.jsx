@@ -244,11 +244,7 @@ function App() {
     if (document.cookie.length > 0) {
       console.log('tockenChek плюс');
       navigate(currentPath, { replace: true });
-    } else {
-      console.log('tockenChek минус');
-      // setIsRegistered(false);
-      setEmail("");
-      navigate("/", { replace: true });
+      return;
     }
   };
 
