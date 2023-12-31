@@ -21,7 +21,7 @@ const MoviesCard = ({
   handleSaveStatusChange,
   allSavedMovies,
 }) => {
-  // //в локальном хранилище привязываем ID карточки к ID фильма
+  // в локальном хранилище привязываем ID карточки к ID фильма
   const [movieCardId, setMovieCardId] = useState(null);
 
   const [isChecked, setIsChecked] = useState(false);

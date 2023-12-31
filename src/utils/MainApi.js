@@ -87,7 +87,7 @@ export const getAllSavedMovies = async () => {
       },
     });
     const allSavedMoviesData = await response.json();
-    return allSavedMoviesData; //возвращаем Promise на базу сохраненных фильмов
+    return allSavedMoviesData;
   } catch (error) {
     console.error(error);
   }
@@ -131,7 +131,7 @@ export const saveMovieOnServer = async (
     });
 
     const savedMovieData = await response.json();
-    return savedMovieData; //возвращаем Promise на сохраненный фильм
+    return savedMovieData; 
   } catch (error) {
     console.error(error);
   }
@@ -150,7 +150,7 @@ export const deleteMovieFromServer = async (_id) => {
     });
 
     const deletedMovieData = await response.json();
-    return deletedMovieData; //возвращаем Promise на сохраненный фильм
+    return deletedMovieData; 
   } catch (error) {
     console.error(error);
   }

@@ -42,8 +42,9 @@ const Register = ({
             setEmail(data.email);
             setUserName(data.name);
             setUserId(data._id);
-            //стейт isRegistered в положение true
+            //очищаем поле ошибки
             setErrorServerMessage("");
+            //стейт isRegistered в положение true
             setIsRegistered(true);
             //перевод на страницу фильмы
             navigate("/movies", { replace: true });

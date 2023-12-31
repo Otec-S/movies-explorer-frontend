@@ -10,7 +10,7 @@ export const getAllMovies = async () => {
       },
     });
     const allMoviesData = await response.json();
-     return allMoviesData; //возвращаем Promise на базу фильмов
+     return allMoviesData; 
   } catch (error) {
     console.error(error);
   }
