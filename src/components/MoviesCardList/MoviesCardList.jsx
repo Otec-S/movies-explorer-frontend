@@ -30,7 +30,7 @@ const MoviesCardList = ({
           Во время запроса произошла ошибка. Возможно, проблема с соединением
           или сервер недоступен. Подождите немного и попробуйте ещё раз ☹
         </p>
-      ) : allMovies.length === 0 && !filteredMoviesArray.length ? (
+      ) : allMovies.length === 0 && !filteredMoviesArray ? (
         <section className="nothing-found-image-block">
           <img
             src={notYet}
