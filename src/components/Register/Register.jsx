@@ -43,7 +43,7 @@ const Register = ({
             setUserName(data.name);
             setUserId(data._id);
             //стейт isRegistered в положение true
-
+            setErrorServerMessage("");
             setIsRegistered(true);
             //перевод на страницу фильмы
             navigate("/movies", { replace: true });
