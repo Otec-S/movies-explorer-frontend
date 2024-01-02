@@ -41,10 +41,8 @@ const MoviesCard = ({
     }
   }, [allSavedMovies, movieId, movieCardId]);
 
-  //вводим функцию "тогла" состояния чекбокса
+  //вводим функцию нажатия на чекбокс
   const handleCheckboxClick = () => {
-    setIsChecked(!isChecked);
-
     //активизируя функцию onSave из пропсов мы отправляем запрос на сервер для сохранения/удаления этой карточки фильма
     if (!isChecked) {
       saveMovie();
@@ -78,6 +76,8 @@ const MoviesCard = ({
       setMovieCardId(response._id);
       //добавляем вновь сохранненный фильм в массив allSavedMovies по флагу true
       handleSaveStatusChange(response, true);
+      //переводим чек-бокс в true только при получении положительного ответа от сервера
+      setIsChecked(true);
     } catch (error) {
       console.error("error:", error);
     }
@@ -86,11 +86,12 @@ const MoviesCard = ({
   //удаление карточки фильма
   const deleteMovie = async () => {
     try {
-
       //удаляем по _id из ответа сервера
       const response = await deleteMovieFromServer(movieCardId);
       //функция удаляет фильм из массива allSavedMovies по флагу false
       handleSaveStatusChange(response, false);
+      //переводим чек-бокс в false только при получении положительного ответа от сервера
+      setIsChecked(false);
     } catch (error) {
       console.error("error:", error);
     }

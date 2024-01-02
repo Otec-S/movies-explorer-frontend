@@ -32,17 +32,13 @@ const SavedMoviesCardList = ({
     }
   }, [savedMovieSearchQuery, setFilteredSavedMoviesArray, setIsSearching]);
 
-  //при монтировании/размонтировании компонента: переводим стейт в false  и очищаем строку поиска
+  //при размонтировании компонента: переводим стейт в false  и очищаем строку поиска
   useEffect(() => {
-    setIsSearching(false);
-    setSavedMovieSearchQuery("");
+    return () => {
+      setIsSearching(false);
+      setSavedMovieSearchQuery("");
+    };
   }, []);
-
-  console.log("displayMovies:", displayMovies);
-  console.log("isSearching:", isSearching);
-  console.log("savedMovieSearchQuery:", savedMovieSearchQuery);
-  console.log("filteredSavedMoviesArray:", filteredSavedMoviesArray);
-  console.log("allSavedMovies:", allSavedMovies);
 
   return (
     <>
