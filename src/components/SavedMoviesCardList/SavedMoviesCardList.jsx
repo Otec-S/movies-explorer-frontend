@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import "./SavedMoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
-import nothing from "../../images/nothing.jpg";
 
 const SavedMoviesCardList = ({
   isSaved,

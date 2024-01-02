@@ -2,8 +2,6 @@ import React from "react";
 import "./MoviesCardList.css";
 import MoviesCard from "../MoviesCard/MoviesCard";
 import MoreButton from "../Movies/MoreButton/MoreButton";
-import nothingFound from "../../images/nothing-found.jpg";
-import notYet from "../../images/nothing-yet.jpg";
 import { MOVIE_IMAGE_PATH } from "../../constants";
 
 const MoviesCardList = ({
