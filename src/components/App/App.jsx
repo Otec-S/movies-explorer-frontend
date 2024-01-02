@@ -242,7 +242,6 @@ function App() {
     //определяем текущее местрорасположение
     const currentPath = window.location.pathname;
     if (document.cookie.length > 0) {
-      console.log('tockenChek плюс');
       navigate(currentPath, { replace: true });
       return;
     }

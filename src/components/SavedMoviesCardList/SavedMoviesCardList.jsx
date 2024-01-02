@@ -10,6 +10,7 @@ const SavedMoviesCardList = ({
   filteredSavedMoviesArray,
   setFilteredSavedMoviesArray,
   savedMovieSearchQuery,
+  setSavedMovieSearchQuery,
   isSearching,
   setIsSearching,
   isShortSavedMovieChecked,
@@ -23,12 +24,25 @@ const SavedMoviesCardList = ({
       : //иначе показываем массив всех фильмов
         allSavedMovies;
 
+  //если строка поиска пустая, то очищаем массив найденных среди сохраненных фильмов
   useEffect(() => {
     if (savedMovieSearchQuery === "") {
       setFilteredSavedMoviesArray([]);
       setIsSearching(false);
     }
   }, [savedMovieSearchQuery, setFilteredSavedMoviesArray, setIsSearching]);
+
+  //при монтировании/размонтировании компонента: переводим стейт в false  и очищаем строку поиска
+  useEffect(() => {
+    setIsSearching(false);
+    setSavedMovieSearchQuery("");
+  }, []);
+
+  console.log("displayMovies:", displayMovies);
+  console.log("isSearching:", isSearching);
+  console.log("savedMovieSearchQuery:", savedMovieSearchQuery);
+  console.log("filteredSavedMoviesArray:", filteredSavedMoviesArray);
+  console.log("allSavedMovies:", allSavedMovies);
 
   return (
     <>

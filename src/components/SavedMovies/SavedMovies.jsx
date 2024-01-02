@@ -50,6 +50,7 @@ const SavedMovies = ({
           filteredSavedMoviesArray={filteredSavedMoviesArray}
           setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
           savedMovieSearchQuery={savedMovieSearchQuery}
+          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
           isSearching={isSearching}
           setIsSearching={setIsSearching}
           isShortSavedMovieChecked={isShortSavedMovieChecked}
