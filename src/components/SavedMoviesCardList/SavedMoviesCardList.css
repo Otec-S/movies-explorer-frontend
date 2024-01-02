@@ -29,6 +29,14 @@
   font-size: 20px;
 }
 
+.search-info-message {
+  text-align: center;
+  margin: 0 20px;
+  color: #2be080;
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
 @media screen and (max-width: 1200px) {
   .movies-card-list {
     row-gap: 36px;

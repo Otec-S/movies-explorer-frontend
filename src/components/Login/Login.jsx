@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import WelcomeForm from "../WelcomeForm/WelcomeForm";
 import { useNavigate } from "react-router-dom";
 import * as auth from "../../utils/MainApi";
@@ -53,6 +53,13 @@ export default function Login({
       console.error("error:", error);
     }
   }
+
+  //при размонтировании компонента: очищаем сообщение об ошибке
+  useEffect(() => {
+    return () => {
+      setErrorServerMessage("");
+    };
+  }, []);
 
   return (
     <WelcomeForm

@@ -73,17 +73,11 @@ const SavedMoviesCardList = ({
             </ul>
           </section>
         ) : (
-          <section className="nothing-found-image-block">
-            <img
-              src={nothing}
-              alt="Ничего не найдено"
-              className="nothing-found-image"
-            />
-          </section>
+          <p className="search-info-message">Ничего нет 🤷.</p>
         )
       ) : (
         <p className="search-error-message">
-          Сервер недоступен. Подождите немного и попробуйте ещё раз ☹
+          Сервер недоступен. Подождите немного и попробуйте ещё раз 🤕
         </p>
       )}
     </>
