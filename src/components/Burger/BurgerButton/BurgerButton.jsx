@@ -11,11 +11,11 @@ const BurgerButton = ({ isRegistered, menuActive, setActive }) => {
           }
           onClick={() => {
             // удаление и возвращение скролла
-            if (document.body.style.overflow === "hidden") {
-              document.body.style.overflow = " visible";
-            } else {
-              document.body.style.overflow = "hidden";
-            }
+            // if (document.body.style.overflow === "hidden") {
+            //   document.body.style.overflow = " visible";
+            // } else {
+            //   document.body.style.overflow = "hidden";
+            // }
             //при клике на крестик меню оно закрывается
             setActive(!menuActive);
           }}
