@@ -2,9 +2,9 @@ import React from "react";
 import "./AboutProject.css";
 import SubTitle from "../SubTitle/SubTitle";
 
-const AboutProject = () => {
+const AboutProject = ({ refProp }) => {
   return (
-    <section className="about-project">
+    <section className="about-project" ref={refProp}>
       <SubTitle text="О проекте" />
       <article className="about-project__description">
         <div className="about-project__description-block">

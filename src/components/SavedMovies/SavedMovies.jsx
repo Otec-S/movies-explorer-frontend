@@ -1,10 +1,27 @@
 import React from "react";
-import SearchForm from "../SearchForm/SearchForm";
+import SavedMoviesSearchForm from "../SavedMoviesSearchForm/SavedMoviesSearchForm";
 import Header from "../Header/Header";
-import MoviesCardList from "../MoviesCardList/MoviesCardList";
+import SavedMoviesCardList from "../SavedMoviesCardList/SavedMoviesCardList";
 import Footer from "../Footer/Footer";
 
-const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
+const SavedMovies = ({
+  menuActive,
+  setActive,
+  isRegistered,
+  isPromo,
+  allSavedMovies,
+  handleSaveStatusChange,
+  filteredSavedMoviesArray,
+  setFilteredSavedMoviesArray,
+  isSavedSearchFormEmpty,
+  setIsSavedSearchFormEmpty,
+  savedMovieSearchQuery,
+  setSavedMovieSearchQuery,
+  isSearching,
+  setIsSearching,
+  isShortSavedMovieChecked,
+  handleSavedCheckboxChange
+}) => {
   return (
     <>
       <Header
@@ -14,8 +31,30 @@ const SavedMovies = ({ menuActive, setActive, isRegistered, isPromo }) => {
         isPromo={isPromo}
       />
       <main>
-        <SearchForm />
-        <MoviesCardList isSaved={true} />
+        <SavedMoviesSearchForm
+          allSavedMovies={allSavedMovies}
+          setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
+          isSavedSearchFormEmpty={isSavedSearchFormEmpty}
+          setIsSavedSearchFormEmpty={setIsSavedSearchFormEmpty}
+          savedMovieSearchQuery={savedMovieSearchQuery}
+          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+          setIsSearching={setIsSearching}
+          handleSavedCheckboxChange={handleSavedCheckboxChange}
+          isShortSavedMovieChecked={isShortSavedMovieChecked}
+
+        />
+        <SavedMoviesCardList
+          isSaved={true}
+          allSavedMovies={allSavedMovies}
+          handleSaveStatusChange={handleSaveStatusChange}
+          filteredSavedMoviesArray={filteredSavedMoviesArray}
+          setFilteredSavedMoviesArray={setFilteredSavedMoviesArray}
+          savedMovieSearchQuery={savedMovieSearchQuery}
+          setSavedMovieSearchQuery={setSavedMovieSearchQuery}
+          isSearching={isSearching}
+          setIsSearching={setIsSearching}
+          isShortSavedMovieChecked={isShortSavedMovieChecked}
+        />
       </main>
       <Footer />
     </>

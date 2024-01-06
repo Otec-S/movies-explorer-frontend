@@ -6,6 +6,11 @@
   background: #fdfdfd;
   box-shadow: 0 0 15px 0 #e8e8e8;
 }
+
+.movies-card:hover {
+  box-shadow: 0 0 15px 0 grey;
+}
+
 .movies-card__description {
   height: 16%;
   display: flex;
@@ -43,6 +48,7 @@
   background-image: url(../../images/unsave-cross.svg);
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: top;
   cursor: pointer;
 }
 
@@ -53,12 +59,16 @@
   background-size: cover;
 }
 
+.movies-card__picture:hover {
+  cursor: pointer;
+}
+
 .movies-card__description__icon:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 .movies-card__description__icon_saved:hover {
-  opacity: 0.8;
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 1270px) {

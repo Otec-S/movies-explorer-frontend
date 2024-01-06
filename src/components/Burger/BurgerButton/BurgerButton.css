@@ -74,6 +74,10 @@
   transition: all 0.5s;
 }
 
+.overflow-hidden {
+  overflow: hidden;
+}
+
 @media screen and (max-width: 900px) {
   .burger-button {
     display: block;

@@ -25,10 +25,8 @@
 
 .search-error-message {
   text-align: center;
-  margin: 0 20px;
   color: rgba(238, 52, 101, 1);
   font-size: 20px;
-  margin-bottom: 50px;
 }
 
 .search-info-message {

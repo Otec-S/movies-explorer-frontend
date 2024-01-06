@@ -1,14 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./BurgerMenu.css";
 import { NavLink } from "react-router-dom";
 import logoMan from "../../../images/logManWhite.jpg";
 
-const BurgerMenu = ({ menuActive }) => {
+const BurgerMenu = ({ menuActive, setActive }) => {
+
+  // Закрытие бургер-меню по нажатию на Escape
+  useEffect(() => {
+
+    const handleEscape = (event) => {
+      if (event.key === "Escape" && menuActive) {
+        setActive(!menuActive);
+      }
+    };
+
+    // Добавление слушателя события клавиатуры
+    document.addEventListener("keydown", handleEscape);
+
+    // Удаление слушателя при размонтировании компонента
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  },[menuActive]);
+
   return (
     <nav
       className={menuActive ? "burger-menu burger-menu_active" : "burger-menu"}
     >
-      <div className="burger-menu__blackout" />
+      <div
+        className="burger-menu__blackout"
+        onClick={() => setActive(!menuActive)}
+      />
 
       <div className="burger-menu__content">
         <ul className="burger-menu__list">
@@ -16,10 +38,11 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/"
+              onClick={() => setActive(!menuActive)}
             >
               Главная
             </NavLink>
@@ -29,10 +52,11 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/movies"
+              onClick={() => setActive(!menuActive)}
             >
               Фильмы
             </NavLink>
@@ -41,10 +65,11 @@ const BurgerMenu = ({ menuActive }) => {
             <NavLink
               className={({ isActive }) =>
                 `burger-menu__list-item-link ${
-                  isActive ? "burger-menu__link_active" : ""
+                  isActive && "burger-menu__link_active"
                 }`
               }
               to="/saved-movies"
+              onClick={() => setActive(!menuActive)}
             >
               Сохраненные фильмы
             </NavLink>
@@ -55,10 +80,11 @@ const BurgerMenu = ({ menuActive }) => {
           <NavLink
             className={({ isActive }) =>
               `burger-menu__account-link ${
-                isActive ? "burger-menu__link_active" : ""
+                isActive && "burger-menu__link_active"
               }`
             }
             to="/profile"
+            onClick={() => setActive(!menuActive)}
           >
             Аккаунт
           </NavLink>

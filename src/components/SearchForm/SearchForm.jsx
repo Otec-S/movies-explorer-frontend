@@ -4,27 +4,63 @@ import loupeIcon from "../../images/loupe-icon.svg";
 import LineGrey from "../LineGrey/LineGrey";
 import Slider from "../Slider/Slider";
 
-const SearchForm = () => {
+const SearchForm = ({
+  movieSearchQuery,
+  setMovieSearchQuery,
+  handleSearchFormSubmit,
+  isLoading,
+  handleCheckboxChange,
+  handleClick,
+  isSearchFormEmpty,
+  isShortMovieChecked,
+}) => {
+  //установление значения стейта movieSearchQuery из значения поля поискового ввода
+  function handleChangeMovieSearchQuery(e) {
+    e.preventDefault();
+    setMovieSearchQuery(e.target.value);
+  }
+
   return (
     <section className="search-form">
-      <form className="input">
+      <form className="input" onSubmit={handleSearchFormSubmit} noValidate>
         <img
           className="input__loupe-icon"
           src={loupeIcon}
           alt="Иконка с лупой"
         />
         <input
+          name="movies-search-field"
+          id="movies-search-field"
           className="input__entry-field"
           type="search"
           placeholder="Фильм"
           required
-          autofocus
+          autoFocus
+          value={movieSearchQuery}
+          onChange={handleChangeMovieSearchQuery}
+          disabled={isLoading}
         />
-        <button className="input__find-button"></button>
+        <button
+          type="submit"
+          onClick={handleClick}
+          className="input__find-button"
+        ></button>
       </form>
+
       <LineGrey />
+
+      <div className="input__place-for-error-message">
+        {isSearchFormEmpty && (
+          <span className="input__error-message">
+            Нужно ввести ключевое слово
+          </span>
+        )}
+      </div>
       <div className="short-films">
-        <Slider />
+        <Slider
+          handleCheckboxChange={handleCheckboxChange}
+          isShortMovieChecked={isShortMovieChecked}
+        />
         <span className="short-films__text">Короткометражки</span>
       </div>
     </section>

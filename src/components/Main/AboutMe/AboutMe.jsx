@@ -17,17 +17,7 @@ const AboutMe = () => {
             Фронтенд-разработчик, 46 лет
           </p>
           <p className="about-me__biography">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Harum vel
-            itaque earum voluptatibus praesentium! Harum sapiente nemo officiis
-            rerum in facere, veritatis alias eius sed minus quisquam provident
-            mollitia explicabo reprehenderit adipisci maxime expedita optio quos
-            ipsam porro nam at! Quia, fugit. Nostrum beatae, ex impedit quidem,
-            dignissimos ab quos inventore cupiditate consectetur eius fugiat!
-            Dicta maxime quasi sint magni nostrum animi laborum assumenda nihil
-            incidunt. Error cupiditate facere, sed quia earum nemo unde eaque.
-            At labore officiis fuga quasi? Corporis earum vel fugiat ducimus
-            magni cum voluptatem! Assumenda quaerat veniam ab inventore.
-            Reprehenderit pariatur est porro quia aspernatur labore.
+          Читаю Habr и книги про Java Scrypt, привык анализировать большое количество информации, постоянно обучаюсь, имею высшую степень самоорганизованности, разговариваю с бизнесом "на одном языке". Хобби: современные настольные игры (Twilight Imperium, Forbidden Stars, Brass...), бег на длинные дистанции.
           </p>
           <Link
             className="about-me__github-link"

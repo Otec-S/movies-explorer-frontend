@@ -14,10 +14,10 @@ const Navigation = ({ isRegistered, isPromo }) => {
               className={({ isActive }) =>
                 isPromo
                   ? `navigation__link-promo ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
                   : `navigation__link ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
               }
               to="/movies"
@@ -28,10 +28,10 @@ const Navigation = ({ isRegistered, isPromo }) => {
               className={({ isActive }) =>
                 isPromo
                   ? `navigation__link-promo ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
                   : `navigation__link ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
               }
               to="/saved-movies"
@@ -45,10 +45,10 @@ const Navigation = ({ isRegistered, isPromo }) => {
               className={({ isActive }) =>
                 isPromo
                   ? `navigation__account__link-promo ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
                   : `navigation__account__link ${
-                      isActive ? "navigation__link_active" : ""
+                      isActive && "navigation__link_active"
                     }`
               }
               to="/profile"

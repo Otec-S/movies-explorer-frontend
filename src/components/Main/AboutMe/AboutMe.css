@@ -40,6 +40,7 @@
   max-height: 155px;
   text-overflow: ellipsis;
   overflow: hidden;
+  height: 155px;
 }
 
 .about-me__github-link {
@@ -175,6 +176,7 @@
     font-size: 11px;
     line-height: 1.45;
     max-height: 108px;
+    height: 108px;
   }
 
   .about-me__portfolio-title {
